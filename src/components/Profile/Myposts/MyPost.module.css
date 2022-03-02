@@ -1,0 +1,12 @@
+.post{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
+.textarea{
+    width: 200px;
+    outline: none;
+    border: none;
+    resize: none;
+}

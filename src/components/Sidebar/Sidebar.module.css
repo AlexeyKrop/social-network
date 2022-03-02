@@ -1,0 +1,23 @@
+.sidebar{
+    min-height: 500px;
+    width: 150px;
+    background-color:darkcyan;
+}
+.list{
+    margin: 0;
+    padding: 10px 0 0 0 ;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: none;
+    border-top-left-radius: 5px;
+}
+.link{
+    font-size: 18px;
+    text-decoration: none;
+    color: darkgrey;
+}
+.link:hover{
+    color: lightgray;
+}

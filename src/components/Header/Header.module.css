@@ -1,0 +1,36 @@
+.header{
+  position: fixed;
+  background: antiquewhite;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.wrapper{
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list{
+  max-width: 130px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  list-style: none;
+}
+.item{
+  display: flex;
+  flex-direction: column
+}
+.link{
+  text-decoration: none;
+  color: darkgrey;
+}
+

@@ -32,22 +32,18 @@
 .App-link {
   color: #61dafb;
 }
-.header{
-  position: fixed;
-  background: antiquewhite;
-  left: 0;
-  top: 0;
-  width: 100%;
-}
-.header-wrapper{
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-}
-.nav{
+.wrapper{
+  padding-top: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 5px;
+}
+.content{
+  max-width: 1050px;
+  width: 100%;
+  min-height: 500px;
+  background-color:darkgrey;
 }
 @keyframes App-logo-spin {
   from {
