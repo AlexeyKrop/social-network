@@ -1,5 +1,5 @@
 .sidebar{
-    min-height: 500px;
+    min-height: 100vh;
     width: 150px;
     background-color:darkcyan;
 }

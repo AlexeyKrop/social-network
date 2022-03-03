@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from "./MyPost.module.css"
+import Post from "./Post/Post";
 function MyPost(){
   return(
     <div className={classes.mypost}>
@@ -7,7 +8,7 @@ function MyPost(){
         <textarea name="message" className={classes.textarea} placeholder="Напишите пост"/>
         <button className={classes.btn}>add post</button>
       </div>
-      <div className="post">Post1</div>
+      <Post message='hello world' countLike={5}/>
     </div>
   )
 }
