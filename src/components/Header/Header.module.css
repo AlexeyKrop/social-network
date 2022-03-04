@@ -1,6 +1,6 @@
 .header{
   position: fixed;
-  background: antiquewhite;
+  background: #3644D9;
   left: 0;
   top: 0;
   width: 100%;
@@ -33,4 +33,38 @@
   text-decoration: none;
   color: darkgrey;
 }
+.form{
+  display: block;
+  margin-top: 0;
+  position: relative;
+}
+.input__search{
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 50px;
+  background-color: #2E3AB8;
+  transition: .4s;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 25px 0 25px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+}
+.btn{
+  position: absolute;
+  right: 0;
+  top: 1px;
+  height: 45px;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 0 20px;
+}
+
 
