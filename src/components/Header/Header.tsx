@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from "../../logo.png";
 import classes from "./Header.module.css";
-function Header() {
+const Header = () => {
   return (
     <header className={classes.header}>
       <div className={classes.wrapper}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./MyPost.module.css"
 import Post from "./Post/Post";
-function MyPost(){
+const MyPost = () => {
   return(
     <div className={classes.mypost}>
       <div className={classes.post}>

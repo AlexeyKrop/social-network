@@ -5,7 +5,7 @@ type postPropsType = {
   message: String;
   countLike: Number;
 }
-function Post(props: postPropsType){
+const Post = (props: postPropsType) => {
   return (
     <div className={classes.item}>
       <img src={ava} alt="avatar"/>

@@ -1,7 +1,7 @@
 import React from 'react';
 import MyPost from "./Myposts/Mypost";
 import classes from "./Profile.module.css";
-function Profile() {
+const Profile = () => {
   return (
     <>
       <div>
