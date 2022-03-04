@@ -5,11 +5,11 @@ function Sidebar() {
   return (
     <aside className={classes.sidebar}>
       <ul className={classes.list}>
-        <li className={classes.item}><NavLink to="/profile" className={`${classes.link} ${classes.active}`}>Profile</NavLink></li>
-        <li className={classes.item}><NavLink to="/dialogs" className={classes.link}>Message</NavLink></li>
-        <li className={classes.item}><NavLink to="/news" className={classes.link}>News</NavLink></li>
-        <li className={classes.item}><NavLink to="/music" className={classes.link}>Music</NavLink></li>
-        <li className={classes.item}><NavLink to="/settings" className={classes.link}>Settings</NavLink></li>
+        <li className={classes.item}><NavLink to="/profile" className={classes.link} activeClassName={classes.active}>Profile</NavLink></li>
+        <li className={classes.item}><NavLink to="/dialogs" className={classes.link} activeClassName={classes.active}>Message</NavLink></li>
+        <li className={classes.item}><NavLink to="/news" className={classes.link} activeClassName={classes.active}>News</NavLink></li>
+        <li className={classes.item}><NavLink to="/music" className={classes.link} activeClassName={classes.active}>Music</NavLink></li>
+        <li className={classes.item}><NavLink to="/settings" className={classes.link} activeClassName={classes.active}>Settings</NavLink></li>
       </ul>
     </aside>
   )
