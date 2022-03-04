@@ -21,3 +21,6 @@
 .link:hover{
     color: lightgray;
 }
+.active{
+    color: lightslategrey;
+}
