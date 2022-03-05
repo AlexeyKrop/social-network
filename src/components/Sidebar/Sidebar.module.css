@@ -17,14 +17,39 @@
     list-style-type: none;
     border-top-left-radius: 5px;
 }
+.item{
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+}
 .link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 18px;
     text-decoration: none;
     color: lightgray;
+    transition: .3s;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    transition: .3s;
+    order: -1;
 }
 .link:hover{
     color: #3644D9;
 }
+.link:hover  .icon{
+    fill: #3644D9;
+    cursor: pointer;
+}
 .active{
     color: #3644D9;
 }
+.active .icon{
+    fill: #3644D9
+}
+
