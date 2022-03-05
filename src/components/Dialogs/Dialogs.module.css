@@ -1,8 +1,9 @@
 .wrapper{
     padding: 10px;
     display: flex;
-    align-items: center;
-    border: 1px solid green;
+    align-items: flex-start;
+    min-height: inherit;
+    background-color: #fff;
 }
 .user{
     padding: 0;
