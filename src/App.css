@@ -43,6 +43,7 @@
   max-width: 1050px;
   width: 100%;
   min-height: 100vh;
+  margin: 0 auto;
   background-color:darkgrey;
 }
 @keyframes App-logo-spin {
