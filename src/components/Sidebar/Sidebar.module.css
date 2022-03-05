@@ -1,7 +1,11 @@
 .sidebar{
-    min-height: 100vh;
-    width: 150px;
-    background-color:darkcyan;
+    position: fixed;
+    left: 0;
+    top: 5.3rem;
+    height: 100%;
+    width: 160px;
+    z-index: 1;
+    transition: .4s;
 }
 .list{
     margin: 0;
@@ -16,11 +20,11 @@
 .link{
     font-size: 18px;
     text-decoration: none;
-    color: darkgrey;
-}
-.link:hover{
     color: lightgray;
 }
+.link:hover{
+    color: #3644D9;
+}
 .active{
-    color: lightslategrey;
+    color: #3644D9;
 }
