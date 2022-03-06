@@ -7,34 +7,70 @@
     align-items: flex-start;
     justify-content:flex-start;
 }
-.textarea{
-    width: inherit;
-    min-height: 50px;
-    padding: 10px;
+.news__feed{
+    max-width: 600px;
+    width: 100%;
+    margin-left: 10px;
+    background-color: #ffffff;;
+    -webkit-box-shadow: 0 8px 10px 0 rgb(183 192 206 / 10%);
+    box-shadow: 0 8px 10px 0 rgb(183 192 206 / 10%);
+    padding: 20px;
     border-radius: 5px;
-    outline: none;
-    border: none;
-    resize: none;
 }
-.btn {
-    align-self: flex-end;
-    padding: 8px 10px;
+.news__feed_title{
+    color: #515355;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin: 0 0 25px 0;
     font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 9px #999;
+    text-align: left;
 }
-
-.btn:hover {background-color: #3e8e41}
-
-.btn:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+.form__control{
+    min-height: 120px;
+    background-color: #F4F7FC;
+    padding: 15px 25px;
+    color: #6B7C8F;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    font-weight: 400;
+    border-radius: 0.25rem;
+    resize: none;
+    outline: none;
+    border: none;
+}
+.button__group{
+    list-style: none;
+    margin: 8px 0 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.button__group button{
+    display: flex;
+    align-items: flex-end;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #6B7C8F;
+    position: relative;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.text{
+    margin-left: 10px;
+}
+.post__btn{
+    background-color: #3644D9;
+    color: #ffffff;
+    display: inline-block;
+    border: none;
+    padding: 5px 25px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.post__btn button{
+    padding: 2px 8px;
+    color: #ffffff;
 }
