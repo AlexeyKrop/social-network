@@ -2,7 +2,21 @@ import React from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
 
+
 const MyPost = () => {
+  let messages = [
+    {
+      id: 1,
+      message: 'hello world',
+      countLike: 5,
+    },
+    {
+      id: 2,
+      message: 'hello how are you?',
+      countLike: 8,
+    },
+  ]
+  let messagesData = messages.map(message=> <Post message={message.message} countLike={message.countLike} />)
   return (
     <div className={classes.mypost}>
       <div className={classes.news__feed}>
@@ -49,7 +63,7 @@ const MyPost = () => {
           </ul>
         </form>
       </div>
-      <Post message='hello world' countLike={5}/>
+      {messagesData}
     </div>
   )
 }
