@@ -11,7 +11,7 @@ const Profile = () => {
              alt="картинка"/>
       </div>
       <ProfileInfo />
-      <MyPost/>
+      <MyPost />
     </>
 )
 }

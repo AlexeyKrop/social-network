@@ -1,22 +1,20 @@
 import React from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
-
-
 const MyPost = () => {
   let messages = [
     {
-      id: 1,
       message: 'hello world',
       countLike: 5,
+      key: 1,
     },
     {
-      id: 2,
       message: 'hello how are you?',
       countLike: 8,
+      key: 2,
     },
   ]
-  let messagesData = messages.map(message=> <Post message={message.message} countLike={message.countLike} />)
+  let messagesData = messages.map(message=> <Post message={message.message} countLike={message.countLike} key={message.key} />)
   return (
     <div className={classes.mypost}>
       <div className={classes.news__feed}>
