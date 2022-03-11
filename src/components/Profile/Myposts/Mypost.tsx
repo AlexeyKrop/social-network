@@ -6,7 +6,6 @@ type PostPropsType={
 }
 const MyPost = (props: PostPropsType) => {
   let NewMessagesData = props.messageData.map((item) => <Post message={item.message} countLike={item.countLike} key={item.id} /> )
-  console.log(NewMessagesData)
   return (
     <div className={classes.mypost}>
       <div className={classes.news__feed}>

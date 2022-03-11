@@ -11,6 +11,8 @@ import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 type PostPropsType={
   messageData: Array<Object>;
+  UserDialogsItems: Array<Object>
+  MessageDialogsItems: Array<Object>
 }
 function App(props: PostPropsType) {
   return (
@@ -22,7 +24,7 @@ function App(props: PostPropsType) {
             <Sidebar/>
             <main className="content">
               <Route path="/profile" render={() => <Profile messageData={props.messageData}/>}/>
-              <Route path="/dialogs" render={() => <Dialogs />}/>
+              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={props.UserDialogsItems} MessageDialogsItems={props.MessageDialogsItems}/>}/>
               <Route path="/news" render={() => <News />}/>
               <Route path="/music" render={() => <Music />}/>
               <Route path="/settings" render={() => <Settings />}/>

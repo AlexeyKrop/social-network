@@ -4,7 +4,6 @@ import ava from '../../../../ava.jpg';
 type postPropsType = {
   message: string,
   countLike: number,
-  // key: number;
 }
 const Post = (props: postPropsType) => {
   return (

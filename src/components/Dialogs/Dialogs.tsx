@@ -6,14 +6,16 @@ type UserItemPropsType = {
   src: string,
   name: string,
   id: string,
-  key: string,
 }
 type MessagePropsType = {
   src: string,
   message: string,
   message_time: string,
   className: string,
-  key: string,
+}
+type DialogsPropsType = {
+  UserDialogsItems: Array<any>
+  MessageDialogsItems: Array<any>
 }
 const UserDialogsItem = (props: UserItemPropsType) => {
   return (
@@ -43,69 +45,13 @@ const MessageDialogsItem = (props: MessagePropsType) => {
     </div>
   )
 }
-const Dialogs = () => {
-  let UserDialogsItems = [
-    {
-      src: "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/47e2fd514411e18b76af786d7417062d/100x64_3",
-      name: "Kelly Smith",
-      id: '1',
-      key: '1',
-    },
-    {
-      src: "https://static.1tv.ru/uploads/photo/image/2/huge/4062_huge_876c41f50e.jpg",
-      name: "Stepan Bogdan",
-      id: '2',
-      key: '2',
-    },
-    {
-      src: "https://cdnimg.rg.ru/i/gallery/84f24d10/19_b6265e7a.jpg",
-      name: "Alex Piter",
-      id: '3',
-      key: '3',
-    },
-    {
-      src: "https://pluggedin.ru/images/1-bigTopImage_2021_08_17_20_35_36.jpg",
-      name: "James Smith",
-      id: '4',
-      key: '4',
-    },
-  ]
-  let MessageDialogsItems = [
-    {
-      src: "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/47e2fd514411e18b76af786d7417062d/100x64_3",
-      message: "Hello, dear I want talk to you?",
-      message_time: "7 45 АМ",
-      className: "",
-      key: '1',
-    },
-    {
-      src: "https://static.1tv.ru/uploads/photo/image/2/huge/4062_huge_876c41f50e.jpg",
-      message: "Said how can I cooperate with you",
-      message_time: "8 45 АМ",
-      className: classes.chat__left,
-      key: '2',
-    },
-    {
-      src: "https://cdnimg.rg.ru/i/gallery/84f24d10/19_b6265e7a.jpg",
-      message: "Hello, dear I want talk to you?",
-      message_time: "9 45 АМ",
-      className: "",
-      key: '3',
-    },
-    {
-      src: "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/47e2fd514411e18b76af786d7417062d/100x64_3",
-      message: "I need some ideas from you about my design",
-      message_time: "10 45 АМ",
-      className: classes.chat__left,
-      key: '4',
-    }
-  ]
-  let MessageDialogsItemsData = MessageDialogsItems.map(MessageDialogItem => <MessageDialogsItem
+const Dialogs = (props: DialogsPropsType) => {
+  let MessageDialogsItemsData = props.MessageDialogsItems.map(MessageDialogItem => <MessageDialogsItem
     src={MessageDialogItem.src} message={MessageDialogItem.message} message_time={MessageDialogItem.message_time}
-    className={MessageDialogItem.className} key={MessageDialogItem.key}/>)
-  let UserDialogsItemsData = UserDialogsItems.map(UserDialogItem => <UserDialogsItem
+    className={MessageDialogItem.className} key={MessageDialogItem.id}/>)
+  let UserDialogsItemsData = props.UserDialogsItems.map(UserDialogItem => <UserDialogsItem
     src={UserDialogItem.src}
-    name={UserDialogItem.name} id={UserDialogItem.id} key={UserDialogItem.key}/>)
+    name={UserDialogItem.name} id={UserDialogItem.id} key={UserDialogItem.id}/>)
   return (
     <div className={classes.wrapper}>
       <ul className={classes.user}>
