@@ -2,8 +2,10 @@ import React from 'react';
 import MyPost from "./Myposts/Mypost";
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-
-const Profile = () => {
+type PostPropsType={
+  messageData: Array<Object>;
+}
+const Profile = (props: PostPropsType) => {
   return (
     <>
       <div>
@@ -11,7 +13,7 @@ const Profile = () => {
              alt="картинка"/>
       </div>
       <ProfileInfo />
-      <MyPost />
+      <MyPost messageData={props.messageData}/>
     </>
 )
 }

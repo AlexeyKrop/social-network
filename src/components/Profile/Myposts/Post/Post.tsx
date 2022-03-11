@@ -2,15 +2,16 @@ import React from 'react';
 import classes from './Post.module.css'
 import ava from '../../../../ava.jpg';
 type postPropsType = {
-  message: String;
-  countLike: Number;
+  message: string,
+  countLike: number,
+  // key: number;
 }
 const Post = (props: postPropsType) => {
   return (
     <div className={classes.item}>
       <img src={ava} alt="avatar"/>
       <p>{props.message}</p>
-      <span >{props.countLike} like</span>
+      <span >{props.countLike}</span>
     </div>
   )
 }

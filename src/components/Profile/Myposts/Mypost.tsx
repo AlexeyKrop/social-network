@@ -1,20 +1,12 @@
 import React from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
-const MyPost = () => {
-  let messages = [
-    {
-      message: 'hello world',
-      countLike: 5,
-      key: 1,
-    },
-    {
-      message: 'hello how are you?',
-      countLike: 8,
-      key: 2,
-    },
-  ]
-  let messagesData = messages.map(message=> <Post message={message.message} countLike={message.countLike} key={message.key} />)
+type PostPropsType={
+  messageData: Array< any >
+}
+const MyPost = (props: PostPropsType) => {
+  let NewMessagesData = props.messageData.map((item) => <Post message={item.message} countLike={item.countLike} key={item.id} /> )
+  console.log(NewMessagesData)
   return (
     <div className={classes.mypost}>
       <div className={classes.news__feed}>
@@ -61,7 +53,7 @@ const MyPost = () => {
           </ul>
         </form>
       </div>
-      {messagesData}
+      {NewMessagesData}
     </div>
   )
 }
