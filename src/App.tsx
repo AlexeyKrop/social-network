@@ -9,6 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
+import Friends from './components/Friends/Friends';
 type PostPropsType={
   messageData: Array<Object>;
   UserDialogsItems: Array<Object>
@@ -24,6 +25,7 @@ function App(props: PostPropsType) {
             <Sidebar/>
             <main className="content">
               <Route path="/profile" render={() => <Profile messageData={props.messageData}/>}/>
+              <Route path="/friends" render={() => <Friends />}/>
               <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={props.UserDialogsItems} MessageDialogsItems={props.MessageDialogsItems}/>}/>
               <Route path="/news" render={() => <News />}/>
               <Route path="/music" render={() => <Music />}/>
