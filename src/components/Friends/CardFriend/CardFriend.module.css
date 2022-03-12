@@ -1,0 +1,154 @@
+.card {
+    padding: 10px;
+    flex: 0 0 auto;
+    width: 28%;
+    background-color: #ffffff;
+    margin-top: 25px;
+    border-radius: 0 0 5px 5px;
+}
+
+.friends__image {
+    position: relative;
+}
+
+.friends__image img {
+    border-radius: 5px 5px 0 0;
+}
+
+.icon {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+    background-color: #0d6efd;
+}
+
+.link:hover svg {
+    fill: #ffffff;
+}
+
+.friends__content {
+    padding: 0 20px 20px;
+}
+
+.friends__info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.friends__info img {
+    border-radius: 5px;
+    position: relative;
+    margin-top: -22px;
+}
+
+.text {
+    max-width: 150px;
+    width: 100%;
+}
+
+.text h3 {
+    margin: 0;
+    font-size: 14px
+}
+
+.text h3 a {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: #515355;
+}
+
+.text span {
+    font-size: 13px;
+    display: inline-block;
+    margin-top: 8px;
+    color: #6B7C8F;
+}
+
+.statistics {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin-bottom: 0;
+    text-align: center;
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.statistics li {
+    position: relative
+}
+
+.statistics li:not(:last-child):before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -18px;
+    width: 1px;
+    height: 100%;
+    background-color: #707070;
+    opacity: 25%;
+}
+
+.statistics li a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.item_number {
+    font-size: 15px;
+    color: #515355;;
+    font-weight: 600;
+}
+
+.item_text {
+    font-size: 12px;
+    color: #6B7C8F;
+    display: block;
+    margin-top: 2px;
+}
+
+.button_group {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button_group button {
+    background-color: #F4F7FC;
+    border: 1px solid #d9dfe6;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #6B7C8F;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.button_group button:hover{
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+.button_group button:hover link{
+    background-color: #0d6efd;
+    fill: #ffffff;
+}
