@@ -3,7 +3,7 @@ import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
 import cardBg_1 from '../../../friends_bg_1.jpg'
 import cardAvatar_1 from '../../../friends_1.jpg'
-const cardFriend = () =>{
+const CardFriend = () =>{
   return (
     <div className={classes.card}>
       <div className={classes.friends__image}>
@@ -63,4 +63,4 @@ const cardFriend = () =>{
     </div>
   )
 }
-export default cardFriend;
+export default CardFriend;
