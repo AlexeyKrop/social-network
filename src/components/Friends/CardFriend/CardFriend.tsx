@@ -1,14 +1,12 @@
 import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
-import cardBg_1 from '../../../friends_bg_1.jpg'
-import cardAvatar_1 from '../../../friends_1.jpg'
 const CardFriend = () =>{
   return (
     <div className={classes.card}>
       <div className={classes.friends__image}>
         <NavLink to="#">
-          <img src={cardBg_1} alt="img_bg"/>
+          <img src='https://templates.envytheme.com/zust/default/assets/images/friends/friends-bg-1.jpg' alt="img_bg"/>
         </NavLink>
         <div className={classes.icon}>
           <NavLink className={classes.link} to="#">
@@ -24,7 +22,7 @@ const CardFriend = () =>{
       <div className={classes.friends__content}>
         <div className={classes.friends__info}>
           <NavLink to="#">
-            <img src={cardAvatar_1} alt="img_card"/>
+            <img src='https://templates.envytheme.com/zust/default/assets/images/friends/friends-1.jpg' alt="img_card"/>
           </NavLink>
           <div className={classes.text}>
             <h3><NavLink to="#">Jose Marroquin</NavLink></h3>
