@@ -1,12 +1,18 @@
 import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
-const CardFriend = () =>{
+type propsCardSrc = {
+  avatarSrc: string,
+  bgSrc: string,
+  user_name: string,
+  key: number,
+}
+const CardFriend = (props: propsCardSrc) =>{
   return (
     <div className={classes.card}>
       <div className={classes.friends__image}>
         <NavLink to="#">
-          <img src='https://templates.envytheme.com/zust/default/assets/images/friends/friends-bg-1.jpg' alt="img_bg"/>
+          <img src={props.bgSrc} alt="img_bg"/>
         </NavLink>
         <div className={classes.icon}>
           <NavLink className={classes.link} to="#">
@@ -22,10 +28,10 @@ const CardFriend = () =>{
       <div className={classes.friends__content}>
         <div className={classes.friends__info}>
           <NavLink to="#">
-            <img src='https://templates.envytheme.com/zust/default/assets/images/friends/friends-1.jpg' alt="img_card"/>
+            <img src={props.avatarSrc} alt="img_card"/>
           </NavLink>
           <div className={classes.text}>
-            <h3><NavLink to="#">Jose Marroquin</NavLink></h3>
+            <h3><NavLink to="#">{props.user_name}</NavLink></h3>
             <span>10 Mutual Friends</span>
           </div>
         </div>
