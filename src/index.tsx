@@ -4,6 +4,6 @@ import './index.css';
 import state from './Redux/state'
 import App from './App';
 ReactDOM.render(
-    <App messageData={state.ProfilePage.messages} UserDialogsItems={state.MessagePage.UserDialogsItems} MessageDialogsItems={state.MessagePage.MessageDialogsItems} cardFriends={state.FriendsPage.cardFriends}/>,
+    <App state={state} />,
   document.getElementById('root')
 );

@@ -11,10 +11,7 @@ import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Friends from './components/Friends/Friends';
 type PropsType={
-  messageData: Array<Object>;
-  UserDialogsItems: Array<Object>
-  MessageDialogsItems: Array<Object>
-  cardFriends: Array<Object>
+  state: any
 }
 function App(props: PropsType) {
   return (
@@ -25,9 +22,9 @@ function App(props: PropsType) {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile" render={() => <Profile messageData={props.messageData}/>}/>
-              <Route path="/friends" render={() => <Friends cardFriends={props.cardFriends}/>}/>
-              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={props.UserDialogsItems} MessageDialogsItems={props.MessageDialogsItems}/>}/>
+              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage.messages}/>}/>
+              <Route path="/friends" render={() => <Friends cardFriends={props.state.FriendsPage.cardFriends}/>}/>
+              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={props.state.MessagePage.UserDialogsItems} MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
               <Route path="/news" render={() => <News />}/>
               <Route path="/music" render={() => <Music />}/>
               <Route path="/settings" render={() => <Settings />}/>
