@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from "../../logo.png";
 import classes from "./Header.module.css";
-import avatar from '../../ava.jpg'
 const Header = () => {
   return (
     <header className={classes.header}>
@@ -55,7 +54,7 @@ const Header = () => {
           <ul className={classes.list}>
             <li className={`${classes.item} ${classes.item_user}`}><a href="/" className={classes.link}><img
               className={classes.image}
-              src={avatar}
+              src='https://img4.goodfon.ru/original/1280x720/d/84/chingcho-chang-vostochnaia-gubki.jpg'
               alt="аватар"/>
             </a>
               <span className={classes.user_name}>Smith</span>
