@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
 type PostPropsType={
@@ -6,13 +6,17 @@ type PostPropsType={
 }
 const MyPost = (props: PostPropsType) => {
   let NewMessagesData = props.messageData.map((item) => <Post message={item.message} countLike={item.countLike} key={item.id} /> )
+  const newPostEl = createRef<HTMLTextAreaElement>();
+  const addPost = () =>{
+    alert(newPostEl.current?.value)
+  }
   return (
     <div className={classes.mypost}>
       <div className={classes.news__feed}>
         <h3 className={classes.news__feed_title}>Create New Post</h3>
         <form>
           <div className={classes.group}>
-            <textarea name="message" className={classes.form__control} placeholder="Write something here..."/>
+            <textarea ref = { newPostEl } name="message" className={classes.form__control} placeholder="Write something here..."/>
           </div>
           <ul className={classes.button__group}>
             <li className={classes.photo__btn}>
@@ -47,7 +51,7 @@ const MyPost = (props: PostPropsType) => {
               </button>
             </li>
             <li className={classes.post__btn}>
-              <button type="submit">Post</button>
+              <button onClick={addPost} type="submit">Post</button>
             </li>
           </ul>
         </form>

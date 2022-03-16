@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import ChatList from './ChatList/ChatList';
 import classes from './Dialogs.module.css';
 
 type UserItemPropsType = {
@@ -53,12 +54,15 @@ const Dialogs = (props: DialogsPropsType) => {
     src={UserDialogItem.src}
     name={UserDialogItem.name} id={UserDialogItem.id} key={UserDialogItem.id}/>)
   return (
-    <div className={classes.wrapper}>
-      <ul className={classes.user}>
-        {UserDialogsItemsData}
-      </ul>
-      {MessageDialogsItemsData}
-    </div>
+
+      <div className={classes.wrapper}>
+        <ul className={classes.user}>
+          {UserDialogsItemsData}
+        </ul>
+        {MessageDialogsItemsData}
+        <ChatList />
+      </div>
+
   )
 }
 export default Dialogs;
