@@ -1,8 +1,12 @@
 import React from 'react';
 import classes from "./ChatList.module.css";
 
-const ChatList = () =>{
-  return(
+const ChatList = () => {
+  const newPostEl = React.createRef<HTMLInputElement>()
+  const addPost = () => {
+    alert(newPostEl.current?.value)
+  }
+  return (
     <div className={classes.chat__list}>
       <form className={classes.form}>
         <div className={classes.btn__box}>
@@ -21,8 +25,8 @@ const ChatList = () =>{
             </svg>
           </button>
         </div>
-        <input type="text" className={classes.form__control} placeholder="Type your message..."/>
-        <button type="submit" className={classes.send__btn}>Send</button>
+        <input ref={newPostEl} type="text" className={classes.form__control} placeholder="Type your message..."/>
+        <button onClick={addPost} type="submit" className={classes.send__btn}>Send</button>
       </form>
     </div>
   )
