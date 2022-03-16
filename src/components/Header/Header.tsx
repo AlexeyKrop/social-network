@@ -57,7 +57,7 @@ const Header = () => {
               src='https://img4.goodfon.ru/original/1280x720/d/84/chingcho-chang-vostochnaia-gubki.jpg'
               alt="аватар"/>
             </a>
-              <span className={classes.user_name}>Smith</span>
+              <span className={classes.user_name}>Chang</span>
             </li>
             <li className={classes.item}><NavLink to="/" className={classes.link}>
               <svg className={classes.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
