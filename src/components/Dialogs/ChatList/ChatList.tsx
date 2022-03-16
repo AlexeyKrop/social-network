@@ -1,11 +1,11 @@
 import React from 'react';
-import classes from "../Dialogs.module.css";
+import classes from "./ChatList.module.css";
 
 const ChatList = () =>{
   return(
     <div className={classes.chat__list}>
-      <form className="d-flex align-items-center">
-        <div className="btn-box d-flex align-items-center me-3">
+      <form className={classes.form}>
+        <div className={classes.btn__box}>
           <button className={classes.file_attachment_btn} type="button">
             <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20"
                  fill='#6B7C8F'>
@@ -21,8 +21,8 @@ const ChatList = () =>{
             </svg>
           </button>
         </div>
-        <input type="text" className="form-control" placeholder="Type your message..."/>
-        <button type="submit" className="send-btn d-inline-block">Send</button>
+        <input type="text" className={classes.form__control} placeholder="Type your message..."/>
+        <button type="submit" className={classes.send__btn}>Send</button>
       </form>
     </div>
   )

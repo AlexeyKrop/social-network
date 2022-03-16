@@ -1,0 +1,61 @@
+.chat__list{
+    margin: 30px auto 0;
+    max-width:760px;
+    width: 100%;
+}
+.form{
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    position: relative;
+}
+.btn__box{
+    display: flex;
+    max-width:60px;
+    width: 100%;
+    align-items:center;
+    justify-content:space-between;
+    margin-right: 15px;
+}
+.file_attachment_btn, .emoji_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #6B7C8F;
+    font-size: 20px;
+    cursor: pointer;
+}
+.form__control{
+    display: block;
+    width: 100%;
+    font-weight: 400;
+    line-height: 1.5;
+    appearance: none;
+    background-color: #F4F7FC;
+    height: 45px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 13px;
+    border: 1px solid #F4F7FC;
+    color: #515355;
+    margin-right: 15px;
+    outline: none
+}
+.send__btn{
+    border-radius: 5px;
+    height: 45px;
+    padding: 0 30px 0;
+    font-size: 14px;
+    font-weight: 400;
+    border: none;
+    background-color: #3644D9;
+    color:  #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.send__btn:hover{
+    background-color:#2E3AB8
+}
