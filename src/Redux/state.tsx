@@ -1,5 +1,6 @@
 import classes from "../components/Dialogs/Dialogs.module.css";
-let state = {
+
+const state = {
   ProfilePage: {
     messages: [
       {
@@ -71,7 +72,7 @@ let state = {
       }
     ],
   },
-  FriendsPage:{
+  FriendsPage: {
     cardFriends: [
       {
         cardAvatar: 'https://templates.envytheme.com/zust/default/assets/images/friends/friends-1.jpg',
@@ -113,3 +114,12 @@ let state = {
   }
 }
 export default state
+
+export const addPost = (newEl: any) => {
+  const newPost = {
+    message: newEl,
+    countLike: 0,
+    id: 5,
+  }
+  state.ProfilePage.messages.push(newPost)
+}

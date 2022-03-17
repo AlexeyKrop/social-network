@@ -1,14 +1,21 @@
 import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
+import {rerender} from "../../../index";
 type PostPropsType={
   messageData: Array< any >
+  addPost: any,
 }
 const MyPost = (props: PostPropsType) => {
   let NewMessagesData = props.messageData.map((item) => <Post message={item.message} countLike={item.countLike} key={item.id} /> )
   const newPostEl = createRef<HTMLTextAreaElement>();
-  const addPost = () =>{
-    alert(newPostEl.current?.value)
+  const addPost = (e: any) =>{
+    e.preventDefault()
+    let post= newPostEl.current?.value;
+    props.addPost(post)
+    // @ts-ignore
+    newPostEl.current.value = '';
+    rerender()
   }
   return (
     <div className={classes.mypost}>
@@ -51,7 +58,7 @@ const MyPost = (props: PostPropsType) => {
               </button>
             </li>
             <li className={classes.post__btn}>
-              <button onClick={addPost} type="submit">Post</button>
+              <button onClick={addPost}>Post</button>
             </li>
           </ul>
         </form>

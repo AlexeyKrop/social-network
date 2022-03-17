@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import state from './Redux/state'
+import state, {addPost} from './Redux/state'
 import App from './App';
-ReactDOM.render(
-    <App state={state} />,
-  document.getElementById('root')
-);
+
+export const rerender = () => {
+  ReactDOM.render(
+    <App state={state} addPost={addPost}/>,
+    document.getElementById('root')
+  );
+}
+rerender()

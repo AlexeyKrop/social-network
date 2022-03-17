@@ -4,6 +4,7 @@ import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 type PostPropsType={
   messageData: Array<Object>;
+  addPost: any
 }
 const Profile = (props: PostPropsType) => {
   return (
@@ -13,7 +14,7 @@ const Profile = (props: PostPropsType) => {
              alt="картинка"/>
       </div>
       <ProfileInfo />
-      <MyPost messageData={props.messageData}/>
+      <MyPost messageData={props.messageData} addPost={props.addPost}/>
     </>
 )
 }

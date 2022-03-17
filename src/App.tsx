@@ -11,7 +11,8 @@ import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Friends from './components/Friends/Friends';
 type PropsType={
-  state: any
+  state: any,
+  addPost: any,
 }
 function App(props: PropsType) {
   return (
@@ -22,7 +23,7 @@ function App(props: PropsType) {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage.messages}/>}/>
+              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage.messages} addPost={props.addPost}/>}/>
               <Route path="/friends" render={() => <Friends cardFriends={props.state.FriendsPage.cardFriends}/>}/>
               <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={props.state.MessagePage.UserDialogsItems} MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
               <Route path="/news" render={() => <News />}/>
