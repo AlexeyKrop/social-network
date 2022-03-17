@@ -15,6 +15,7 @@ type PropsType={
   addPost: any,
 }
 function App(props: PropsType) {
+  console.log(props)
   return (
     <BrowserRouter>
       <div className="App">
