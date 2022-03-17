@@ -18,7 +18,9 @@ type MessagePropsType = {
 type DialogsPropsType = {
   UserDialogsItems: Array<UserItemPropsType>
   MessageDialogsItems: Array<MessagePropsType>
+  addMessage: any
 }
+
 const UserDialogsItem = (props: UserItemPropsType) => {
   return (
     <li className={classes.user__item}><NavLink to={"/dialogs/" + props.id}>
@@ -61,7 +63,7 @@ const Dialogs = (props: DialogsPropsType) => {
           {UserDialogsItemsData}
         </ul>
         {MessageDialogsItemsData}
-        <ChatList />
+        <ChatList addMessage={props.addMessage}/>
       </div>
 
   )

@@ -159,3 +159,13 @@ export const addPost = (newEl: string) => {
   }
   state.ProfilePage.messages.push(newPost)
 }
+export const addMessage = (newMes: string) => {
+  let newMessage = {
+    src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
+    message: newMes,
+    message_time: '7:45',
+    className: "",
+    id: 6,
+  }
+  state.MessagePage.MessageDialogsItems.push(newMessage)
+}

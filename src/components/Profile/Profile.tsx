@@ -9,7 +9,7 @@ type messageType = {
 }
 type PostPropsType={
   messageData: Array<messageType>;
-  addPost: any
+  addPost: object
 }
 const Profile = (props: PostPropsType) => {
   return (

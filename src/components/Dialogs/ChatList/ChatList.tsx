@@ -1,11 +1,19 @@
 import React from 'react';
 import classes from "./ChatList.module.css";
-
-const ChatList = () => {
+import {rerender} from "../../../index";
+type newMessageType = {
+  addMessage: any
+}
+const ChatList = (props: newMessageType) => {
   const newPostEl = React.createRef<HTMLInputElement>()
-  const addPost = () => {
-    alert(newPostEl.current?.value)
+  const addPost = (e: any) => {
+    e.preventDefault();
+    let message = newPostEl.current?.value
+    props.addMessage(message)
+    newPostEl.current!.value = '';
+    rerender()
   }
+
   return (
     <div className={classes.chat__list}>
       <form className={classes.form}>

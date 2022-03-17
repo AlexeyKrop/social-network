@@ -51,10 +51,10 @@ type statesType = {
 
 type PropsType={
   state: statesType,
-  addPost: any,
+  addPost: object,
+  addMessage: object
 }
 function App(props: PropsType) {
-  console.log(props.state.MessagePage)
   return (
     <BrowserRouter>
       <div className="App">
@@ -65,7 +65,7 @@ function App(props: PropsType) {
             <main className="content">
               <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage.messages} addPost={props.addPost}/>}/>
               <Route path="/friends" render={() => <Friends cardFriends={props.state.FriendsPage.cardFriends}/>}/>
-              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.state.MessagePage.UserDialogsItems)} MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
+              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.state.MessagePage.UserDialogsItems)} addMessage={props.addMessage} MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
               <Route path="/news" render={() => <News />}/>
               <Route path="/music" render={() => <Music />}/>
               <Route path="/settings" render={() => <Settings />}/>

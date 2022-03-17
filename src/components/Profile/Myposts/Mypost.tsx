@@ -18,8 +18,7 @@ const MyPost = (props: PostPropsType) => {
     e.preventDefault()
     let post= newPostEl.current?.value;
     props.addPost(post)
-    // @ts-ignore
-    newPostEl.current.value = '';
+    newPostEl.current!.value = '';
     rerender()
   }
   return (
