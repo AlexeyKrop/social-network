@@ -2,8 +2,13 @@ import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
 import {rerender} from "../../../index";
+type messageType = {
+  message: string
+  countLike: number,
+  id: number,
+}
 type PostPropsType={
-  messageData: Array< any >
+  messageData: Array< messageType >
   addPost: any,
 }
 const MyPost = (props: PostPropsType) => {

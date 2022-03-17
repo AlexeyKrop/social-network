@@ -12,18 +12,12 @@ type UserDialogsItemType = {
   name: string,
   id: number,
 }
-type UserDialogsItemsType = {
-  UserDialogsItems: Array<UserDialogsItemType>
-}
 type MessageDialogsItemType = {
   src: string
   message: string,
   message_time: string,
   className: string,
   id: number,
-}
-type MessageDialogsItemsType = {
-  MessageDialogsItems: Array<MessageDialogsItemType>
 }
 type cardFriendType = {
   cardAvatar: string,
@@ -34,9 +28,13 @@ type cardFriendType = {
 type cardFriendsType = {
   cardFriends: Array<cardFriendType>
 }
+type PropsDialogsItemsType = {
+  MessageDialogsItems: Array<MessageDialogsItemType>
+  UserDialogsItems: Array<UserDialogsItemType>
+}
 type stateType = {
   ProfilePage: MessagesType
-  MessagePage: UserDialogsItemsType | MessageDialogsItemsType
+  MessagePage: PropsDialogsItemsType
   FriendsPage: cardFriendsType
 }
 const state: stateType = {
@@ -153,8 +151,7 @@ const state: stateType = {
   }
 }
 export default state
-
-export const addPost = (newEl: any) => {
+export const addPost = (newEl: string) => {
   const newPost = {
     message: newEl,
     countLike: 0,

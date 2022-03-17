@@ -2,8 +2,13 @@ import React from 'react';
 import MyPost from "./Myposts/Mypost";
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+type messageType = {
+  message: string
+  countLike: number,
+  id: number,
+}
 type PostPropsType={
-  messageData: Array<Object>;
+  messageData: Array<messageType>;
   addPost: any
 }
 const Profile = (props: PostPropsType) => {

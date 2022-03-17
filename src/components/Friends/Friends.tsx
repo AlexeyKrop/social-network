@@ -1,8 +1,14 @@
 import React from 'react';
 import classes from './Friends.module.css'
 import CardFriend from './CardFriend/CardFriend';
+type cardFriendType = {
+  cardAvatar: string,
+  cardBg: string,
+  user_name: string,
+  id: number,
+}
 type cardFriendsPropsType={
-  cardFriends: Array<any>
+  cardFriends: Array<cardFriendType>
 }
 const Friends = (props: cardFriendsPropsType) => {
   let Cards = props.cardFriends.map(item=> <CardFriend avatarSrc={item.cardAvatar} bgSrc={item.cardBg} user_name={item.user_name} key={item.id}/>)

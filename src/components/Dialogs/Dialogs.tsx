@@ -6,17 +6,18 @@ import classes from './Dialogs.module.css';
 type UserItemPropsType = {
   src: string,
   name: string,
-  id: string,
+  id: number,
 }
 type MessagePropsType = {
   src: string,
   message: string,
   message_time: string,
   className: string,
+  id: number,
 }
 type DialogsPropsType = {
-  UserDialogsItems: Array<any>
-  MessageDialogsItems: Array<any>
+  UserDialogsItems: Array<UserItemPropsType>
+  MessageDialogsItems: Array<MessagePropsType>
 }
 const UserDialogsItem = (props: UserItemPropsType) => {
   return (
@@ -49,7 +50,7 @@ const MessageDialogsItem = (props: MessagePropsType) => {
 const Dialogs = (props: DialogsPropsType) => {
   let MessageDialogsItemsData = props.MessageDialogsItems.map(MessageDialogItem => <MessageDialogsItem
     src={MessageDialogItem.src} message={MessageDialogItem.message} message_time={MessageDialogItem.message_time}
-    className={MessageDialogItem.className} key={MessageDialogItem.id}/>)
+    className={MessageDialogItem.className} key={MessageDialogItem.id} id={0}/>)
   let UserDialogsItemsData = props.UserDialogsItems.map(UserDialogItem => <UserDialogsItem
     src={UserDialogItem.src}
     name={UserDialogItem.name} id={UserDialogItem.id} key={UserDialogItem.id}/>)
