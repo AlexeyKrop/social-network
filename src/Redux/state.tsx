@@ -52,7 +52,7 @@ const state: stateType = {
         id: 2,
       },
     ],
-    updatePostInProfile: 'message',
+    updatePostInProfile: '',
   },
   MessagePage: {
     UserDialogsItems: [
@@ -162,7 +162,7 @@ export const addPost = (newEl: string) => {
   state.ProfilePage.messages.push(newPost)
 }
 export const addMessage = (newMes: string) => {
-  let newMessage = {
+  const newMessage = {
     src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
     message: newMes,
     message_time: '7:45',
@@ -170,4 +170,7 @@ export const addMessage = (newMes: string) => {
     id: 6,
   }
   state.MessagePage.MessageDialogsItems.push(newMessage)
+}
+export const updateWordsInPostInProfile = (newWords: string) =>{
+  state.ProfilePage.updatePostInProfile = newWords;
 }
