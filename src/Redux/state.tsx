@@ -6,6 +6,7 @@ type messageType = {
 }
 type MessagesType = {
   messages: Array<messageType>
+  updatePostInProfile: string
 }
 type UserDialogsItemType = {
   src: string
@@ -51,6 +52,7 @@ const state: stateType = {
         id: 2,
       },
     ],
+    updatePostInProfile: 'message',
   },
   MessagePage: {
     UserDialogsItems: [

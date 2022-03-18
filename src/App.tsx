@@ -17,6 +17,7 @@ type messageType = {
 }
 type MessagesType = {
   messages: Array<messageType>
+  updatePostInProfile: string
 }
 type UserDialogsItemType = {
   src: string
@@ -63,7 +64,7 @@ function App(props: PropsType) {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage.messages} addPost={props.addPost}/>}/>
+              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage} addPost={props.addPost}/>}/>
               <Route path="/friends" render={() => <Friends cardFriends={props.state.FriendsPage.cardFriends}/>}/>
               <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.state.MessagePage.UserDialogsItems)} addMessage={props.addMessage} MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
               <Route path="/news" render={() => <News />}/>

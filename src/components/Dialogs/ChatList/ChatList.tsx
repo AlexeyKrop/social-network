@@ -6,14 +6,13 @@ type newMessageType = {
 }
 const ChatList = (props: newMessageType) => {
   const newPostEl = React.createRef<HTMLInputElement>()
-  const addPost = (e: any) => {
+  const addPost = (e: React.SyntheticEvent) => {
     e.preventDefault();
     let message = newPostEl.current?.value
     props.addMessage(message)
     newPostEl.current!.value = '';
     rerender()
   }
-
   return (
     <div className={classes.chat__list}>
       <form className={classes.form}>

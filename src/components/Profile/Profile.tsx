@@ -7,11 +7,16 @@ type messageType = {
   countLike: number,
   id: number,
 }
+type updatePostInProfileType = {
+  messages: Array<messageType>
+  updatePostInProfile: string
+}
 type PostPropsType={
-  messageData: Array<messageType>;
+  messageData: updatePostInProfileType;
   addPost: object
 }
 const Profile = (props: PostPropsType) => {
+  console.log(props)
   return (
     <>
       <div>
@@ -19,7 +24,7 @@ const Profile = (props: PostPropsType) => {
              alt="картинка"/>
       </div>
       <ProfileInfo />
-      <MyPost messageData={props.messageData} addPost={props.addPost}/>
+      <MyPost messageData={props.messageData.messages} addPost={props.addPost}/>
     </>
 )
 }
