@@ -22,7 +22,11 @@ const MyPost = (props: PostPropsType) => {
   const addPost = (e: React.SyntheticEvent) =>{
     e.preventDefault()
     const post= newPostEl.current?.value;
-    props.addPost(post)
+    if(post === ''){
+      return
+    }else{
+      props.addPost(post)
+    }
     newPostEl.current!.value = '';
     rerender()
   }

@@ -159,7 +159,7 @@ export const addPost = (newEl: string) => {
     countLike: 0,
     id: 5,
   }
-  state.ProfilePage.messages.push(newPost)
+  state.ProfilePage.messages.unshift(newPost)
 }
 export const addMessage = (newMes: string) => {
   const newMessage = {
