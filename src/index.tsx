@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import state, {addMessage, addPost, updateWordsInMessageInDialog, updateWordsInPostInProfile} from './Redux/state'
 import App from './App';
+import store from './Redux/state';
 
 export const rerender = () => {
   ReactDOM.render(
-    <App state={state} addPost={addPost} addMessage={addMessage} updateWordsInPostInProfile={updateWordsInPostInProfile} updateWordsInMessageInDialog={updateWordsInMessageInDialog}/>,
+    <App store={store}/>,
     document.getElementById('root')
   );
 }

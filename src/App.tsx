@@ -52,12 +52,15 @@ type statesType = {
 }
 type PropsType={
   state: statesType,
-  addPost: object,
-  addMessage: object
-  updateWordsInPostInProfile: object
-  updateWordsInMessageInDialog: object
+  addPost: any,
+  addMessage: any,
+  updateWordsInPostInProfile: any,
+  updateWordsInMessageInDialog: any,
 }
-function App(props: PropsType) {
+type PropsStoreType={
+  store: PropsType
+}
+function App(props: PropsStoreType) {
   return (
     <BrowserRouter>
       <div className="App">
@@ -66,9 +69,9 @@ function App(props: PropsType) {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage} addPost={props.addPost} updateWordsInPostInProfile={props.updateWordsInPostInProfile} />}/>
-              <Route path="/friends" render={() => <Friends cardFriends={props.state.FriendsPage.cardFriends}/>}/>
-              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.state.MessagePage.UserDialogsItems)} addMessage={props.addMessage} MessageDialogsItems={props.state.MessagePage.MessageDialogsItems} updateWordsInMessageInDialog={props.updateWordsInMessageInDialog}/>}/>
+              <Route path="/profile" render={() => <Profile messageData={props.store.state.ProfilePage} addPost={props.store.addPost} updateWordsInPostInProfile={props.store.updateWordsInPostInProfile} />}/>
+              <Route path="/friends" render={() => <Friends cardFriends={props.store.state.FriendsPage.cardFriends}/>}/>
+              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.store.state.MessagePage.UserDialogsItems)} addMessage={props.store.addMessage} MessageDialogsItems={props.store.state.MessagePage.MessageDialogsItems} updateWordsInMessageInDialog={props.store.updateWordsInMessageInDialog}/>}/>
               <Route path="/news" render={() => <News />}/>
               <Route path="/music" render={() => <Music />}/>
               <Route path="/settings" render={() => <Settings />}/>
