@@ -50,7 +50,6 @@ type statesType = {
   MessagePage: PropsDialogsItemsType
   FriendsPage: cardFriendsType
 }
-
 type PropsType={
   state: statesType,
   addPost: object,

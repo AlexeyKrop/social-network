@@ -2,7 +2,6 @@ import React from 'react';
 import MyPost from "./Myposts/Mypost";
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {updateWordsInPostInProfile} from "../../Redux/state";
 type messageType = {
   message: string
   countLike: number,
@@ -25,7 +24,7 @@ const Profile = (props: PostPropsType) => {
              alt="картинка"/>
       </div>
       <ProfileInfo />
-      <MyPost messageData={props.messageData} addPost={props.addPost} updateWordsInPostInProfile={updateWordsInPostInProfile}/>
+      <MyPost messageData={props.messageData} addPost={props.addPost} updateWordsInPostInProfile={props.updateWordsInPostInProfile}/>
     </>
 )
 }
