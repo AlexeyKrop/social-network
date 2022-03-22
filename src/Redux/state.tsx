@@ -2,6 +2,7 @@ import classes from "../components/Dialogs/Dialogs.module.css";
 type messageType = {
   message: string
   countLike: number,
+  src: string,
   id: number,
 }
 type MessagesType = {
@@ -54,11 +55,13 @@ const store: storeType = {
         {
           message: 'hello world',
           countLike: 5,
+          src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-2.jpg',
           id: 1,
         },
         {
           message: 'hello how are you?',
           countLike: 8,
+          src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-11.jpg',
           id: 2,
         },
       ],
@@ -170,6 +173,7 @@ const store: storeType = {
     const newPost = {
       message: newEl,
       countLike: 0,
+      src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',
       id: 5,
     }
     this._state.ProfilePage.messages.unshift(newPost)

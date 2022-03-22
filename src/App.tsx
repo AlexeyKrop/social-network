@@ -10,10 +10,10 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Friends from './components/Friends/Friends';
-// import {updateWordsInMessageInDialog, updateWordsInPostInProfile} from "./Redux/state";
 type messageType = {
   message: string
   countLike: number,
+  src: string,
   id: number,
 }
 type MessagesType = {

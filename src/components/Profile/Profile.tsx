@@ -5,6 +5,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 type messageType = {
   message: string
   countLike: number,
+  src: string,
   id: number,
 }
 type updatePostInProfileType = {

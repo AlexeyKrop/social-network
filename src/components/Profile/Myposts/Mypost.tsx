@@ -5,6 +5,7 @@ import {rerender} from "../../../index";
 type messageType = {
   message: string
   countLike: number,
+  src: string,
   id: number,
 }
 type updatePostInProfileType = {
@@ -17,7 +18,7 @@ type PostPropsType={
   updateWordsInPostInProfile: any,
 }
 const MyPost = (props: PostPropsType) => {
-  let NewMessagesData = props.messageData.messages.map((item) => <Post message={item.message} countLike={item.countLike} key={item.id} /> )
+  let NewMessagesData = props.messageData.messages.map((item) => <Post src={item.src} message={item.message} countLike={item.countLike} key={item.id} /> )
   const newPostEl = createRef<HTMLTextAreaElement>();
   const addPost = (e: React.SyntheticEvent) =>{
     e.preventDefault()
