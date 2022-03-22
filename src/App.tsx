@@ -51,7 +51,7 @@ type statesType = {
   FriendsPage: cardFriendsType
 }
 type PropsType={
-  state: statesType,
+  getState(): statesType,
   addPost: any,
   addMessage: any,
   updateWordsInPostInProfile: any,
@@ -69,9 +69,9 @@ function App(props: PropsStoreType) {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile" render={() => <Profile messageData={props.store.state.ProfilePage} addPost={props.store.addPost} updateWordsInPostInProfile={props.store.updateWordsInPostInProfile} />}/>
-              <Route path="/friends" render={() => <Friends cardFriends={props.store.state.FriendsPage.cardFriends}/>}/>
-              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.store.state.MessagePage.UserDialogsItems)} addMessage={props.store.addMessage} MessageDialogsItems={props.store.state.MessagePage.MessageDialogsItems} updateWordsInMessageInDialog={props.store.updateWordsInMessageInDialog}/>}/>
+              <Route path="/profile" render={() => <Profile messageData={props.store.getState().ProfilePage} addPost={props.store.addPost.bind(props.store)} updateWordsInPostInProfile={props.store.updateWordsInPostInProfile.bind(props.store)} />}/>
+              <Route path="/friends" render={() => <Friends cardFriends={props.store.getState().FriendsPage.cardFriends}/>}/>
+              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.store.getState().MessagePage.UserDialogsItems)} addMessage={props.store.addMessage.bind(props.store)} MessageDialogsItems={props.store.getState().MessagePage.MessageDialogsItems} updateWordsInMessageInDialog={props.store.updateWordsInMessageInDialog.bind(props.store)}/>}/>
               <Route path="/news" render={() => <News />}/>
               <Route path="/music" render={() => <Music />}/>
               <Route path="/settings" render={() => <Settings />}/>

@@ -40,14 +40,15 @@ type stateType = {
   FriendsPage: cardFriendsType
 }
 type storeType = {
-  state: stateType,
+  _state: stateType,
+  getState: any,
   addPost: any,
   addMessage: any,
   updateWordsInPostInProfile: any,
   updateWordsInMessageInDialog: any,
 }
 const store: storeType = {
-  state: {
+  _state: {
     ProfilePage: {
       messages: [
         {
@@ -162,15 +163,18 @@ const store: storeType = {
       ],
     }
   },
-  addPost: (newEl: string) => {
+  getState() {
+      return this._state
+  },
+  addPost(newEl: string){
     const newPost = {
       message: newEl,
       countLike: 0,
       id: 5,
     }
-    store.state.ProfilePage.messages.unshift(newPost)
+    this._state.ProfilePage.messages.unshift(newPost)
   },
-  addMessage: (newMes: string) => {
+  addMessage(newMes: string){
     const newMessage = {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
       message: newMes,
@@ -178,13 +182,13 @@ const store: storeType = {
       className: "",
       id: 6,
     }
-    store.state.MessagePage.MessageDialogsItems.push(newMessage)
+    this._state.MessagePage.MessageDialogsItems.push(newMessage)
   },
-  updateWordsInPostInProfile: (newWords: string) =>{
-    store.state.ProfilePage.updatePostInProfile = newWords;
+  updateWordsInPostInProfile(newWords: string){
+    this._state.ProfilePage.updatePostInProfile = newWords;
   },
-  updateWordsInMessageInDialog: (newWords: string) =>{
-    store.state.MessagePage.updateWordInMessagePage = newWords;
+  updateWordsInMessageInDialog(newWords: string){
+    this._state.MessagePage.updateWordInMessagePage = newWords;
   }
 }
 
