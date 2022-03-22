@@ -10,7 +10,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Friends from './components/Friends/Friends';
-import {updateWordsInPostInProfile} from "./Redux/state";
+// import {updateWordsInMessageInDialog, updateWordsInPostInProfile} from "./Redux/state";
 type messageType = {
   message: string
   countLike: number,
@@ -56,6 +56,7 @@ type PropsType={
   addPost: object,
   addMessage: object
   updateWordsInPostInProfile: object
+  updateWordsInMessageInDialog: object
 }
 function App(props: PropsType) {
   return (
@@ -66,9 +67,9 @@ function App(props: PropsType) {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage} addPost={props.addPost} updateWordsInPostInProfile={updateWordsInPostInProfile} />}/>
+              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage} addPost={props.addPost} updateWordsInPostInProfile={props.updateWordsInPostInProfile} />}/>
               <Route path="/friends" render={() => <Friends cardFriends={props.state.FriendsPage.cardFriends}/>}/>
-              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.state.MessagePage.UserDialogsItems)} addMessage={props.addMessage} MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
+              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.state.MessagePage.UserDialogsItems)} addMessage={props.addMessage} MessageDialogsItems={props.state.MessagePage.MessageDialogsItems} updateWordsInMessageInDialog={props.updateWordsInMessageInDialog}/>}/>
               <Route path="/news" render={() => <News />}/>
               <Route path="/music" render={() => <Music />}/>
               <Route path="/settings" render={() => <Settings />}/>

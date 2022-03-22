@@ -3,14 +3,21 @@ import classes from "./ChatList.module.css";
 import {rerender} from "../../../index";
 type newMessageType = {
   addMessage: any
+  updateWordsInMessageInDialog: any
 }
 const ChatList = (props: newMessageType) => {
   const newPostEl = React.createRef<HTMLInputElement>()
-  const addPost = (e: React.SyntheticEvent) => {
+  const addMessage = (e: React.SyntheticEvent) => {
     e.preventDefault();
     let message = newPostEl.current?.value
     props.addMessage(message)
     newPostEl.current!.value = '';
+    rerender()
+  }
+  const updateWordsInDialogs = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    let message = newPostEl.current?.value
+    props.updateWordsInMessageInDialog(message)
     rerender()
   }
   return (
@@ -32,8 +39,8 @@ const ChatList = (props: newMessageType) => {
             </svg>
           </button>
         </div>
-        <input ref={newPostEl} type="text" className={classes.form__control} placeholder="Type your message..."/>
-        <button onClick={addPost} type="submit" className={classes.send__btn}>Send</button>
+        <input onChange={updateWordsInDialogs} ref={newPostEl} type="text" className={classes.form__control} placeholder="Type your message..."/>
+        <button onClick={addMessage} type="submit" className={classes.send__btn}>Send</button>
       </form>
     </div>
   )

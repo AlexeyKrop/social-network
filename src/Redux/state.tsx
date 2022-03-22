@@ -32,6 +32,7 @@ type cardFriendsType = {
 type PropsDialogsItemsType = {
   MessageDialogsItems: Array<MessageDialogsItemType>
   UserDialogsItems: Array<UserDialogsItemType>
+  updateWordInMessagePage: string
 }
 type stateType = {
   ProfilePage: MessagesType
@@ -110,6 +111,7 @@ const state: stateType = {
         id: 4,
       }
     ],
+    updateWordInMessagePage: '',
   },
   FriendsPage: {
     cardFriends: [
@@ -173,4 +175,7 @@ export const addMessage = (newMes: string) => {
 }
 export const updateWordsInPostInProfile = (newWords: string) =>{
   state.ProfilePage.updatePostInProfile = newWords;
+}
+export const updateWordsInMessageInDialog = (newWords: string) =>{
+  state.MessagePage.updateWordInMessagePage = newWords;
 }
