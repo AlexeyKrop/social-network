@@ -10,14 +10,13 @@ type messageType = {
 }
 type updatePostInProfileType = {
   messages: Array<messageType>
-  updatePostInProfile: string
 }
 type PostPropsType={
   messageData: updatePostInProfileType
-  addPost: any,
-  updateWordsInPostInProfile: any,
+  dispatch: any,
 }
 const MyPost = (props: PostPropsType) => {
+  console.log(props)
   let NewMessagesData = props.messageData.messages.map((item) => <Post src={item.src} message={item.message} countLike={item.countLike} key={item.id} /> )
   const newPostEl = createRef<HTMLTextAreaElement>();
   const addPost = (e: React.SyntheticEvent) =>{
@@ -26,7 +25,7 @@ const MyPost = (props: PostPropsType) => {
     if(post === ''){
       return
     }else{
-      props.addPost(post)
+      props.dispatch({type: 'Add-post', newEl: post})
     }
     newPostEl.current!.value = '';
     rerender()
@@ -34,7 +33,7 @@ const MyPost = (props: PostPropsType) => {
   const updatePostInProfilePage = (e: React.SyntheticEvent) => {
     e.preventDefault()
     const updateWords= newPostEl.current?.value;
-    props.updateWordsInPostInProfile(updateWords)
+    props.dispatch({type: 'Update-words', newWords: updateWords})
     rerender()
   }
   return (

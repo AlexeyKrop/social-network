@@ -10,12 +10,10 @@ type messageType = {
 }
 type updatePostInProfileType = {
   messages: Array<messageType>
-  updatePostInProfile: string
 }
 type PostPropsType={
   messageData: updatePostInProfileType;
-  addPost: object,
-  updateWordsInPostInProfile: object,
+  dispatch: object,
 }
 const Profile = (props: PostPropsType) => {
   return (
@@ -25,7 +23,7 @@ const Profile = (props: PostPropsType) => {
              alt="картинка"/>
       </div>
       <ProfileInfo />
-      <MyPost messageData={props.messageData} addPost={props.addPost} updateWordsInPostInProfile={props.updateWordsInPostInProfile}/>
+      <MyPost messageData={props.messageData} dispatch={props.dispatch}/>
     </>
 )
 }

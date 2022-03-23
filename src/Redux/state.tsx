@@ -42,11 +42,15 @@ type stateType = {
 }
 type storeType = {
   _state: stateType,
+  dispatch: any,
   getState: any,
-  addPost: any,
   addMessage: any,
-  updateWordsInPostInProfile: any,
   updateWordsInMessageInDialog: any,
+}
+type dispatchActionType = {
+  newEl: string
+  type: string
+  newWords: string
 }
 const store: storeType = {
   _state: {
@@ -169,15 +173,20 @@ const store: storeType = {
   getState() {
       return this._state
   },
-  addPost(newEl: string){
-    const newPost = {
-      message: newEl,
-      countLike: 0,
-      src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',
-      id: 5,
+  dispatch(action: dispatchActionType){
+    if(action.type === 'Add-post'){
+      const newPost = {
+        message: action.newEl,
+        countLike: 0,
+        src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',
+        id: 5,
+      }
+      this._state.ProfilePage.messages.unshift(newPost)
+    }else if(action.type === 'Update-words'){
+      this._state.ProfilePage.updatePostInProfile = action.newWords;
     }
-    this._state.ProfilePage.messages.unshift(newPost)
   },
+
   addMessage(newMes: string){
     const newMessage = {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
@@ -187,9 +196,6 @@ const store: storeType = {
       id: 6,
     }
     this._state.MessagePage.MessageDialogsItems.push(newMessage)
-  },
-  updateWordsInPostInProfile(newWords: string){
-    this._state.ProfilePage.updatePostInProfile = newWords;
   },
   updateWordsInMessageInDialog(newWords: string){
     this._state.MessagePage.updateWordInMessagePage = newWords;
