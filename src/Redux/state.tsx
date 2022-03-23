@@ -42,8 +42,8 @@ type stateType = {
 }
 type storeType = {
   _state: stateType,
-  dispatch: any,
-  getState: any,
+  dispatch: Function,
+  getState(): stateType,
 }
 type dispatchActionType = {
   newEl: string
@@ -169,7 +169,7 @@ const store: storeType = {
       ],
     }
   },
-  getState() {
+  getState(): stateType {
       return this._state
   },
   dispatch(action: dispatchActionType){
@@ -196,20 +196,6 @@ const store: storeType = {
       this._state.MessagePage.updateWordInMessagePage = action.newWords;
     }
   },
-
-  // addMessage(newMes: string){
-  //   const newMessage = {
-  //     src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
-  //     message: newMes,
-  //     message_time: '7:45',
-  //     className: "",
-  //     id: 6,
-  //   }
-  //   this._state.MessagePage.MessageDialogsItems.push(newMessage)
-  // },
-  // updateWordsInMessageInDialog(newWords: string){
-  //   this._state.MessagePage.updateWordInMessagePage = newWords;
-  // }
 }
 
 export default store

@@ -13,7 +13,7 @@ type updatePostInProfileType = {
 }
 type PostPropsType={
   messageData: updatePostInProfileType;
-  dispatch: object,
+  dispatch: Function,
 }
 const Profile = (props: PostPropsType) => {
   return (

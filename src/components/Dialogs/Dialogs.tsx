@@ -18,7 +18,7 @@ type MessagePropsType = {
 type DialogsPropsType = {
   UserDialogsItems: Array<UserItemPropsType>
   MessageDialogsItems: Array<MessagePropsType>
-  dispatch: any
+  dispatch: Function
 }
 
 const UserDialogsItem = (props: UserItemPropsType) => {

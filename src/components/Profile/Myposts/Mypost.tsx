@@ -13,10 +13,9 @@ type updatePostInProfileType = {
 }
 type PostPropsType={
   messageData: updatePostInProfileType
-  dispatch: any,
+  dispatch: Function,
 }
 const MyPost = (props: PostPropsType) => {
-  console.log(props)
   let NewMessagesData = props.messageData.messages.map((item) => <Post src={item.src} message={item.message} countLike={item.countLike} key={item.id} /> )
   const newPostEl = createRef<HTMLTextAreaElement>();
   const addPost = (e: React.SyntheticEvent) =>{

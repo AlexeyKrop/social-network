@@ -52,7 +52,7 @@ type statesType = {
 }
 type PropsType={
   getState(): statesType,
-  dispatch: any,
+  dispatch: Function,
 }
 type PropsStoreType={
   store: PropsType
