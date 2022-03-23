@@ -11,6 +11,7 @@ import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Friends from './components/Friends/Friends';
 type messageType = {
+  user_name: string,
   message: string
   countLike: number,
   src: string,

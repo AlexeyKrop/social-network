@@ -1,6 +1,7 @@
 import classes from "../components/Dialogs/Dialogs.module.css";
 
 type messageType = {
+  user_name: string,
   message: string
   countLike: number,
   src: string,
@@ -57,13 +58,15 @@ const store: storeType = {
     ProfilePage: {
       messages: [
         {
-          message: 'Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada. Praesent sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.',
+          user_name: "Julie R. Morley",
+          message: 'Done rut con leo ege males. Nella quits lorem ut libero dalesman fugitive. Done rut-rum tongue leo wget dalesman. Done rut-rum tongue leo wget dalesman. Present sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.',
           countLike: 5,
           src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-2.jpg',
           id: 1,
         },
         {
-          message: 'Donec rutrum congue leo eget malesuada nulla quis lorem ut libero malesuada feugiat donec rutrum congue leo eget.',
+          user_name: "Herta Smith",
+          message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad fugiat labore nulla placeat reiciendis. A asperiores dignissimos illo libero, magnam natus, nostrum qui quibusdam rem saepe sint tempora totam voluptatibus! Ad at cum cumque doloremque ducimus eos eum exercitationem expedita id illum ipsa, ipsum iure minus nisi       odio officia quas quod recusandae saepe sunt, veritatis voluptates voluptatibus? Fugiat, laudantium',
           countLike: 8,
           src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-11.jpg',
           id: 2,
@@ -176,6 +179,7 @@ const store: storeType = {
   dispatch(action: dispatchActionType) {
     if (action.type === 'Add-post') {
       const newPost = {
+        user_name: "Julie R. Morley",
         message: action.newEl,
         countLike: 0,
         src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',

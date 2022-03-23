@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import classes from './Post.module.css'
 
 type postPropsType = {
+  user_name: string,
   message: string,
   countLike: number,
   src: string,
@@ -14,7 +15,7 @@ const Post = (props: postPropsType) => {
         <NavLink className={classes.post_header_link} to='/'><img src={props.src} alt="avatar"/>
           <div className={classes.post_description}>
             <span
-              className={classes.user_name}>Julie R. Morley</span><span
+              className={classes.user_name}>{props.user_name}</span><span
             className={classes.small_text}>10 Min Ago</span>
           </div>
         </NavLink>

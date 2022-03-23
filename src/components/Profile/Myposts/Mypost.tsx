@@ -3,6 +3,7 @@ import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
 import {rerender} from "../../../index";
 type messageType = {
+  user_name: string,
   message: string
   countLike: number,
   src: string,
@@ -16,7 +17,7 @@ type PostPropsType={
   dispatch: Function,
 }
 const MyPost = (props: PostPropsType) => {
-  let NewMessagesData = props.messageData.messages.map((item) => <Post src={item.src} message={item.message} countLike={item.countLike} key={item.id} /> )
+  let NewMessagesData = props.messageData.messages.map((item) => <Post src={item.src} message={item.message} countLike={item.countLike} user_name={item.user_name} key={item.id} /> )
   const newPostEl = createRef<HTMLTextAreaElement>();
   const addPost = (e: React.SyntheticEvent) =>{
     e.preventDefault()
