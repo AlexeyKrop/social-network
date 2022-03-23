@@ -53,8 +53,6 @@ type statesType = {
 type PropsType={
   getState(): statesType,
   dispatch: any,
-  addMessage: any,
-  updateWordsInMessageInDialog: any,
 }
 type PropsStoreType={
   store: PropsType
@@ -70,7 +68,7 @@ function App(props: PropsStoreType) {
             <main className="content">
               <Route path="/profile" render={() => <Profile messageData={props.store.getState().ProfilePage} dispatch={props.store.dispatch.bind(props.store)}  />}/>
               <Route path="/friends" render={() => <Friends cardFriends={props.store.getState().FriendsPage.cardFriends}/>}/>
-              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.store.getState().MessagePage.UserDialogsItems)} addMessage={props.store.addMessage.bind(props.store)} MessageDialogsItems={props.store.getState().MessagePage.MessageDialogsItems} updateWordsInMessageInDialog={props.store.updateWordsInMessageInDialog.bind(props.store)}/>}/>
+              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.store.getState().MessagePage.UserDialogsItems)} dispatch={props.store.dispatch.bind(props.store)} MessageDialogsItems={props.store.getState().MessagePage.MessageDialogsItems} />}/>
               <Route path="/news" render={() => <News />}/>
               <Route path="/music" render={() => <Music />}/>
               <Route path="/settings" render={() => <Settings />}/>

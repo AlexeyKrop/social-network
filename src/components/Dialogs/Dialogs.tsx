@@ -18,8 +18,7 @@ type MessagePropsType = {
 type DialogsPropsType = {
   UserDialogsItems: Array<UserItemPropsType>
   MessageDialogsItems: Array<MessagePropsType>
-  addMessage: any
-  updateWordsInMessageInDialog: any
+  dispatch: any
 }
 
 const UserDialogsItem = (props: UserItemPropsType) => {
@@ -64,7 +63,7 @@ const Dialogs = (props: DialogsPropsType) => {
           {UserDialogsItemsData}
         </ul>
         {MessageDialogsItemsData}
-        <ChatList addMessage={props.addMessage} updateWordsInMessageInDialog={props.updateWordsInMessageInDialog}/>
+        <ChatList dispatch={props.dispatch} />
       </div>
 
   )

@@ -2,22 +2,25 @@ import React from 'react';
 import classes from "./ChatList.module.css";
 import {rerender} from "../../../index";
 type newMessageType = {
-  addMessage: any
-  updateWordsInMessageInDialog: any
+  dispatch: any
 }
 const ChatList = (props: newMessageType) => {
   const newPostEl = React.createRef<HTMLInputElement>()
   const addMessage = (e: React.SyntheticEvent) => {
     e.preventDefault();
     let message = newPostEl.current?.value
-    props.addMessage(message)
+    if(message === ''){
+      return
+    }else{
+      props.dispatch({type: 'Update-message', newMes: message})
+    }
     newPostEl.current!.value = '';
     rerender()
   }
   const updateWordsInDialogs = (e: React.SyntheticEvent) => {
     e.preventDefault()
     let message = newPostEl.current?.value
-    props.updateWordsInMessageInDialog(message)
+    props.dispatch({type: 'Update-wordsInDialog', newWords: message})
     rerender()
   }
   return (

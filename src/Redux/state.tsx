@@ -44,13 +44,12 @@ type storeType = {
   _state: stateType,
   dispatch: any,
   getState: any,
-  addMessage: any,
-  updateWordsInMessageInDialog: any,
 }
 type dispatchActionType = {
   newEl: string
   type: string
   newWords: string
+  newMes: string
 }
 const store: storeType = {
   _state: {
@@ -184,22 +183,33 @@ const store: storeType = {
       this._state.ProfilePage.messages.unshift(newPost)
     }else if(action.type === 'Update-words'){
       this._state.ProfilePage.updatePostInProfile = action.newWords;
+    }else if(action.type === 'Update-message'){
+      const newMessage = {
+        src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
+        message: action.newMes,
+        message_time: '7:45',
+        className: "",
+        id: 6,
+      }
+      this._state.MessagePage.MessageDialogsItems.push(newMessage)
+    }else if(action.type === 'Update-wordsInDialog'){
+      this._state.MessagePage.updateWordInMessagePage = action.newWords;
     }
   },
 
-  addMessage(newMes: string){
-    const newMessage = {
-      src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
-      message: newMes,
-      message_time: '7:45',
-      className: "",
-      id: 6,
-    }
-    this._state.MessagePage.MessageDialogsItems.push(newMessage)
-  },
-  updateWordsInMessageInDialog(newWords: string){
-    this._state.MessagePage.updateWordInMessagePage = newWords;
-  }
+  // addMessage(newMes: string){
+  //   const newMessage = {
+  //     src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
+  //     message: newMes,
+  //     message_time: '7:45',
+  //     className: "",
+  //     id: 6,
+  //   }
+  //   this._state.MessagePage.MessageDialogsItems.push(newMessage)
+  // },
+  // updateWordsInMessageInDialog(newWords: string){
+  //   this._state.MessagePage.updateWordInMessagePage = newWords;
+  // }
 }
 
 export default store
