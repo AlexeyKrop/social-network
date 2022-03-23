@@ -2,6 +2,7 @@ import React from 'react';
 import MyPost from "./Myposts/Mypost";
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+
 type messageType = {
   message: string
   countLike: number,
@@ -11,20 +12,17 @@ type messageType = {
 type updatePostInProfileType = {
   messages: Array<messageType>
 }
-type PostPropsType={
+type PostPropsType = {
   messageData: updatePostInProfileType;
   dispatch: Function,
 }
 const Profile = (props: PostPropsType) => {
   return (
     <>
-      <div>
-        <img className={classes.image} src="https://about-planet.ru/images/evropa/strana/shvecaria/shveycaria1.jpg"
-             alt="картинка"/>
-      </div>
-      <ProfileInfo />
+      <div className={classes.image} />
+      <ProfileInfo/>
       <MyPost messageData={props.messageData} dispatch={props.dispatch}/>
     </>
-)
+  )
 }
 export default Profile;

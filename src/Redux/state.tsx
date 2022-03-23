@@ -1,4 +1,5 @@
 import classes from "../components/Dialogs/Dialogs.module.css";
+
 type messageType = {
   message: string
   countLike: number,
@@ -56,13 +57,13 @@ const store: storeType = {
     ProfilePage: {
       messages: [
         {
-          message: 'hello world',
+          message: 'Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada. Praesent sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.',
           countLike: 5,
           src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-2.jpg',
           id: 1,
         },
         {
-          message: 'hello how are you?',
+          message: 'Donec rutrum congue leo eget malesuada nulla quis lorem ut libero malesuada feugiat donec rutrum congue leo eget.',
           countLike: 8,
           src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-11.jpg',
           id: 2,
@@ -170,10 +171,10 @@ const store: storeType = {
     }
   },
   getState(): stateType {
-      return this._state
+    return this._state
   },
-  dispatch(action: dispatchActionType){
-    if(action.type === 'Add-post'){
+  dispatch(action: dispatchActionType) {
+    if (action.type === 'Add-post') {
       const newPost = {
         message: action.newEl,
         countLike: 0,
@@ -181,9 +182,9 @@ const store: storeType = {
         id: 5,
       }
       this._state.ProfilePage.messages.unshift(newPost)
-    }else if(action.type === 'Update-words'){
+    } else if (action.type === 'Update-words') {
       this._state.ProfilePage.updatePostInProfile = action.newWords;
-    }else if(action.type === 'Update-message'){
+    } else if (action.type === 'Update-message') {
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
@@ -192,7 +193,7 @@ const store: storeType = {
         id: 6,
       }
       this._state.MessagePage.MessageDialogsItems.push(newMessage)
-    }else if(action.type === 'Update-wordsInDialog'){
+    } else if (action.type === 'Update-wordsInDialog') {
       this._state.MessagePage.updateWordInMessagePage = action.newWords;
     }
   },
