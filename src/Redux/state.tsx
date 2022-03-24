@@ -202,5 +202,10 @@ const store: storeType = {
     }
   },
 }
-
+export const addPostActionCreator = (post: string) =>{
+  return {type: 'Add-post', newEl: post}
+}
+export const updatePostInProfileActionCreator = (updateWords: string) => {
+  return {type: 'Update-words', newWords: updateWords}
+}
 export default store

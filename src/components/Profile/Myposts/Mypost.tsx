@@ -2,6 +2,8 @@ import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
 import {rerender} from "../../../index";
+import {addPostActionCreator, updatePostInProfileActionCreator} from '../../../Redux/state';
+
 type messageType = {
   user_name: string,
   message: string
@@ -12,28 +14,32 @@ type messageType = {
 type updatePostInProfileType = {
   messages: Array<messageType>
 }
-type PostPropsType={
+type PostPropsType = {
   messageData: updatePostInProfileType
   dispatch: Function,
 }
 const MyPost = (props: PostPropsType) => {
-  let NewMessagesData = props.messageData.messages.map((item) => <Post src={item.src} message={item.message} countLike={item.countLike} user_name={item.user_name} key={item.id} /> )
+  let NewMessagesData = props.messageData.messages.map((item) => <Post src={item.src} message={item.message}
+                                                                       countLike={item.countLike}
+                                                                       user_name={item.user_name} key={item.id}/>)
   const newPostEl = createRef<HTMLTextAreaElement>();
-  const addPost = (e: React.SyntheticEvent) =>{
+  const addPost = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    const post= newPostEl.current?.value;
-    if(post === ''){
+    const post = newPostEl.current?.value;
+    if (post === '' || typeof post !== "string") {
       return
-    }else{
-      props.dispatch({type: 'Add-post', newEl: post})
+    } else {
+      props.dispatch(addPostActionCreator(post))
     }
     newPostEl.current!.value = '';
     rerender()
   }
   const updatePostInProfilePage = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    const updateWords= newPostEl.current?.value;
-    props.dispatch({type: 'Update-words', newWords: updateWords})
+    const updateWords = newPostEl.current?.value;
+    if (typeof updateWords === "string") {
+      props.dispatch(updatePostInProfileActionCreator(updateWords))
+    }
     rerender()
   }
   return (
@@ -42,7 +48,8 @@ const MyPost = (props: PostPropsType) => {
         <h3 className={classes.news__feed_title}>Create New Post</h3>
         <form>
           <div className={classes.group}>
-            <textarea onChange={ updatePostInProfilePage } ref = { newPostEl }  name="message" className={classes.form__control} placeholder="Write something here..."/>
+            <textarea onChange={updatePostInProfilePage} ref={newPostEl} name="message"
+                      className={classes.form__control} placeholder="Write something here..."/>
           </div>
           <ul className={classes.button__group}>
             <li className={classes.photo__btn}>
@@ -58,7 +65,8 @@ const MyPost = (props: PostPropsType) => {
             </li>
             <li className={classes.video__btn}>
               <button type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20" fill="#FF3E3E">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20"
+                     fill="#FF3E3E">
                   <path
                     d="M20.494,7.968l-9.54-7A5,5,0,0,0,3,5V19a5,5,0,0,0,7.957,4.031l9.54-7a5,5,0,0,0,0-8.064Zm-1.184,6.45-9.54,7A3,3,0,0,1,5,19V5A2.948,2.948,0,0,1,6.641,2.328,3.018,3.018,0,0,1,8.006,2a2.97,2.97,0,0,1,1.764.589l9.54,7a3,3,0,0,1,0,4.836Z"/>
                 </svg>
@@ -67,7 +75,8 @@ const MyPost = (props: PostPropsType) => {
             </li>
             <li className={classes.document__btn}>
               <button type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20" fill="#d8e1f0">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20"
+                     fill="#d8e1f0">
                   <path
                     d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"/>
                   <path
