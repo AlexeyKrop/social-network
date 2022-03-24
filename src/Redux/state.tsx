@@ -189,7 +189,7 @@ const store: storeType = {
       this._state.ProfilePage.messages.unshift(newPost)
     } else if (action.type === UPDATE_WORDS) {
       this._state.ProfilePage.updatePostInProfile = action.newWords;
-    } else if (action.type === 'Update-message') {
+    } else if (action.type === 'UPDATE_MESSAGE') {
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
@@ -208,5 +208,13 @@ export const addPostActionCreator = (post: string) =>{
 }
 export const updatePostInProfileActionCreator = (updateWords: string) => {
   return {type: UPDATE_WORDS , newWords: updateWords}
+}
+export  const addMessageActionCreator = (message: string) =>{
+  return {type: 'UPDATE_MESSAGE', newMes: message}
+}
+export const updateWordsInDialogsActionCreator = (message: string) =>{
+  return{
+    type: 'UPDATE_WORDS_IN_DIALOGS', newWords: message
+  }
 }
 export default store

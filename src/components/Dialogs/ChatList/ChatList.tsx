@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from "./ChatList.module.css";
 import {rerender} from "../../../index";
+import { addMessageActionCreator, updateWordsInDialogsActionCreator } from '../../../Redux/state';
 type newMessageType = {
   dispatch: any
 }
@@ -9,10 +10,10 @@ const ChatList = (props: newMessageType) => {
   const addMessage = (e: React.SyntheticEvent) => {
     e.preventDefault();
     let message = newPostEl.current?.value
-    if(message === ''){
+    if(message === '' || typeof message !== "string"){
       return
     }else{
-      props.dispatch({type: 'Update-message', newMes: message})
+        props.dispatch(addMessageActionCreator(message))
     }
     newPostEl.current!.value = '';
     rerender()
@@ -20,7 +21,9 @@ const ChatList = (props: newMessageType) => {
   const updateWordsInDialogs = (e: React.SyntheticEvent) => {
     e.preventDefault()
     let message = newPostEl.current?.value
-    props.dispatch({type: 'Update-wordsInDialog', newWords: message})
+    if (typeof message === "string") {
+      props.dispatch(updateWordsInDialogsActionCreator(message))
+    }
     rerender()
   }
   return (
