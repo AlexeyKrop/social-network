@@ -1,5 +1,6 @@
 import classes from "../components/Dialogs/Dialogs.module.css";
-
+const ADD_POST = 'ADD_POST';
+const UPDATE_WORDS = 'UPDATE_WORDS';
 type messageType = {
   user_name: string,
   message: string
@@ -177,7 +178,7 @@ const store: storeType = {
     return this._state
   },
   dispatch(action: dispatchActionType) {
-    if (action.type === 'Add-post') {
+    if (action.type === ADD_POST) {
       const newPost = {
         user_name: "Julie R. Morley",
         message: action.newEl,
@@ -186,7 +187,7 @@ const store: storeType = {
         id: 5,
       }
       this._state.ProfilePage.messages.unshift(newPost)
-    } else if (action.type === 'Update-words') {
+    } else if (action.type === UPDATE_WORDS) {
       this._state.ProfilePage.updatePostInProfile = action.newWords;
     } else if (action.type === 'Update-message') {
       const newMessage = {
@@ -203,9 +204,9 @@ const store: storeType = {
   },
 }
 export const addPostActionCreator = (post: string) =>{
-  return {type: 'Add-post', newEl: post}
+  return {type: ADD_POST, newEl: post}
 }
 export const updatePostInProfileActionCreator = (updateWords: string) => {
-  return {type: 'Update-words', newWords: updateWords}
+  return {type: UPDATE_WORDS , newWords: updateWords}
 }
 export default store
