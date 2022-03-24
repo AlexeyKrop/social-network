@@ -1,6 +1,8 @@
 import classes from "../components/Dialogs/Dialogs.module.css";
 const ADD_POST = 'ADD_POST';
 const UPDATE_WORDS = 'UPDATE_WORDS';
+const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
+const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
 type messageType = {
   user_name: string,
   message: string
@@ -189,7 +191,7 @@ const store: storeType = {
       this._state.ProfilePage.messages.unshift(newPost)
     } else if (action.type === UPDATE_WORDS) {
       this._state.ProfilePage.updatePostInProfile = action.newWords;
-    } else if (action.type === 'UPDATE_MESSAGE') {
+    } else if (action.type === UPDATE_MESSAGE) {
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
@@ -198,7 +200,7 @@ const store: storeType = {
         id: 6,
       }
       this._state.MessagePage.MessageDialogsItems.push(newMessage)
-    } else if (action.type === 'Update-wordsInDialog') {
+    } else if (action.type === UPDATE_WORDS_IN_DIALOGS) {
       this._state.MessagePage.updateWordInMessagePage = action.newWords;
     }
   },
