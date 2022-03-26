@@ -1,7 +1,6 @@
 import classes from "../components/Dialogs/Dialogs.module.css";
+import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
 import profilePageAddPostReducer from "./profilePageAddPostReducer";
-const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
-const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
 type messageType = {
   user_name: string,
   message: string
@@ -180,27 +179,7 @@ const store: storeType = {
   },
   dispatch(action: dispatchActionType) {
     profilePageAddPostReducer(this._state.ProfilePage, action)
-     if (action.type === UPDATE_MESSAGE) {
-      const newMessage = {
-        src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
-        message: action.newMes,
-        message_time: '7:45',
-        className: "",
-        id: 6,
-      }
-      this._state.MessagePage.MessageDialogsItems.push(newMessage)
-    } else if (action.type === UPDATE_WORDS_IN_DIALOGS) {
-      this._state.MessagePage.updateWordInMessagePage = action.newWords;
-    }
+    addMessagesInMessagePageReducer(this._state.MessagePage, action)
   },
-}
-
-export  const addMessageActionCreator = (message: string) =>{
-  return {type: 'UPDATE_MESSAGE', newMes: message}
-}
-export const updateWordsInDialogsActionCreator = (message: string) =>{
-  return{
-    type: 'UPDATE_WORDS_IN_DIALOGS', newWords: message
-  }
 }
 export default store
