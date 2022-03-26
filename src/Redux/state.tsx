@@ -1,4 +1,5 @@
 import classes from "../components/Dialogs/Dialogs.module.css";
+import profilePageAddPostReducer from "./profilePageAddPostReducer";
 const ADD_POST = 'ADD_POST';
 const UPDATE_WORDS = 'UPDATE_WORDS';
 const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
@@ -180,6 +181,7 @@ const store: storeType = {
     return this._state
   },
   dispatch(action: dispatchActionType) {
+    profilePageAddPostReducer(this._state.ProfilePage, action)
     if (action.type === ADD_POST) {
       const newPost = {
         user_name: "Julie R. Morley",
