@@ -24,17 +24,21 @@ type addMessageActionType = {
   newMes: string
 }
 const addMessagesInMessagePageReducer = (state: PropsDialogsItemsType, action: addMessageActionType) =>{
-  if (action.type === UPDATE_MESSAGE) {
-    const newMessage = {
-      src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
-      message: action.newMes,
-      message_time: '7:45',
-      className: "",
-      id: 6,
-    }
-    state.MessageDialogsItems.push(newMessage)
-  } else if (action.type === UPDATE_WORDS_IN_DIALOGS) {
-    state.updateWordInMessagePage = action.newWords;
+  switch (action.type) {
+    case UPDATE_MESSAGE:
+      const newMessage = {
+        src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
+        message: action.newMes,
+        message_time: '7:45',
+        className: "",
+        id: 6,
+      }
+      state.MessageDialogsItems.push(newMessage)
+      return state
+    case UPDATE_WORDS_IN_DIALOGS:
+      state.updateWordInMessagePage = action.newWords;
+      return state
+    default: return state
   }
 }
 export  const addMessageActionCreator = (message: string) =>{
