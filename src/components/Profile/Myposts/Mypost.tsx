@@ -2,7 +2,7 @@ import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
 import {rerender} from "../../../index";
-import {addPostActionCreator, updatePostInProfileActionCreator} from '../../../Redux/state';
+import {addPostActionCreator, updatePostInProfileActionCreator} from '../../../Redux/profilePageAddPostReducer';
 
 type messageType = {
   user_name: string,

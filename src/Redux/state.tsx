@@ -1,7 +1,5 @@
 import classes from "../components/Dialogs/Dialogs.module.css";
 import profilePageAddPostReducer from "./profilePageAddPostReducer";
-const ADD_POST = 'ADD_POST';
-const UPDATE_WORDS = 'UPDATE_WORDS';
 const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
 const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
 type messageType = {
@@ -182,18 +180,7 @@ const store: storeType = {
   },
   dispatch(action: dispatchActionType) {
     profilePageAddPostReducer(this._state.ProfilePage, action)
-    if (action.type === ADD_POST) {
-      const newPost = {
-        user_name: "Julie R. Morley",
-        message: action.newEl,
-        countLike: 0,
-        src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',
-        id: 5,
-      }
-      this._state.ProfilePage.messages.unshift(newPost)
-    } else if (action.type === UPDATE_WORDS) {
-      this._state.ProfilePage.updatePostInProfile = action.newWords;
-    } else if (action.type === UPDATE_MESSAGE) {
+     if (action.type === UPDATE_MESSAGE) {
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
@@ -207,12 +194,7 @@ const store: storeType = {
     }
   },
 }
-export const addPostActionCreator = (post: string) =>{
-  return {type: ADD_POST, newEl: post}
-}
-export const updatePostInProfileActionCreator = (updateWords: string) => {
-  return {type: UPDATE_WORDS , newWords: updateWords}
-}
+
 export  const addMessageActionCreator = (message: string) =>{
   return {type: 'UPDATE_MESSAGE', newMes: message}
 }
