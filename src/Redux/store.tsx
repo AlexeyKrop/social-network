@@ -1,6 +1,8 @@
+import {rerender} from "..";
 import classes from "../components/Dialogs/Dialogs.module.css";
 import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
 import profilePageAddPostReducer from "./profilePageAddPostReducer";
+
 type messageType = {
   user_name: string,
   message: string
@@ -46,6 +48,8 @@ type stateType = {
 type storeType = {
   _state: stateType,
   dispatch: Function,
+  _callSubscriber: Function,
+  subscribe: Function,
   getState(): stateType,
 }
 type dispatchActionType = {
@@ -174,12 +178,20 @@ const store: storeType = {
       ],
     }
   },
+  _callSubscriber() {
+    console.log('state changed')
+  },
   getState(): stateType {
     return this._state
+  },
+  subscribe(observer: any) {
+    this._callSubscriber = observer
   },
   dispatch(action: dispatchActionType) {
     profilePageAddPostReducer(this._state.ProfilePage, action)
     addMessagesInMessagePageReducer(this._state.MessagePage, action)
+    rerender()
+    // this.subscribe(this._state)
   },
 }
 export default store

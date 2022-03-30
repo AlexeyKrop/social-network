@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from "./ChatList.module.css";
-import {rerender} from "../../../index";
+// import {rerender} from "../../../index";
 import { addMessageActionCreator, updateWordsInDialogsActionCreator } from '../../../Redux/addMessagesInMessagePageReducer';
 type newMessageType = {
   dispatch: any
@@ -16,7 +16,7 @@ const ChatList = (props: newMessageType) => {
         props.dispatch(addMessageActionCreator(message))
     }
     newPostEl.current!.value = '';
-    rerender()
+    // rerender()
   }
   const updateWordsInDialogs = (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -24,7 +24,7 @@ const ChatList = (props: newMessageType) => {
     if (typeof message === "string") {
       props.dispatch(updateWordsInDialogsActionCreator(message))
     }
-    rerender()
+    // rerender()
   }
   return (
     <div className={classes.chat__list}>

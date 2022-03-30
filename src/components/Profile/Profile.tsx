@@ -13,6 +13,7 @@ type messageType = {
 }
 type updatePostInProfileType = {
   messages: Array<messageType>
+  updatePostInProfile: string;
 }
 type PostPropsType = {
   messageData: updatePostInProfileType;

@@ -1,7 +1,6 @@
 import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
-import {rerender} from "../../../index";
 import {addPostActionCreator, updatePostInProfileActionCreator} from '../../../Redux/profilePageAddPostReducer';
 
 type messageType = {
@@ -13,6 +12,7 @@ type messageType = {
 }
 type updatePostInProfileType = {
   messages: Array<messageType>
+  updatePostInProfile: string
 }
 type PostPropsType = {
   messageData: updatePostInProfileType
@@ -23,7 +23,7 @@ const MyPost = (props: PostPropsType) => {
                                                                        countLike={item.countLike}
                                                                        user_name={item.user_name} key={item.id}/>)
   const newPostEl = createRef<HTMLTextAreaElement>();
-  const addPost = (e: React.SyntheticEvent) => {
+  const addPost = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     const post = newPostEl.current?.value;
     if (post === '' || typeof post !== "string") {
@@ -32,15 +32,12 @@ const MyPost = (props: PostPropsType) => {
       props.dispatch(addPostActionCreator(post))
     }
     newPostEl.current!.value = '';
-    rerender()
   }
-  const updatePostInProfilePage = (e: React.SyntheticEvent) => {
-    e.preventDefault()
+  const updatePostInProfilePage = () => {
     const updateWords = newPostEl.current?.value;
     if (typeof updateWords === "string") {
       props.dispatch(updatePostInProfileActionCreator(updateWords))
     }
-    rerender()
   }
   return (
     <div className={classes.mypost}>

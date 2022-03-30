@@ -10,4 +10,6 @@ export const rerender = () => {
     document.getElementById('root')
   );
 }
+
 rerender()
+
