@@ -10,6 +10,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Friends from './components/Friends/Friends';
+
 type messageType = {
   user_name: string,
   message: string
@@ -51,13 +52,15 @@ type statesType = {
   MessagePage: PropsDialogsItemsType
   FriendsPage: cardFriendsType
 }
-type PropsType={
-  getState(): statesType,
-  dispatch: Function,
+// type PropsType = {
+//   getState(): statesType,
+//   dispatch: Function,
+// }
+type PropsStoreType = {
+  state: statesType,
+  dispatch: Function
 }
-type PropsStoreType={
-  store: PropsType
-}
+
 function App(props: PropsStoreType) {
   return (
     <BrowserRouter>
@@ -67,12 +70,17 @@ function App(props: PropsStoreType) {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile" render={() => <Profile messageData={props.store.getState().ProfilePage} dispatch={props.store.dispatch.bind(props.store)}  />}/>
-              <Route path="/friends" render={() => <Friends cardFriends={props.store.getState().FriendsPage.cardFriends}/>}/>
-              <Route path="/dialogs" render={() => <Dialogs UserDialogsItems={(props.store.getState().MessagePage.UserDialogsItems)} dispatch={props.store.dispatch.bind(props.store)} MessageDialogsItems={props.store.getState().MessagePage.MessageDialogsItems} />}/>
-              <Route path="/news" render={() => <News />}/>
-              <Route path="/music" render={() => <Music />}/>
-              <Route path="/settings" render={() => <Settings />}/>
+              <Route path="/profile" render={() => <Profile messageData={props.state.ProfilePage}
+                                                            dispatch={props.dispatch}/>}/>
+              <Route path="/friends"
+                     render={() => <Friends cardFriends={props.state.FriendsPage.cardFriends}/>}/>
+              <Route path="/dialogs"
+                     render={() => <Dialogs UserDialogsItems={(props.state.MessagePage.UserDialogsItems)}
+                                            dispatch={props.dispatch}
+                                            MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
+              <Route path="/news" render={() => <News/>}/>
+              <Route path="/music" render={() => <Music/>}/>
+              <Route path="/settings" render={() => <Settings/>}/>
             </main>
           </div>
         </div>

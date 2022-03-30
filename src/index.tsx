@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import store from './Redux/store';
 
-export const rerender = () => {
+export const rerender = (state: any) => {
   ReactDOM.render(
-    <App store={store}/>,
+    <App state={state} dispatch={store.dispatch.bind(store)}/>,
     document.getElementById('root')
   );
 }
-
-rerender()
+rerender(store.getState())
+store.subscribe(rerender)
 

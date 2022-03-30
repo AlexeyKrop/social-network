@@ -32,13 +32,14 @@ const profilePageAddPostReducer = (state: MessagesType, action: addPostActionTyp
     case UPDATE_WORDS_IN_POST:
       state.updatePostInProfile = action.newWords;
       return state;
-    default: return state
+    default:
+      return state
   }
 }
-export const addPostActionCreator = (post: string) =>{
+export const addPostActionCreator = (post: string) => {
   return {type: ADD_POST, newEl: post}
 }
 export const updatePostInProfileActionCreator = (updateWords: string) => {
-  return {type: UPDATE_WORDS_IN_POST , newWords: updateWords}
+  return {type: UPDATE_WORDS_IN_POST, newWords: updateWords}
 }
 export default profilePageAddPostReducer

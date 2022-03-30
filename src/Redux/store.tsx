@@ -1,4 +1,4 @@
-import {rerender} from "..";
+// import {rerender} from "..";
 import classes from "../components/Dialogs/Dialogs.module.css";
 import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
 import profilePageAddPostReducer from "./profilePageAddPostReducer";
@@ -188,10 +188,11 @@ const store: storeType = {
     this._callSubscriber = observer
   },
   dispatch(action: dispatchActionType) {
-    profilePageAddPostReducer(this._state.ProfilePage, action)
-    addMessagesInMessagePageReducer(this._state.MessagePage, action)
-    rerender()
-    // this.subscribe(this._state)
+    this._state.ProfilePage = profilePageAddPostReducer(this._state.ProfilePage, action)
+    this._state.MessagePage = addMessagesInMessagePageReducer(this._state.MessagePage, action)
+    this._callSubscriber(this._state)
   },
 }
+
+
 export default store
