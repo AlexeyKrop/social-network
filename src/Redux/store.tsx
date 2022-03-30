@@ -3,56 +3,56 @@ import classes from "../components/Dialogs/Dialogs.module.css";
 import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
 import profilePageAddPostReducer from "./profilePageAddPostReducer";
 
-type messageType = {
+export type messageType = {
   user_name: string,
   message: string
   countLike: number,
   src: string,
   id: number,
 }
-type MessagesType = {
+export type MessagesType = {
   messages: Array<messageType>
   updatePostInProfile: string
 }
-type UserDialogsItemType = {
+export type UserDialogsItemType = {
   src: string
   name: string,
   id: number,
 }
-type MessageDialogsItemType = {
+export type MessageDialogsItemType = {
   src: string
   message: string,
   message_time: string,
   className: string,
   id: number,
 }
-type cardFriendType = {
+export type cardFriendType = {
   cardAvatar: string,
   cardBg: string,
   user_name: string,
   id: number,
 }
-type cardFriendsType = {
+export type cardFriendsType = {
   cardFriends: Array<cardFriendType>
 }
-type PropsDialogsItemsType = {
+export type PropsDialogsItemsType = {
   MessageDialogsItems: Array<MessageDialogsItemType>
   UserDialogsItems: Array<UserDialogsItemType>
   updateWordInMessagePage: string
 }
-type stateType = {
+export type stateType = {
   ProfilePage: MessagesType
   MessagePage: PropsDialogsItemsType
   FriendsPage: cardFriendsType
 }
-type storeType = {
+export type storeType = {
   _state: stateType,
   dispatch: Function,
   _callSubscriber: Function,
   subscribe: Function,
   getState(): stateType,
 }
-type dispatchActionType = {
+export type dispatchActionType = {
   newEl: string
   type: string
   newWords: string

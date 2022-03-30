@@ -10,54 +10,10 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Friends from './components/Friends/Friends';
+import {stateType} from "./Redux/store";
 
-type messageType = {
-  user_name: string,
-  message: string
-  countLike: number,
-  src: string,
-  id: number,
-}
-type MessagesType = {
-  messages: Array<messageType>
-  updatePostInProfile: string
-}
-type UserDialogsItemType = {
-  src: string
-  name: string,
-  id: number,
-}
-type MessageDialogsItemType = {
-  src: string
-  message: string,
-  message_time: string,
-  className: string,
-  id: number,
-}
-type PropsDialogsItemsType = {
-  MessageDialogsItems: Array<MessageDialogsItemType>
-  UserDialogsItems: Array<UserDialogsItemType>
-}
-type cardFriendType = {
-  cardAvatar: string,
-  cardBg: string,
-  user_name: string,
-  id: number,
-}
-type cardFriendsType = {
-  cardFriends: Array<cardFriendType>
-}
-type statesType = {
-  ProfilePage: MessagesType
-  MessagePage: PropsDialogsItemsType
-  FriendsPage: cardFriendsType
-}
-// type PropsType = {
-//   getState(): statesType,
-//   dispatch: Function,
-// }
 type PropsStoreType = {
-  state: statesType,
+  state: stateType,
   dispatch: Function
 }
 

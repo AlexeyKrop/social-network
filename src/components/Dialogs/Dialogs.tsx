@@ -50,21 +50,21 @@ const MessageDialogsItem = (props: MessagePropsType) => {
   )
 }
 const Dialogs = (props: DialogsPropsType) => {
-  let MessageDialogsItemsData = props.MessageDialogsItems.map(MessageDialogItem => <MessageDialogsItem
+  let MessageDialogsItemsData = props.MessageDialogsItems.map((MessageDialogItem, index) => <MessageDialogsItem
     src={MessageDialogItem.src} message={MessageDialogItem.message} message_time={MessageDialogItem.message_time}
-    className={MessageDialogItem.className} key={MessageDialogItem.id} id={0}/>)
-  let UserDialogsItemsData = props.UserDialogsItems.map(UserDialogItem => <UserDialogsItem
+    className={MessageDialogItem.className} id={MessageDialogItem.id} key={index}/>)
+  let UserDialogsItemsData = props.UserDialogsItems.map((UserDialogItem, index) => <UserDialogsItem
     src={UserDialogItem.src}
-    name={UserDialogItem.name} id={UserDialogItem.id} key={UserDialogItem.id}/>)
+    name={UserDialogItem.name} id={UserDialogItem.id} key={index}/>)
   return (
 
-      <div className={classes.wrapper}>
-        <ul className={classes.user}>
-          {UserDialogsItemsData}
-        </ul>
-        {MessageDialogsItemsData}
-        <ChatList dispatch={props.dispatch} />
-      </div>
+    <div className={classes.wrapper}>
+      <ul className={classes.user}>
+        {UserDialogsItemsData}
+      </ul>
+      {MessageDialogsItemsData}
+      <ChatList dispatch={props.dispatch}/>
+    </div>
 
   )
 }

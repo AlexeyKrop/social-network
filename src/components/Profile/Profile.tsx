@@ -1,22 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import MyPost from "./Myposts/Mypost";
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import {MessagesType} from "../../Redux/store";
 
-type messageType = {
-  user_name: string,
-  message: string
-  countLike: number,
-  src: string,
-  id: number,
-}
-type updatePostInProfileType = {
-  messages: Array<messageType>
-  updatePostInProfile: string;
-}
 type PostPropsType = {
-  messageData: updatePostInProfileType;
+  messageData: MessagesType;
   dispatch: Function,
 }
 const Profile = (props: PostPropsType) => {

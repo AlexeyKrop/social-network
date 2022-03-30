@@ -2,26 +2,17 @@ import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
 import {addPostActionCreator, updatePostInProfileActionCreator} from '../../../Redux/profilePageAddPostReducer';
+import {MessagesType} from "../../../Redux/store";
 
-type messageType = {
-  user_name: string,
-  message: string
-  countLike: number,
-  src: string,
-  id: number,
-}
-type updatePostInProfileType = {
-  messages: Array<messageType>
-  updatePostInProfile: string
-}
 type PostPropsType = {
-  messageData: updatePostInProfileType
+  messageData: MessagesType
   dispatch: Function,
 }
 const MyPost = (props: PostPropsType) => {
-  let NewMessagesData = props.messageData.messages.map((item) => <Post src={item.src} message={item.message}
-                                                                       countLike={item.countLike}
-                                                                       user_name={item.user_name} key={item.id}/>)
+  let NewMessagesData = props.messageData.messages.map((item, index) => <Post src={item.src} message={item.message}
+                                                                              countLike={item.countLike}
+                                                                              user_name={item.user_name} key={index}
+                                                                              id={item.id}/>)
   const newPostEl = createRef<HTMLTextAreaElement>();
   const addPost = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
