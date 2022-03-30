@@ -1,0 +1,16 @@
+.user__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;;
+    font-size: 16px;
+    color: #515355;
+}
+
+.user__avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}

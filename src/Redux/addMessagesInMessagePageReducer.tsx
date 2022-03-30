@@ -9,7 +9,6 @@ type MessageDialogsItemType = {
   src: string
   message: string,
   message_time: string,
-  className: string,
   id: number,
 }
 type PropsDialogsItemsType = {
@@ -23,14 +22,13 @@ type addMessageActionType = {
   newWords: string
   newMes: string
 }
-const addMessagesInMessagePageReducer = (state: PropsDialogsItemsType, action: addMessageActionType) =>{
+const addMessagesInMessagePageReducer = (state: PropsDialogsItemsType, action: addMessageActionType) => {
   switch (action.type) {
     case UPDATE_MESSAGE:
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
         message_time: '7:45',
-        className: "",
         id: 6,
       }
       state.MessageDialogsItems.push(newMessage)
@@ -38,14 +36,15 @@ const addMessagesInMessagePageReducer = (state: PropsDialogsItemsType, action: a
     case UPDATE_WORDS_IN_DIALOGS:
       state.updateWordInMessagePage = action.newWords;
       return state
-    default: return state
+    default:
+      return state
   }
 }
-export  const addMessageActionCreator = (message: string) =>{
+export const addMessageActionCreator = (message: string) => {
   return {type: 'UPDATE_MESSAGE', newMes: message}
 }
-export const updateWordsInDialogsActionCreator = (message: string) =>{
-  return{
+export const updateWordsInDialogsActionCreator = (message: string) => {
+  return {
     type: 'UPDATE_WORDS_IN_DIALOGS', newWords: message
   }
 }

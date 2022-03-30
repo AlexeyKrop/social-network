@@ -1,7 +1,10 @@
 import React from 'react';
 import classes from "./ChatList.module.css";
-// import {rerender} from "../../../index";
-import { addMessageActionCreator, updateWordsInDialogsActionCreator } from '../../../Redux/addMessagesInMessagePageReducer';
+import {
+  addMessageActionCreator,
+  updateWordsInDialogsActionCreator
+} from '../../../Redux/addMessagesInMessagePageReducer';
+
 type newMessageType = {
   dispatch: any
 }
@@ -10,13 +13,12 @@ const ChatList = (props: newMessageType) => {
   const addMessage = (e: React.SyntheticEvent) => {
     e.preventDefault();
     let message = newPostEl.current?.value
-    if(message === '' || typeof message !== "string"){
+    if (message === '' || typeof message !== "string") {
       return
-    }else{
-        props.dispatch(addMessageActionCreator(message))
+    } else {
+      props.dispatch(addMessageActionCreator(message))
     }
     newPostEl.current!.value = '';
-    // rerender()
   }
   const updateWordsInDialogs = (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -24,7 +26,6 @@ const ChatList = (props: newMessageType) => {
     if (typeof message === "string") {
       props.dispatch(updateWordsInDialogsActionCreator(message))
     }
-    // rerender()
   }
   return (
     <div className={classes.chat__list}>
@@ -45,7 +46,8 @@ const ChatList = (props: newMessageType) => {
             </svg>
           </button>
         </div>
-        <input onChange={updateWordsInDialogs} ref={newPostEl} type="text" className={classes.form__control} placeholder="Type your message..."/>
+        <input onChange={updateWordsInDialogs} ref={newPostEl} type="text" className={classes.form__control}
+               placeholder="Type your message..."/>
         <button onClick={addMessage} type="submit" className={classes.send__btn}>Send</button>
       </form>
     </div>

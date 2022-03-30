@@ -1,5 +1,3 @@
-// import {rerender} from "..";
-import classes from "../components/Dialogs/Dialogs.module.css";
 import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
 import profilePageAddPostReducer from "./profilePageAddPostReducer";
 
@@ -23,7 +21,6 @@ export type MessageDialogsItemType = {
   src: string
   message: string,
   message_time: string,
-  className: string,
   id: number,
 }
 export type cardFriendType = {
@@ -110,28 +107,24 @@ const store: storeType = {
           src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
           message: "Hello, dear I want talk to you?",
           message_time: "7 45 АМ",
-          className: "",
           id: 1,
         },
         {
           src: "https://templates.envytheme.com/zust/default/assets/images/user/user-13.jpg",
           message: "Said how can I cooperate with you",
           message_time: "8 45 АМ",
-          className: classes.chat__left,
           id: 2,
         },
         {
           src: "https://templates.envytheme.com/zust/default/assets/images/user/user-28.jpg",
           message: "Hello, dear I want talk to you?",
           message_time: "9 45 АМ",
-          className: "",
           id: 3,
         },
         {
           src: "https://templates.envytheme.com/zust/default/assets/images/user/user-28.jpg",
           message: "I need some ideas from you about my design",
           message_time: "10 45 АМ",
-          className: classes.chat__left,
           id: 4,
         }
       ],
