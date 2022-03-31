@@ -1,15 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
+import ReactDOM from 'react-dom';
 import App from './App';
-import store, {stateType} from './Redux/store';
+import {stateType} from './Redux/store';
+import store from './Redux/redux-store';
 
 export const rerender = (state: stateType) => {
+  console.log(state)
   ReactDOM.render(
     <App state={state} dispatch={store.dispatch.bind(store)}/>,
     document.getElementById('root')
   );
 }
 rerender(store.getState())
-store.subscribe(rerender)
-
+// store.subscribe(rerender)

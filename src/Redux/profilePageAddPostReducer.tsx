@@ -1,23 +1,32 @@
 const ADD_POST = 'ADD_POST';
 const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
-type messageType = {
-  user_name: string,
-  message: string
-  countLike: number,
-  src: string,
-  id: number,
-}
-type MessagesType = {
-  messages: Array<messageType>
-  updatePostInProfile: string
-}
+
 type addPostActionType = {
   newEl: string
   type: string
   newWords: string
   newMes: string
 }
-const profilePageAddPostReducer = (state: MessagesType, action: addPostActionType) => {
+let initialState = {
+  messages: [
+    {
+      user_name: "Julie R. Morley",
+      message: 'Done rut con leo ege males. Nella quits lorem ut libero dalesman fugitive. Done rut-rum tongue leo wget dalesman. Done rut-rum tongue leo wget dalesman. Present sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.',
+      countLike: 5,
+      src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-2.jpg',
+      id: 1,
+    },
+    {
+      user_name: "Herta Smith",
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad fugiat labore nulla placeat reiciendis. A asperiores dignissimos illo libero, magnam natus, nostrum qui quibusdam rem saepe sint tempora totam voluptatibus! Ad at cum cumque doloremque ducimus eos eum exercitationem expedita id illum ipsa, ipsum iure minus nisi       odio officia quas quod recusandae saepe sunt, veritatis voluptates voluptatibus? Fugiat, laudantium',
+      countLike: 8,
+      src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-11.jpg',
+      id: 2,
+    },
+  ],
+  updatePostInProfile: '',
+}
+const profilePageAddPostReducer = (state = initialState, action: addPostActionType) => {
   switch (action.type) {
     case ADD_POST:
       const newPost = {
