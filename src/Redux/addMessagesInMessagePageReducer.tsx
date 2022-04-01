@@ -81,9 +81,9 @@ const addMessagesInMessagePageReducer = (state = initialState, action: addMessag
 export const addMessageActionCreator = (message: string) => {
   return {type: 'ADD_MESSAGE', newMes: message}
 }
-export const updateWordsInDialogsActionCreator = (message: string) => {
+export const updateWordsInDialogsActionCreator = (updateWordsInDialogs: string) => {
   return {
-    type: 'UPDATE_WORDS_IN_DIALOGS', newWords: message
+    type: 'UPDATE_WORDS_IN_DIALOGS', newWords: updateWordsInDialogs
   }
 }
 export default addMessagesInMessagePageReducer

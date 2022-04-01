@@ -9,6 +9,7 @@ type newMessageType = {
   dispatch: any
 }
 const ChatList = (props: newMessageType) => {
+  console.log(props.dispatch)
   const newPostEl = React.createRef<HTMLInputElement>()
   const addMessage = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -22,9 +23,9 @@ const ChatList = (props: newMessageType) => {
   }
   const updateWordsInDialogs = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    let message = newPostEl.current?.value
-    if (typeof message === "string") {
-      props.dispatch(updateWordsInDialogsActionCreator(message))
+    let updateWordsInDialogs = newPostEl.current?.value
+    if (typeof updateWordsInDialogs === "string") {
+      props.dispatch(updateWordsInDialogsActionCreator(updateWordsInDialogs))
     }
   }
   return (
