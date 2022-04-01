@@ -14,7 +14,7 @@ import {stateType} from "./Redux/store";
 
 type PropsStoreType = {
   state: stateType,
-  dispatch: Function
+  dispatch: (store: stateType) => void
 }
 
 function App(props: PropsStoreType) {

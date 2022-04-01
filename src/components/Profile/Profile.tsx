@@ -3,11 +3,11 @@ import {NavLink} from 'react-router-dom';
 import MyPost from "./Myposts/Mypost";
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {MessagesType} from "../../Redux/store";
+import {MessagesType, stateType} from "../../Redux/store";
 
 type PostPropsType = {
   messageData: MessagesType;
-  dispatch: Function,
+  dispatch: (store: stateType) => void,
 }
 const Profile = (props: PostPropsType) => {
   return (

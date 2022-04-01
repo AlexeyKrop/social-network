@@ -3,12 +3,13 @@ import ChatList from './ChatList/ChatList';
 import classes from './Dialogs.module.css';
 import {MessageDialogsItem, MessagePropsType} from './MessageDialogsItem/MessageDialogsItem';
 import {UserDialogsItem, UserItemPropsType} from './UserDialogsItem/UserDialogsItem';
+import {stateType} from "../../Redux/store";
 
 
 type DialogsPropsType = {
   UserDialogsItems: Array<UserItemPropsType>
   MessageDialogsItems: Array<MessagePropsType>
-  dispatch: Function
+  dispatch: (store: stateType) => void
 }
 
 
