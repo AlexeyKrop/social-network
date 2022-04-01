@@ -1,4 +1,4 @@
-const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
+const ADD_MESSAGE = 'ADD_MESSAGE';
 const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
 type addMessageActionType = {
   newEl: string
@@ -62,7 +62,7 @@ let initialState = {
 }
 const addMessagesInMessagePageReducer = (state = initialState, action: addMessageActionType) => {
   switch (action.type) {
-    case UPDATE_MESSAGE:
+    case ADD_MESSAGE:
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
@@ -79,7 +79,7 @@ const addMessagesInMessagePageReducer = (state = initialState, action: addMessag
   }
 }
 export const addMessageActionCreator = (message: string) => {
-  return {type: 'UPDATE_MESSAGE', newMes: message}
+  return {type: 'ADD_MESSAGE', newMes: message}
 }
 export const updateWordsInDialogsActionCreator = (message: string) => {
   return {
