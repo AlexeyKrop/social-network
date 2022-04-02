@@ -9,7 +9,6 @@ type newMessageType = {
   dispatch: any
 }
 const ChatList = (props: newMessageType) => {
-  console.log(props.dispatch)
   const newPostEl = React.createRef<HTMLInputElement>()
   const addMessage = (e: React.SyntheticEvent) => {
     e.preventDefault();
