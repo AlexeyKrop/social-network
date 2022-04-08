@@ -1,31 +1,17 @@
 import React from 'react';
 import classes from "./ChatList.module.css";
-import {
-  addMessageActionCreator,
-  updateWordsInDialogsActionCreator
-} from '../../../Redux/addMessagesInMessagePageReducer';
 
-type newMessageType = {
-  dispatch: any
-}
-const ChatList = (props: newMessageType) => {
+const ChatList = (props: any) => {
   const newPostEl = React.createRef<HTMLInputElement>()
   const addMessage = (e: React.SyntheticEvent) => {
     e.preventDefault();
     let message = newPostEl.current?.value
-    if (message === '' || typeof message !== "string") {
-      return
-    } else {
-      props.dispatch(addMessageActionCreator(message))
-    }
+    props.addMessage(message)
     newPostEl.current!.value = '';
   }
-  const updateWordsInDialogs = (e: React.SyntheticEvent) => {
-    e.preventDefault()
+  const updateWordsInDialogs = () => {
     let updateWordsInDialogs = newPostEl.current?.value
-    if (typeof updateWordsInDialogs === "string") {
-      props.dispatch(updateWordsInDialogsActionCreator(updateWordsInDialogs))
-    }
+    props.updateWordsInDialogs(updateWordsInDialogs)
   }
   return (
     <div className={classes.chat__list}>

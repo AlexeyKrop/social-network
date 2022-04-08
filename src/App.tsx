@@ -3,7 +3,6 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -11,6 +10,7 @@ import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Friends from './components/Friends/Friends';
 import {stateType} from "./Redux/store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 type PropsStoreType = {
   state: stateType,
@@ -31,9 +31,9 @@ function App(props: PropsStoreType) {
               <Route path="/friends"
                      render={() => <Friends cardFriends={props.state.FriendsPage.cardFriends}/>}/>
               <Route path="/dialogs"
-                     render={() => <Dialogs UserDialogsItems={(props.state.MessagePage.UserDialogsItems)}
-                                            dispatch={props.dispatch}
-                                            MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
+                     render={() => <DialogsContainer UserDialogsItems={(props.state.MessagePage.UserDialogsItems)}
+                                                     dispatch={props.dispatch}
+                                                     MessageDialogsItems={props.state.MessagePage.MessageDialogsItems}/>}/>
               <Route path="/news" render={() => <News/>}/>
               <Route path="/music" render={() => <Music/>}/>
               <Route path="/settings" render={() => <Settings/>}/>
