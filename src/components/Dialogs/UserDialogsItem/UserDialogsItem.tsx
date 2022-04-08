@@ -5,7 +5,7 @@ import React from "react";
 export type UserItemPropsType = {
   src: string,
   name: string,
-  id: number,
+  id: string,
 }
 export const UserDialogsItem = (props: UserItemPropsType) => {
   return (

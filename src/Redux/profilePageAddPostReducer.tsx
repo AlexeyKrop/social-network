@@ -1,3 +1,5 @@
+import {v1} from "uuid";
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
 
@@ -14,14 +16,14 @@ let initialState = {
       message: 'Done rut con leo ege males. Nella quits lorem ut libero dalesman fugitive. Done rut-rum tongue leo wget dalesman. Done rut-rum tongue leo wget dalesman. Present sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.',
       countLike: 5,
       src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-2.jpg',
-      id: 1,
+      id: v1(),
     },
     {
       user_name: "Herta Smith",
       message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad fugiat labore nulla placeat reiciendis. A asperiores dignissimos illo libero, magnam natus, nostrum qui quibusdam rem saepe sint tempora totam voluptatibus! Ad at cum cumque doloremque ducimus eos eum exercitationem expedita id illum ipsa, ipsum iure minus nisi       odio officia quas quod recusandae saepe sunt, veritatis voluptates voluptatibus? Fugiat, laudantium',
       countLike: 8,
       src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-11.jpg',
-      id: 2,
+      id: v1(),
     },
   ],
   updatePostInProfile: '',
@@ -34,7 +36,7 @@ const profilePageAddPostReducer = (state = initialState, action: addPostActionTy
         message: action.newEl,
         countLike: 0,
         src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',
-        id: 5,
+        id: v1(),
       }
       state.messages.unshift(newPost)
       return state

@@ -5,7 +5,7 @@ export type MessagePropsType = {
   src: string,
   message: string,
   message_time: string,
-  id: number,
+  id: string,
 }
 export const MessageDialogsItem = (props: MessagePropsType) => {
   return (

@@ -1,3 +1,5 @@
+import {v1} from "uuid";
+
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
 type addMessageActionType = {
@@ -11,25 +13,25 @@ let initialState = {
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-13.jpg",
       name: "Matthew Voss",
-      id: 1,
+      id: v1(),
 
     },
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
       name: "Lolita",
-      id: 2,
+      id: v1(),
 
     },
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-28.jpg",
       name: "Alex Piter",
-      id: 3,
+      id: v1(),
 
     },
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-10.jpg",
       name: "James Smith",
-      id: 4,
+      id: v1(),
     },
   ],
   MessageDialogsItems: [
@@ -37,25 +39,25 @@ let initialState = {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
       message: "Hello, dear I want talk to you?",
       message_time: "7 45 АМ",
-      id: 1,
+      id: v1(),
     },
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-13.jpg",
       message: "Said how can I cooperate with you",
       message_time: "8 45 АМ",
-      id: 2,
+      id: v1(),
     },
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-28.jpg",
       message: "Hello, dear I want talk to you?",
       message_time: "9 45 АМ",
-      id: 3,
+      id: v1(),
     },
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-28.jpg",
       message: "I need some ideas from you about my design",
       message_time: "10 45 АМ",
-      id: 4,
+      id: v1(),
     }
   ],
   updateWordInMessagePage: '',
@@ -67,7 +69,7 @@ const addMessagesInMessagePageReducer = (state = initialState, action: addMessag
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
         message_time: '7:45',
-        id: 6,
+        id: v1(),
       }
       state.MessageDialogsItems.push(newMessage)
       return state

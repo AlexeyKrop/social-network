@@ -1,13 +1,14 @@
 import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
+
 type propsCardSrc = {
   avatarSrc: string,
   bgSrc: string,
   user_name: string,
-  key: number,
+  key: string,
 }
-const CardFriend = (props: propsCardSrc) =>{
+const CardFriend = (props: propsCardSrc) => {
   return (
     <div className={classes.card}>
       <div className={classes.friends__image}>
