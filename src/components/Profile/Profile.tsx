@@ -5,18 +5,18 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {MessagesType, stateType} from "../../Redux/store";
 import MyPostContainer from "./Myposts/MypostContainer";
 
-type PostPropsType = {
+type ProfilePropsType = {
   messageData: MessagesType;
-  dispatch: (store: stateType) => void,
+  dispatch: any,
 }
-const Profile = (props: PostPropsType) => {
+const Profile = (props: ProfilePropsType) => {
   return (
     <>
       <div className={classes.image}>
         <NavLink to="/" className={classes.edit_cover_btn}>Edit Cover</NavLink>
       </div>
       <ProfileInfo/>
-      <MyPostContainer messageData={props.messageData} dispatch={props.dispatch}/>
+      <MyPostContainer/>
     </>
   )
 }

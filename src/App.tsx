@@ -14,7 +14,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 type PropsStoreType = {
   state: stateType,
-  dispatch: (store: stateType) => void
+  dispatch: any
 }
 
 function App(props: PropsStoreType) {

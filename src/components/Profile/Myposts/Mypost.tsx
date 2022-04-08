@@ -1,22 +1,22 @@
 import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
-import {MessagesType} from "../../../Redux/store";
+import {messageType} from "../../../Redux/store";
 
 type PostPropsType = {
-  messageData: MessagesType
+  messageData: Array<messageType>
   addPost: (post: string) => void
   updatePostInProfilePage: (updateWords: string) => void
 }
 const MyPost = (props: PostPropsType) => {
   console.log(props)
-  let NewMessagesData = props.messageData.messages.map((item, index) => <Post src={item.src} message={item.message}
-                                                                              countLike={item.countLike}
-                                                                              user_name={item.user_name} key={index}
-                                                                              id={item.id}/>)
+  let NewMessagesData = props.messageData.map((item, index) => <Post src={item.src} message={item.message}
+                                                                     countLike={item.countLike}
+                                                                     user_name={item.user_name} key={index}
+                                                                     id={item.id}/>)
   const newPostEl = createRef<HTMLTextAreaElement>();
   const addPost = () => {
-
+    debugger
     const post = newPostEl.current?.value;
     if (post) {
       props.addPost(post)

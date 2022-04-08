@@ -29,6 +29,7 @@ let initialState = {
   updatePostInProfile: '',
 }
 const profilePageAddPostReducer = (state = initialState, action: addPostActionType) => {
+  debugger
   switch (action.type) {
     case ADD_POST:
       const newPost = {

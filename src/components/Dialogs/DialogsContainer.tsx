@@ -5,16 +5,7 @@ import {MessagePropsType} from './MessageDialogsItem/MessageDialogsItem';
 import {UserItemPropsType} from './UserDialogsItem/UserDialogsItem';
 import Dialogs from "./Dialogs";
 import {addMessageActionCreator, updateWordsInDialogsActionCreator} from "../../Redux/addMessagesInMessagePageReducer";
-import {stateType} from "../../Redux/store";
 
-type addMessageType = {
-  type: string,
-  newMess: string
-}
-type updateWordsType = {
-  type: string,
-  newMess: string
-}
 type DialogsPropsType = {
   UserDialogsItems: Array<UserItemPropsType>
   MessageDialogsItems: Array<MessagePropsType>
