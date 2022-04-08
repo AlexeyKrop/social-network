@@ -1,9 +1,9 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import MyPost from "./Myposts/Mypost";
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {MessagesType, stateType} from "../../Redux/store";
+import MyPostContainer from "./Myposts/MypostContainer";
 
 type PostPropsType = {
   messageData: MessagesType;
@@ -16,7 +16,7 @@ const Profile = (props: PostPropsType) => {
         <NavLink to="/" className={classes.edit_cover_btn}>Edit Cover</NavLink>
       </div>
       <ProfileInfo/>
-      <MyPost messageData={props.messageData} dispatch={props.dispatch}/>
+      <MyPostContainer messageData={props.messageData} dispatch={props.dispatch}/>
     </>
   )
 }

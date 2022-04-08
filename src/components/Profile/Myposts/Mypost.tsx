@@ -1,34 +1,34 @@
 import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator, updatePostInProfileActionCreator} from '../../../Redux/profilePageAddPostReducer';
 import {MessagesType} from "../../../Redux/store";
 
 type PostPropsType = {
   messageData: MessagesType
-  dispatch: Function,
+  addPost: (post: string) => void
+  updatePostInProfilePage: (updateWords: string) => void
 }
 const MyPost = (props: PostPropsType) => {
+  console.log(props)
   let NewMessagesData = props.messageData.messages.map((item, index) => <Post src={item.src} message={item.message}
                                                                               countLike={item.countLike}
                                                                               user_name={item.user_name} key={index}
                                                                               id={item.id}/>)
   const newPostEl = createRef<HTMLTextAreaElement>();
-  const addPost = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
+  const addPost = () => {
+
     const post = newPostEl.current?.value;
-    if (post === '' || typeof post !== "string") {
-      return
-    } else {
-      props.dispatch(addPostActionCreator(post))
+    if (post) {
+      props.addPost(post)
     }
     newPostEl.current!.value = '';
   }
   const updatePostInProfilePage = () => {
     const updateWords = newPostEl.current?.value;
-    if (typeof updateWords === "string") {
-      props.dispatch(updatePostInProfileActionCreator(updateWords))
+    if (updateWords) {
+      props.updatePostInProfilePage(updateWords)
     }
+
   }
   return (
     <div className={classes.mypost}>
@@ -74,7 +74,7 @@ const MyPost = (props: PostPropsType) => {
               </button>
             </li>
             <li className={classes.post__btn}>
-              <button onClick={addPost}>Post</button>
+              <button type="button" onClick={addPost}>Post</button>
             </li>
           </ul>
         </form>
