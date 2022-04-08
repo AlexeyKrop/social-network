@@ -20,7 +20,6 @@ const mapStateToProps = (state: stateType) => {
   }
 }
 const mapDispatchToProps = (dispatch: any) => {
-  debugger
   return {
     addPost: (post: string) => {
       dispatch(addPostActionCreator(post))
@@ -29,7 +28,6 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(updatePostInProfileActionCreator(updateWords))
     }
   }
-
 }
 const MyPostContainer = connect(mapStateToProps, mapDispatchToProps)(MyPost)
 export default MyPostContainer

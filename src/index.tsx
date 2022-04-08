@@ -6,14 +6,16 @@ import {stateType} from './Redux/store';
 import store from './Redux/redux-store';
 import {Provider} from "react-redux";
 
-export const rerender = (state: stateType) => {
+export const rerender = () => {
   ReactDOM.render(
-    <Provider store={store}> <App state={state} dispatch={store.dispatch.bind(store)}/></Provider>,
+    <Provider store={store}>
+      <App/>
+    </Provider>,
 
     document.getElementById('root')
   );
 }
-rerender(store.getState())
+rerender()
 store.subscribe(() => {
-  rerender(store.getState())
+  rerender()
 })

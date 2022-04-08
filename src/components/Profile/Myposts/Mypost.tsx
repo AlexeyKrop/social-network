@@ -9,14 +9,12 @@ type PostPropsType = {
   updatePostInProfilePage: (updateWords: string) => void
 }
 const MyPost = (props: PostPropsType) => {
-  console.log(props)
   let NewMessagesData = props.messageData.map((item, index) => <Post src={item.src} message={item.message}
                                                                      countLike={item.countLike}
                                                                      user_name={item.user_name} key={index}
                                                                      id={item.id}/>)
   const newPostEl = createRef<HTMLTextAreaElement>();
   const addPost = () => {
-    debugger
     const post = newPostEl.current?.value;
     if (post) {
       props.addPost(post)
