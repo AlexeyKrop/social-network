@@ -34,7 +34,7 @@ const MyPost = (props: PostPropsType) => {
         <h3 className={classes.news__feed_title}>Create New Post</h3>
         <form>
           <div className={classes.group}>
-            <textarea onChange={updatePostInProfilePage} ref={newPostEl} name="message"
+            <textarea onChange={updatePostInProfilePage} ref={newPostEl} name="message" value={newPostEl.current?.value}
                       className={classes.form__control} placeholder="Write something here..."/>
           </div>
           <ul className={classes.button__group}>

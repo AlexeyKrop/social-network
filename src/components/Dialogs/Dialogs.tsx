@@ -58,6 +58,7 @@ const Dialogs = (props: DialogsPropsType) => {
             </button>
           </div>
           <input onChange={updateWordsInDialogs} ref={newPostEl} type="text" className={classes.form__control}
+                 value={newPostEl.current?.value}
                  placeholder="Type your message..."/>
           <button onClick={addMessage} type="submit" className={classes.send__btn}>Send</button>
         </form>
