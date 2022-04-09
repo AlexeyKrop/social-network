@@ -38,15 +38,16 @@ const profilePageAddPostReducer = (state = initialState, action: addPostActionTy
         src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',
         id: v1(),
       }
-      let cloneState = {...state};
-      cloneState.messages = [...state.messages]
-      cloneState.messages.unshift(newPost)
-      return cloneState
+      return {
+        ...state,
+        messages: [newPost, ...state.messages]
+      };
     }
     case UPDATE_WORDS_IN_POST: {
-      let cloneState = {...state};
-      cloneState.updatePostInProfile = action.newWords;
-      return cloneState;
+      return {
+        ...state,
+        updatePostInProfile: action.newWords
+      };
     }
     default:
       return state

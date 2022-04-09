@@ -71,15 +71,17 @@ const addMessagesInMessagePageReducer = (state = initialState, action: addMessag
         message_time: '7:45',
         id: v1(),
       }
-      let cloneState = {...state}
-      cloneState.MessageDialogsItems = [...state.MessageDialogsItems]
-      cloneState.MessageDialogsItems.push(newMessage)
-      return cloneState
+      return {
+        ...state,
+        MessageDialogsItems: [...state.MessageDialogsItems, newMessage]
+      }
     }
     case UPDATE_WORDS_IN_DIALOGS: {
-      let cloneState = {...state}
-      cloneState.updateWordInMessagePage = action.newWords;
-      return cloneState
+      return {
+        ...state,
+        updateWordInMessagePage: action.newWords
+      }
+
     }
     default:
       return state
