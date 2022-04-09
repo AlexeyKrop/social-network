@@ -9,7 +9,6 @@ type PostPropsType = {
   updatePostInProfilePage: (updateWords: string) => void
 }
 const MyPost = (props: PostPropsType) => {
-  console.log(props)
   let NewMessagesData = props.messageData.map((item, index) => <Post src={item.src} message={item.message}
                                                                      countLike={item.countLike}
                                                                      user_name={item.user_name} key={index}
