@@ -64,18 +64,23 @@ let initialState = {
 }
 const addMessagesInMessagePageReducer = (state = initialState, action: addMessageActionType) => {
   switch (action.type) {
-    case ADD_MESSAGE:
+    case ADD_MESSAGE: {
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
         message_time: '7:45',
         id: v1(),
       }
-      state.MessageDialogsItems.push(newMessage)
-      return state
-    case UPDATE_WORDS_IN_DIALOGS:
-      state.updateWordInMessagePage = action.newWords;
-      return state
+      let cloneState = {...state}
+      cloneState.MessageDialogsItems = [...state.MessageDialogsItems]
+      cloneState.MessageDialogsItems.push(newMessage)
+      return cloneState
+    }
+    case UPDATE_WORDS_IN_DIALOGS: {
+      let cloneState = {...state}
+      cloneState.updateWordInMessagePage = action.newWords;
+      return cloneState
+    }
     default:
       return state
   }

@@ -30,7 +30,7 @@ let initialState = {
 }
 const profilePageAddPostReducer = (state = initialState, action: addPostActionType) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       const newPost = {
         user_name: "Julie R. Morley",
         message: action.newEl,
@@ -38,11 +38,16 @@ const profilePageAddPostReducer = (state = initialState, action: addPostActionTy
         src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',
         id: v1(),
       }
-      state.messages.unshift(newPost)
-      return state
-    case UPDATE_WORDS_IN_POST:
-      state.updatePostInProfile = action.newWords;
-      return state;
+      let cloneState = {...state};
+      cloneState.messages = [...state.messages]
+      cloneState.messages.unshift(newPost)
+      return cloneState
+    }
+    case UPDATE_WORDS_IN_POST: {
+      let cloneState = {...state};
+      cloneState.updatePostInProfile = action.newWords;
+      return cloneState;
+    }
     default:
       return state
   }
