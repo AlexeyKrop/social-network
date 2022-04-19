@@ -8,7 +8,6 @@ let reducers = combineReducers({
   MessagePage: addMessagesInMessagePageReducer,
   FriendsPage: friendsPageReducer,
 })
-
 export type AppStateType = ReturnType<typeof reducers>
 let store = createStore(reducers);
 export default store

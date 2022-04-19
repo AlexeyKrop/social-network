@@ -68,7 +68,7 @@ const addMessagesInMessagePageReducer = (state = initialState, action: addMessag
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
         message: action.newMes,
-        message_time: '7:45',
+        message_time: `${new Date().getHours()}:${new Date().getMinutes()}`,
         id: v1(),
       }
       return {
