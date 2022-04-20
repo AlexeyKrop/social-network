@@ -7,17 +7,23 @@ type cardFriendType = {
   cardBg: string,
   user_name: string,
   friendStatus: boolean,
+  sendMessageStatus: boolean,
   id: string,
 }
 export type cardFriendsPropsType = {
   cardFriends: Array<cardFriendType>
   addFriend: (id: string) => void
   delFriend: (id: string) => void
+  openModal: (id: string) => void
+  closeModal: (id: string) => void
 }
 const Friends = (props: cardFriendsPropsType) => {
   let Cards = props.cardFriends.map(item => <CardFriend key={item.id} addFriend={props.addFriend}
                                                         delFriend={props.delFriend}
+                                                        openModal={props.openModal}
+                                                        closeModal={props.closeModal}
                                                         avatarSrc={item.cardAvatar}
+                                                        sendMessageStatus={item.sendMessageStatus}
                                                         friendStatus={item.friendStatus}
                                                         bgSrc={item.cardBg}
                                                         user_name={item.user_name} id={item.id}/>)

@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import Friends from "./Friends";
-import {addFriendAC, delFriendAC} from "../../Redux/friendsPageReducer";
+import {addFriendAC, closeModalInFriendAC, delFriendAC, openModalInFriendAC} from "../../Redux/friendsPageReducer";
 
 const mapStateToProps = (state: any) => {
   return {
@@ -15,6 +15,12 @@ const mapDispatchToProps = (dispatch: any) => {
     delFriend: (id: string) => {
       dispatch(delFriendAC(id))
     },
+    openModal: (id: string) => {
+      dispatch(openModalInFriendAC(id))
+    },
+    closeModal: (id: string) => {
+      dispatch(closeModalInFriendAC(id))
+    }
   }
 }
 const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);

@@ -1,0 +1,136 @@
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(192, 192, 192, 0.2);
+    z-index: 999;
+}
+
+.modal__dialog {
+    position: absolute;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    left: 50%;
+    top: 28%;
+    transform: translate(-50%, -25%);
+}
+
+.modal__content {
+    position: relative;
+    padding: 10px 15px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(230, 230, 230);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #eceeef;
+}
+
+.modal__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    min-height: 220px;
+}
+
+.btn__box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.file_attachment_btn, .emoji_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #6B7C8F;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form__control {
+    display: block;
+    width: 100%;
+    font-weight: 400;
+    line-height: 1.5;
+    appearance: none;
+    background-color: #F4F7FC;
+    height: 165px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 13px;
+    border: 1px solid #F4F7FC;
+    color: #515355;
+    outline: none;
+    resize: none
+}
+
+.send__btn {
+    border-radius: 5px;
+    height: 45px;
+    width: 108px;
+    padding: 15px;
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    border: none;
+    background-color: #3644D9;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.emoji_btn {
+    margin-left: 5px;
+}
+
+.send__btn:hover {
+    background-color: #2E3AB8
+}
+
+.close {
+    float: right;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    text-decoration: none;
+}
+
+.close:focus,
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .75;
+}
