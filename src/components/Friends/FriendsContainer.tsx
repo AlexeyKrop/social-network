@@ -8,7 +8,6 @@ const mapStateToProps = (state: any) => {
   }
 }
 const mapDispatchToProps = (dispatch: any) => {
-  debugger
   return {
     addFriend: (id: string) => {
       dispatch(addFriendAC(id))
