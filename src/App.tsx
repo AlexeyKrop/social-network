@@ -8,9 +8,8 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
-import Friends from './components/Friends/Friends';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import store from "./Redux/redux-store";
+import FriendsContainer from "./components/Friends/FriendsContainer";
 
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
             <main className="content">
               <Route path="/profile" render={() => <Profile/>}/>
               <Route path="/friends"
-                     render={() => <Friends cardFriends={store.getState().FriendsPage.cardFriends}/>}/>
+                     render={() => <FriendsContainer/>}/>
               <Route path="/dialogs"
                      render={() => <DialogsContainer/>}/>
               <Route path="/news" render={() => <News/>}/>

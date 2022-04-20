@@ -6,9 +6,18 @@ type propsCardSrc = {
   avatarSrc: string,
   bgSrc: string,
   user_name: string,
-  key: string,
+  friendStatus: boolean,
+  addFriend: (id: string) => void
+  delFriend: (id: string) => void
+  id: string,
 }
 const CardFriend = (props: propsCardSrc) => {
+  const onClickAddFriendHandler = (id: string) => {
+    props.addFriend(id)
+  }
+  const onClickDelFriendHandler = (id: string) => {
+    props.delFriend(id)
+  }
   return (
     <div className={classes.card}>
       <div className={classes.friends__image}>
@@ -58,7 +67,12 @@ const CardFriend = (props: propsCardSrc) => {
         </ul>
         <div className={classes.button_group}>
           <div className={classes.add_friend_btn}>
-            <button type="submit">Add Friend</button>
+            {props.friendStatus ? <button onClick={() => {
+                onClickAddFriendHandler(props.id)
+              }} type="submit">Add Friend</button> :
+              <button onClick={() => {
+                onClickDelFriendHandler(props.id)
+              }} type="submit">Delete Friend</button>}
           </div>
           <div className={classes.send_message_btn}>
             <button type="submit">Send Message</button>
