@@ -1,13 +1,13 @@
 import {v1} from "uuid";
 
-const ADD_POST = 'ADD_POST';
-const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
+export const ADD_POST = 'ADD_POST';
+export const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
 
 type addPostActionType = {
-  newEl: string
+  newEl?: string
   type: string
-  newWords: string
-  newMes: string
+  newWords?: string
+  newMes?: string
 }
 let initialState = {
   messages: [

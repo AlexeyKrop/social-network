@@ -1,14 +1,14 @@
 import {v1} from "uuid";
 
-const ADD_MESSAGE = 'ADD_MESSAGE';
-const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
 type addMessageActionType = {
-  newEl: string
+  newEl?: string
   type: string
-  newWords: string
-  newMes: string
+  newWords?: string
+  newMes?: string
 }
-let initialState = {
+export let initialState = {
   UserDialogsItems: [
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-13.jpg",
