@@ -1,9 +1,9 @@
 import {v1} from "uuid"
 
-const ADD_FRIEND = 'ADD_FRIEND';
-const DELETE_FRIEND = 'DELETE_FRIEND';
-const OPEN_MODAL = 'OPEN_MODAL';
-const CLOSE_MODAL = 'CLOSE_MODAL'
+export const ADD_FRIEND = 'ADD_FRIEND';
+export const DELETE_FRIEND = 'DELETE_FRIEND';
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL'
 let initialState = {
   cardFriends: [
     {
@@ -56,14 +56,17 @@ let initialState = {
     }
   ],
 }
-const friendsPageReducer = (state = initialState, action: any) => {
+type actionFriendPageReducerType = {
+  type: string, uId: string, friendStatus: boolean
+}
+const friendsPageReducer = (state = initialState, action: actionFriendPageReducerType) => {
   switch (action.type) {
     case ADD_FRIEND: {
       return {
         cardFriends: [
           ...state.cardFriends.map((s) => {
             if (s.id === action.uId) {
-              return {...s, friendStatus: false};
+              return {...s, friendStatus: !s.friendStatus};
             }
             return s
           }),
@@ -75,7 +78,7 @@ const friendsPageReducer = (state = initialState, action: any) => {
         cardFriends: [
           ...state.cardFriends.map((s) => {
             if (s.id === action.uId) {
-              return {...s, friendStatus: true};
+              return {...s, friendStatus: !s.friendStatus};
             }
             return s
           }),
@@ -87,7 +90,7 @@ const friendsPageReducer = (state = initialState, action: any) => {
         cardFriends: [
           ...state.cardFriends.map((c) => {
             if (c.id === action.uId) {
-              return {...c, sendMessageStatus: true};
+              return {...c, sendMessageStatus: !c.sendMessageStatus};
             }
             return c
           })
@@ -99,7 +102,7 @@ const friendsPageReducer = (state = initialState, action: any) => {
         cardFriends: [
           ...state.cardFriends.map((c) => {
             if (c.id === action.uId) {
-              return {...c, sendMessageStatus: false};
+              return {...c, sendMessageStatus: !c.sendMessageStatus};
             }
             return c
           })

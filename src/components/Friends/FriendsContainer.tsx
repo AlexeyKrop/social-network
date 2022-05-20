@@ -1,8 +1,9 @@
 import {connect} from "react-redux";
 import Friends from "./Friends";
 import {addFriendAC, closeModalInFriendAC, delFriendAC, openModalInFriendAC} from "../../Redux/friendsPageReducer";
+import {AppStateType} from "../../Redux/redux-store";
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppStateType) => {
   return {
     cardFriends: state.FriendsPage.cardFriends
   }
