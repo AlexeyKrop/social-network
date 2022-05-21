@@ -17,6 +17,7 @@ function Sidebar() {
               </g>
             </svg>
           </NavLink></li>
+
         <li className={classes.item}>
           <NavLink to="/friends" className={classes.link} activeClassName={classes.active}><span>Friends</span>
             <svg className={classes.icon} height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"
