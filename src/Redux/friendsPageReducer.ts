@@ -4,6 +4,7 @@ export const ADD_FRIEND = 'ADD_FRIEND';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL'
+export const SET_USERS = 'SET_USERS'
 let initialState = {
   cardFriends: [
     {
@@ -67,7 +68,7 @@ type userStateType = {
 type initialStateType = {
   cardFriends: Array<userStateType>
 }
-type actionFriendPageReducerType = addFriendAT | delFriendAT | openModalInFriendAT | closeModalInFriendAT
+type actionFriendPageReducerType = addFriendAT | delFriendAT | openModalInFriendAT | closeModalInFriendAT | setUsersAT
 type addFriendAT = {
   type: 'ADD_FRIEND', uId: string
 }
@@ -80,6 +81,10 @@ type openModalInFriendAT = {
 type closeModalInFriendAT = {
   type: 'CLOSE_MODAL', uId: string
 }
+type setUsersAT = {
+  type: 'SET_USERS', users: userStateType
+}
+
 const friendsPageReducer = (state = initialState, action: actionFriendPageReducerType): initialStateType => {
   switch (action.type) {
     case ADD_FRIEND: {
@@ -130,6 +135,9 @@ const friendsPageReducer = (state = initialState, action: actionFriendPageReduce
         ]
       }
     }
+    case SET_USERS: {
+      return {...state, cardFriends: [...initialState.cardFriends, action.users]}
+    }
   }
 
   return state
@@ -145,5 +153,8 @@ export const openModalInFriendAC = (uId: string): openModalInFriendAT => {
 }
 export const closeModalInFriendAC = (uId: string): closeModalInFriendAT => {
   return {type: CLOSE_MODAL, uId: uId}
+}
+export const setUsersAC = (users: userStateType): setUsersAT => {
+  return {type: SET_USERS, users: users}
 }
 export default friendsPageReducer
