@@ -19,11 +19,11 @@ export type  AddMessageInProfilePage = {
   src: string
   id: string
 }
-type InitialStateInProfilePageType = {
-  messages: Array<AddMessageInProfilePage>
-  updatePostInProfile: string
-}
-let initialState: InitialStateInProfilePageType = {
+// type InitialStateInProfilePageType = {
+//   messages: Array<AddMessageInProfilePage>
+//   updatePostInProfile: string
+// }
+let initialState = {
   messages: [
     {
       user_name: "Julie R. Morley",
@@ -39,9 +39,10 @@ let initialState: InitialStateInProfilePageType = {
       src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-11.jpg',
       id: v1(),
     },
-  ],
+  ] as Array<AddMessageInProfilePage>,
   updatePostInProfile: '',
 }
+type InitialStateInProfilePageType = typeof initialState
 const profilePageAddPostReducer = (state = initialState, action: AddPostInProfilePageAT): InitialStateInProfilePageType => {
   switch (action.type) {
     case ADD_POST: {
