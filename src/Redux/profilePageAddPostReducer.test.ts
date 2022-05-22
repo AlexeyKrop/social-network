@@ -1,4 +1,9 @@
-import profilePageAddPostReducer, {ADD_POST, UPDATE_WORDS_IN_POST} from "./profilePageAddPostReducer";
+import profilePageAddPostReducer, {
+  ADD_POST,
+  AddPostAT,
+  UPDATE_WORDS_IN_POST,
+  UpdateWordsInPostAT
+} from "./profilePageAddPostReducer";
 import {v1} from "uuid";
 
 test('check add post', () => {
@@ -21,7 +26,7 @@ test('check add post', () => {
     ],
     updatePostInProfile: '',
   }
-  const action = {
+  const action: AddPostAT = {
     type: ADD_POST,
     newEl: 'add post for test'
   }
@@ -49,9 +54,9 @@ test('check update words in post', () => {
     ],
     updatePostInProfile: '',
   }
-  const action = {
+  const action: UpdateWordsInPostAT = {
     type: UPDATE_WORDS_IN_POST,
-    newWords: 'U'
+    updateWords: 'U'
   }
   const endState = profilePageAddPostReducer(startState, action)
   expect(endState.updatePostInProfile).toBe('U')

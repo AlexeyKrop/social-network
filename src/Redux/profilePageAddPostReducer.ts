@@ -3,13 +3,15 @@ import {v1} from "uuid";
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
 
-type addPostActionType = {
-  newEl?: string
-  type: string
-  newWords?: string
-  newMes?: string
+type AddPostInProfilePageAT = AddPostAT | UpdateWordsInPostAT
+export type AddPostAT = {
+  type: 'ADD_POST',
+  newEl: string
 }
-type AddPostAT = {}
+export type UpdateWordsInPostAT = {
+  type: 'UPDATE_WORDS_IN_POST',
+  updateWords: string
+}
 let initialState = {
   messages: [
     {
@@ -29,7 +31,7 @@ let initialState = {
   ],
   updatePostInProfile: '',
 }
-const profilePageAddPostReducer = (state = initialState, action: addPostActionType) => {
+const profilePageAddPostReducer = (state = initialState, action: AddPostInProfilePageAT) => {
   switch (action.type) {
     case ADD_POST: {
       const newPost = {
@@ -47,7 +49,7 @@ const profilePageAddPostReducer = (state = initialState, action: addPostActionTy
     case UPDATE_WORDS_IN_POST: {
       return {
         ...state,
-        updatePostInProfile: action.newWords
+        updatePostInProfile: action.updateWords
       };
     }
     default:
