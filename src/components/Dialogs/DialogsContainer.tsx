@@ -2,12 +2,12 @@ import React from 'react';
 import Dialogs from "./Dialogs";
 import {
   addMessageActionCreator,
-  InitialStateInMessagePageType, MessageDialogsItemType,
-  updateWordsInDialogsActionCreator, UserDialogsItemType
+  MessageDialogsItemType,
+  updateWordsInDialogsActionCreator,
+  UserDialogsItemType
 } from "../../Redux/addMessagesInMessagePageReducer";
 import {stateType} from "../../Redux/store";
 import {connect} from "react-redux";
-import {userStateType} from "../../Redux/friendsPageReducer";
 
 
 // const DialogsContainer = (props: DialogsPropsType) => {

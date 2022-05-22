@@ -4,12 +4,12 @@ import {
   addFriendAC,
   closeModalInFriendAC,
   delFriendAC,
-  openModalInFriendAC, userStateType
+  openModalInFriendAC, UserStateType
 } from "../../Redux/friendsPageReducer";
 import {AppStateType} from "../../Redux/redux-store";
 
 type mapStateToPropsType = {
-  cardFriends: Array<userStateType>
+  cardFriends: Array<UserStateType>
 }
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {

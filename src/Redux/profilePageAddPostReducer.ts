@@ -9,6 +9,7 @@ type addPostActionType = {
   newWords?: string
   newMes?: string
 }
+type AddPostAT = {}
 let initialState = {
   messages: [
     {
