@@ -7,6 +7,7 @@ import {
 import MyPost from "./Mypost";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../Redux/redux-store";
+import {Dispatch} from "redux";
 // const MyPostContainer = (props: PostPropsType) => {
 //   const addPost = (post: string) => {
 //     props.dispatch(addPostActionCreator(post))
@@ -26,7 +27,7 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     messageData: state.ProfilePage.messages,
   }
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     addPost: (post: string) => {
       dispatch(addPostActionCreator(post))
