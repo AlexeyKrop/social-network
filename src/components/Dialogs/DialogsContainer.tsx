@@ -8,6 +8,7 @@ import {
 } from "../../Redux/addMessagesInMessagePageReducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
+import {Dispatch} from "redux";
 
 
 // const DialogsContainer = (props: DialogsPropsType) => {
@@ -36,7 +37,7 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     updateWordInMessagePage: state.MessagePage.updateWordInMessagePage
   }
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     addMessage: (message: string) => {
       dispatch(addMessageActionCreator(message))
