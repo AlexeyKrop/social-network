@@ -7,6 +7,7 @@ import {
   openModalInFriendAC, UserStateType
 } from "../../Redux/friendsPageReducer";
 import {AppStateType} from "../../Redux/redux-store";
+import {Dispatch} from "redux";
 
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
@@ -16,7 +17,7 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     cardFriends: state.FriendsPage.cardFriends
   }
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     addFriend: (id: string) => {
       dispatch(addFriendAC(id))
