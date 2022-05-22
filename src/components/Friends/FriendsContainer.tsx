@@ -12,12 +12,18 @@ import {Dispatch} from "redux";
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
 }
+type mapDispatchToPropsType = {
+  addFriend: (id: string) => void
+  delFriend: (id: string) => void
+  openModal: (id: string) => void
+  closeModal: (id: string) => void
+}
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     cardFriends: state.FriendsPage.cardFriends
   }
 }
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
   return {
     addFriend: (id: string) => {
       dispatch(addFriendAC(id))
