@@ -12,7 +12,18 @@ export type UpdateWordsInPostAT = {
   type: 'UPDATE_WORDS_IN_POST',
   updateWords: string
 }
-let initialState = {
+export type  AddMessageInProfilePage = {
+  user_name: string
+  message: string
+  countLike: number
+  src: string
+  id: string
+}
+type InitialStateInProfilePageType = {
+  messages: Array<AddMessageInProfilePage>
+  updatePostInProfile: string
+}
+let initialState: InitialStateInProfilePageType = {
   messages: [
     {
       user_name: "Julie R. Morley",
@@ -31,7 +42,7 @@ let initialState = {
   ],
   updatePostInProfile: '',
 }
-const profilePageAddPostReducer = (state = initialState, action: AddPostInProfilePageAT) => {
+const profilePageAddPostReducer = (state = initialState, action: AddPostInProfilePageAT): InitialStateInProfilePageType => {
   switch (action.type) {
     case ADD_POST: {
       const newPost = {
