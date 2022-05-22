@@ -1,8 +1,13 @@
 import React from 'react';
 import Dialogs from "./Dialogs";
-import {addMessageActionCreator, updateWordsInDialogsActionCreator} from "../../Redux/addMessagesInMessagePageReducer";
+import {
+  addMessageActionCreator,
+  InitialStateInMessagePageType, MessageDialogsItemType,
+  updateWordsInDialogsActionCreator, UserDialogsItemType
+} from "../../Redux/addMessagesInMessagePageReducer";
 import {stateType} from "../../Redux/store";
 import {connect} from "react-redux";
+import {userStateType} from "../../Redux/friendsPageReducer";
 
 
 // const DialogsContainer = (props: DialogsPropsType) => {
@@ -19,10 +24,16 @@ import {connect} from "react-redux";
 //     </div>
 //   )
 // }
-const mapStateToProps = (state: stateType) => {
+type mapStateToPropsType = {
+  UserDialogsItems: Array<UserDialogsItemType>
+  MessageDialogsItems: Array<MessageDialogsItemType>
+  updateWordInMessagePage: string
+}
+const mapStateToProps = (state: stateType): mapStateToPropsType => {
   return {
     UserDialogsItems: state.MessagePage.UserDialogsItems,
-    MessageDialogsItems: state.MessagePage.MessageDialogsItems
+    MessageDialogsItems: state.MessagePage.MessageDialogsItems,
+    updateWordInMessagePage: state.MessagePage.updateWordInMessagePage
   }
 }
 const mapDispatchToProps = (dispatch: any) => {

@@ -11,12 +11,12 @@ type UpdateWordsInDialogsAT = {
   newWords: string
 }
 type AddMessageInDialogsAT = AddMessageAT | UpdateWordsInDialogsAT
-type UserDialogsItemType = {
+export type UserDialogsItemType = {
   src: string
   name: string
   id: string
 }
-type MessageDialogsItemType = {
+export type MessageDialogsItemType = {
   src: string
   message: string
   message_time: string
