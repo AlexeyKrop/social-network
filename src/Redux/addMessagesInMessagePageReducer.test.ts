@@ -5,19 +5,22 @@ import addMessagesInMessagePageReducer, {
 } from "./addMessagesInMessagePageReducer";
 
 test('check add new message in dialogs', () => {
-  const action = {
+
+  const endState = addMessagesInMessagePageReducer(initialState, {
     type: ADD_MESSAGE,
     newMes: 'hello',
-  }
-  const endState = addMessagesInMessagePageReducer(initialState, action)
+  })
   expect(endState.MessageDialogsItems.length).toBe(5)
   expect(endState.MessageDialogsItems[4].message).toBe('hello')
 })
 test('check update word in dialogs', () => {
-  const action = {
+  // const action = {
+  //   type: UPDATE_WORDS_IN_DIALOGS,
+  //   newWords: 'h',
+  // }
+  const endState = addMessagesInMessagePageReducer(initialState, {
     type: UPDATE_WORDS_IN_DIALOGS,
     newWords: 'h',
-  }
-  const endState = addMessagesInMessagePageReducer(initialState, action)
+  })
   expect(endState.updateWordInMessagePage).toBe('h')
 })

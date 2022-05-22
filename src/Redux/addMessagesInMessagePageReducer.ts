@@ -2,12 +2,21 @@ import {v1} from "uuid";
 
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
-type addMessageActionType = {
-  newEl?: string
-  type: string
-  newWords?: string
-  newMes?: string
+// type addMessageActionType = {
+//   newEl?: string
+//   type: string
+//   newWords?: string
+//   newMes?: string
+// }
+type addMessageAT = {
+  type: 'ADD_MESSAGE'
+  newMes: string
 }
+type updateWordsInDialogsAT = {
+  type: 'UPDATE_WORDS_IN_DIALOGS'
+  newWords: string
+}
+type addMessageInDialogsAT = addMessageAT | updateWordsInDialogsAT
 export let initialState = {
   UserDialogsItems: [
     {
@@ -62,7 +71,7 @@ export let initialState = {
   ],
   updateWordInMessagePage: '',
 }
-const addMessagesInMessagePageReducer = (state = initialState, action: addMessageActionType) => {
+const addMessagesInMessagePageReducer = (state = initialState, action: addMessageInDialogsAT) => {
   switch (action.type) {
     case ADD_MESSAGE: {
       const newMessage = {
