@@ -1,17 +1,18 @@
 import React from 'react';
 import classes from './Friends.module.css'
 import CardFriend from './CardFriend/CardFriend';
+import {userStateType} from "../../Redux/friendsPageReducer";
 
-type cardFriendType = {
-  cardAvatar: string,
-  cardBg: string,
-  user_name: string,
-  friendStatus: boolean,
-  sendMessageStatus: boolean,
-  id: string,
-}
+// type cardFriendType = {
+//   cardAvatar: string,
+//   cardBg: string,
+//   user_name: string,
+//   friendStatus: boolean,
+//   sendMessageStatus: boolean,
+//   id: string,
+// }
 export type cardFriendsPropsType = {
-  cardFriends: Array<cardFriendType>
+  cardFriends: Array<userStateType>
   addFriend: (id: string) => void
   delFriend: (id: string) => void
   openModal: (id: string) => void

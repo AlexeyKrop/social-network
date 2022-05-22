@@ -5,7 +5,7 @@ export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 export const SET_USERS = 'SET_USERS'
-let initialState = {
+let initialState: initialStateInFriendPageType = {
   cardFriends: [
     {
       cardAvatar: 'https://templates.envytheme.com/zust/default/assets/images/friends/friends-1.jpg',
@@ -57,7 +57,7 @@ let initialState = {
     }
   ],
 }
-type userStateType = {
+export type userStateType = {
   cardAvatar: string,
   cardBg: string,
   user_name: string,
@@ -65,7 +65,7 @@ type userStateType = {
   friendStatus: boolean,
   sendMessageStatus: boolean
 }
-type initialStateType = {
+export type initialStateInFriendPageType = {
   cardFriends: Array<userStateType>
 }
 type actionFriendPageReducerType = addFriendAT | delFriendAT | openModalInFriendAT | closeModalInFriendAT | setUsersAT
@@ -85,7 +85,7 @@ type setUsersAT = {
   type: 'SET_USERS', users: Array<userStateType>
 }
 
-const friendsPageReducer = (state = initialState, action: actionFriendPageReducerType): initialStateType => {
+const friendsPageReducer = (state = initialState, action: actionFriendPageReducerType): initialStateInFriendPageType => {
   switch (action.type) {
     case ADD_FRIEND: {
       return {

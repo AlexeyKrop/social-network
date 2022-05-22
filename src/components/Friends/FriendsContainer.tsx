@@ -1,9 +1,17 @@
 import {connect} from "react-redux";
 import Friends from "./Friends";
-import {addFriendAC, closeModalInFriendAC, delFriendAC, openModalInFriendAC} from "../../Redux/friendsPageReducer";
+import {
+  addFriendAC,
+  closeModalInFriendAC,
+  delFriendAC,
+  openModalInFriendAC, userStateType
+} from "../../Redux/friendsPageReducer";
 import {AppStateType} from "../../Redux/redux-store";
 
-const mapStateToProps = (state: AppStateType) => {
+type mapStateToPropsType = {
+  cardFriends: Array<userStateType>
+}
+const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     cardFriends: state.FriendsPage.cardFriends
   }

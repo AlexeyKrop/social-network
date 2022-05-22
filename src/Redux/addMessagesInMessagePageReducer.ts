@@ -22,7 +22,7 @@ type MessageDialogsItemType = {
   message_time: string
   id: string
 }
-type InitialStateInMessagePageType = {
+export type InitialStateInMessagePageType = {
   UserDialogsItems: Array<UserDialogsItemType>
   MessageDialogsItems: Array<MessageDialogsItemType>
   updateWordInMessagePage: string
