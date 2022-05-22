@@ -1,8 +1,14 @@
 import React, {createRef} from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
-import {messageType} from "../../../Redux/store";
 
+type messageType = {
+  user_name: string,
+  message: string
+  countLike: number,
+  src: string,
+  id: string,
+}
 type PostPropsType = {
   messageData: Array<messageType>
   addPost: (post: string) => void

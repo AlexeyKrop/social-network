@@ -6,8 +6,8 @@ import {
   updateWordsInDialogsActionCreator,
   UserDialogsItemType
 } from "../../Redux/addMessagesInMessagePageReducer";
-import {stateType} from "../../Redux/store";
 import {connect} from "react-redux";
+import {AppStateType} from "../../Redux/redux-store";
 
 
 // const DialogsContainer = (props: DialogsPropsType) => {
@@ -29,7 +29,7 @@ type mapStateToPropsType = {
   MessageDialogsItems: Array<MessageDialogsItemType>
   updateWordInMessagePage: string
 }
-const mapStateToProps = (state: stateType): mapStateToPropsType => {
+const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     UserDialogsItems: state.MessagePage.UserDialogsItems,
     MessageDialogsItems: state.MessagePage.MessageDialogsItems,

@@ -2,55 +2,55 @@ import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
 import profilePageAddPostReducer from "./profilePageAddPostReducer";
 import {v1} from "uuid/index";
 
-export type messageType = {
+type messageType = {
   user_name: string,
   message: string
   countLike: number,
   src: string,
   id: string,
 }
-export type MessagesType = {
+type MessagesType = {
   messages: Array<messageType>
   updatePostInProfile: string
 }
-export type UserDialogsItemType = {
+type UserDialogsItemType = {
   src: string
   name: string,
   id: string,
 }
-export type MessageDialogsItemType = {
+type MessageDialogsItemType = {
   src: string
   message: string,
   message_time: string,
   id: string,
 }
-export type cardFriendType = {
+type cardFriendType = {
   cardAvatar: string,
   cardBg: string,
   user_name: string,
   id: string,
 }
-export type cardFriendsType = {
+type cardFriendsType = {
   cardFriends: Array<cardFriendType>
 }
-export type PropsDialogsItemsType = {
+type PropsDialogsItemsType = {
   MessageDialogsItems: Array<MessageDialogsItemType>
   UserDialogsItems: Array<UserDialogsItemType>
   updateWordInMessagePage: string
 }
-export type stateType = {
+type stateType = {
   ProfilePage: MessagesType
   MessagePage: PropsDialogsItemsType
   FriendsPage: cardFriendsType
 }
-export type storeType = {
+type storeType = {
   _state: stateType,
   dispatch: Function,
   _callSubscriber: Function,
   subscribe: Function,
   getState(): stateType,
 }
-export type dispatchActionType = {
+type dispatchActionType = {
   newEl: string
   type: string
   newWords: string

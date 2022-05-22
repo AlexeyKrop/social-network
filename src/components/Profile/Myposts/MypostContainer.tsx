@@ -4,9 +4,9 @@ import {
   addPostActionCreator,
   updatePostInProfileActionCreator
 } from '../../../Redux/profilePageAddPostReducer';
-import {stateType} from "../../../Redux/store";
 import MyPost from "./Mypost";
 import {connect} from "react-redux";
+import {AppStateType} from "../../../Redux/redux-store";
 // const MyPostContainer = (props: PostPropsType) => {
 //   const addPost = (post: string) => {
 //     props.dispatch(addPostActionCreator(post))
@@ -21,7 +21,7 @@ import {connect} from "react-redux";
 type mapStateToPropsType = {
   messageData: Array<AddMessageInProfilePage>
 }
-const mapStateToProps = (state: stateType): mapStateToPropsType => {
+const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     messageData: state.ProfilePage.messages,
   }
