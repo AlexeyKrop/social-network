@@ -1,5 +1,9 @@
 import React from 'react';
-import {addPostActionCreator, updatePostInProfileActionCreator} from '../../../Redux/profilePageAddPostReducer';
+import {
+  AddMessageInProfilePage,
+  addPostActionCreator,
+  updatePostInProfileActionCreator
+} from '../../../Redux/profilePageAddPostReducer';
 import {stateType} from "../../../Redux/store";
 import MyPost from "./Mypost";
 import {connect} from "react-redux";
@@ -14,7 +18,10 @@ import {connect} from "react-redux";
 //     <MyPost messageData={props.messageData} addPost={addPost} updatePostInProfilePage={updatePostInProfilePage}/>
 //   )
 // }
-const mapStateToProps = (state: stateType) => {
+type mapStateToPropsType = {
+  messageData: Array<AddMessageInProfilePage>
+}
+const mapStateToProps = (state: stateType): mapStateToPropsType => {
   return {
     messageData: state.ProfilePage.messages,
   }
