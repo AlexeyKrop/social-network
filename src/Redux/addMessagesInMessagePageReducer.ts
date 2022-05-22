@@ -2,22 +2,32 @@ import {v1} from "uuid";
 
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
-// type addMessageActionType = {
-//   newEl?: string
-//   type: string
-//   newWords?: string
-//   newMes?: string
-// }
-type addMessageAT = {
+type AddMessageAT = {
   type: 'ADD_MESSAGE'
   newMes: string
 }
-type updateWordsInDialogsAT = {
+type UpdateWordsInDialogsAT = {
   type: 'UPDATE_WORDS_IN_DIALOGS'
   newWords: string
 }
-type addMessageInDialogsAT = addMessageAT | updateWordsInDialogsAT
-export let initialState = {
+type AddMessageInDialogsAT = AddMessageAT | UpdateWordsInDialogsAT
+type UserDialogsItemType = {
+  src: string
+  name: string
+  id: string
+}
+type MessageDialogsItemType = {
+  src: string
+  message: string
+  message_time: string
+  id: string
+}
+type InitialStateInMessagePageType = {
+  UserDialogsItems: Array<UserDialogsItemType>
+  MessageDialogsItems: Array<MessageDialogsItemType>
+  updateWordInMessagePage: string
+}
+export let initialState: InitialStateInMessagePageType = {
   UserDialogsItems: [
     {
       src: "https://templates.envytheme.com/zust/default/assets/images/user/user-13.jpg",
@@ -71,7 +81,7 @@ export let initialState = {
   ],
   updateWordInMessagePage: '',
 }
-const addMessagesInMessagePageReducer = (state = initialState, action: addMessageInDialogsAT) => {
+const addMessagesInMessagePageReducer = (state = initialState, action: AddMessageInDialogsAT): InitialStateInMessagePageType => {
   switch (action.type) {
     case ADD_MESSAGE: {
       const newMessage = {
