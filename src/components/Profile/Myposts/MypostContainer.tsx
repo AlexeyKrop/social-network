@@ -22,12 +22,16 @@ import {Dispatch} from "redux";
 type mapStateToPropsType = {
   messageData: Array<AddMessageInProfilePage>
 }
+type mapDispatchToPropsType = {
+  addPost: (post: string) => void
+  updatePostInProfilePage: (updateWords: string) => void
+}
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     messageData: state.ProfilePage.messages,
   }
 }
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
   return {
     addPost: (post: string) => {
       dispatch(addPostActionCreator(post))
