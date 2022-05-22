@@ -3,11 +3,11 @@ import profilePageAddPostReducer from "./profilePageAddPostReducer";
 import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
 import friendsPageReducer from "./friendsPageReducer";
 
-let reducers = combineReducers({
+const rootReducer = combineReducers({
   ProfilePage: profilePageAddPostReducer,
   MessagePage: addMessagesInMessagePageReducer,
   FriendsPage: friendsPageReducer,
 })
-export type AppStateType = ReturnType<typeof reducers>
-let store = createStore(reducers);
+export type AppStateType = ReturnType<typeof rootReducer>
+let store = createStore(rootReducer);
 export default store
