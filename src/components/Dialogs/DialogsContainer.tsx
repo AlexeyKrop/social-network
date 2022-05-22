@@ -30,6 +30,10 @@ type mapStateToPropsType = {
   MessageDialogsItems: Array<MessageDialogsItemType>
   updateWordInMessagePage: string
 }
+type mapDispatchToPropsType = {
+  addMessage: (message: string) => void
+  updateWordsInDialogs: (updateWordsInDialogs: string) => void
+}
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     UserDialogsItems: state.MessagePage.UserDialogsItems,
@@ -37,7 +41,7 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     updateWordInMessagePage: state.MessagePage.updateWordInMessagePage
   }
 }
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
   return {
     addMessage: (message: string) => {
       dispatch(addMessageActionCreator(message))
