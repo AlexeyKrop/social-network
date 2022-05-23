@@ -56,28 +56,32 @@ let initialState: InitialStateInFriendPageType = {
   ],
 }
 export type UserStateType = {
-  cardAvatar: string,
-  cardBg: string,
-  user_name: string,
-  id: string,
-  friendStatus: boolean,
-  sendMessageStatus: boolean
+  id: number
+  name: string
+  status: string
+  uniqueUrlName: string
+  photos: {
+    small: string
+    large: string
+  }
+  followed: boolean
+
 }
 export type InitialStateInFriendPageType = {
   cardFriends: Array<UserStateType>
 }
 type ActionFriendPageReducerType = AddFriendAT | DelFriendAT | OpenModalInFriendAT | CloseModalInFriendAT | SetUsersAT
 type AddFriendAT = {
-  type: 'ADD_FRIEND', uId: string
+  type: 'ADD_FRIEND', uId: number
 }
 type DelFriendAT = {
-  type: 'DELETE_FRIEND', uId: string
+  type: 'DELETE_FRIEND', uId: number
 }
 type OpenModalInFriendAT = {
-  type: 'OPEN_MODAL', uId: string
+  type: 'OPEN_MODAL', uId: number
 }
 type CloseModalInFriendAT = {
-  type: 'CLOSE_MODAL', uId: string
+  type: 'CLOSE_MODAL', uId: number
 }
 type SetUsersAT = {
   type: 'SET_USERS', users: Array<UserStateType>
@@ -90,7 +94,7 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
         cardFriends: [
           ...state.cardFriends.map((s) => {
             if (s.id === action.uId) {
-              return {...s, friendStatus: !s.friendStatus};
+              return {...s, followed: !s.followed};
             }
             return s
           }),
@@ -102,7 +106,7 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
         cardFriends: [
           ...state.cardFriends.map((s) => {
             if (s.id === action.uId) {
-              return {...s, friendStatus: !s.friendStatus};
+              return {...s, followed: !s.followed};
             }
             return s
           }),
@@ -114,7 +118,7 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
         cardFriends: [
           ...state.cardFriends.map((c) => {
             if (c.id === action.uId) {
-              return {...c, sendMessageStatus: !c.sendMessageStatus};
+              return {...c, sendMessageStatus: false};
             }
             return c
           })
@@ -126,7 +130,7 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
         cardFriends: [
           ...state.cardFriends.map((c) => {
             if (c.id === action.uId) {
-              return {...c, sendMessageStatus: !c.sendMessageStatus};
+              return {...c, sendMessageStatus: true};
             }
             return c
           })
@@ -140,16 +144,16 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
 
   return state
 }
-export const addFriendAC = (uId: string): AddFriendAT => {
+export const addFriendAC = (uId: number): AddFriendAT => {
   return {type: ADD_FRIEND, uId: uId}
 }
-export const delFriendAC = (uId: string): DelFriendAT => {
+export const delFriendAC = (uId: number): DelFriendAT => {
   return {type: DELETE_FRIEND, uId: uId}
 }
-export const openModalInFriendAC = (uId: string): OpenModalInFriendAT => {
+export const openModalInFriendAC = (uId: number): OpenModalInFriendAT => {
   return {type: OPEN_MODAL, uId: uId}
 }
-export const closeModalInFriendAC = (uId: string): CloseModalInFriendAT => {
+export const closeModalInFriendAC = (uId: number): CloseModalInFriendAT => {
   return {type: CLOSE_MODAL, uId: uId}
 }
 export const setUsersAC = (users: Array<UserStateType>): SetUsersAT => {

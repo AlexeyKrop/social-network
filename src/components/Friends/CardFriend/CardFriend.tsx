@@ -2,36 +2,38 @@ import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
 import {ModalMessage} from "../ModalMessage/ModalMessage";
+import {cardFriendsPropsType} from "../Friends";
 
 type propsCardSrc = {
-  avatarSrc: string,
-  bgSrc: string,
+  // avatarSrc: string,
+  // bgSrc: string,
+  followed: boolean
   user_name: string,
-  sendMessageStatus: boolean
-  friendStatus: boolean,
-  addFriend: (id: string) => void
-  delFriend: (id: string) => void
-  openModal: (id: string) => void
-  closeModal: (id: string) => void
-  id: string,
+  // sendMessageStatus: boolean
+  // friendStatus: boolean,
+  addFriend: (id: number) => void
+  delFriend: (id: number) => void
+  openModal: (id: number) => void
+  closeModal: (id: number) => void
+  id: number,
 }
 const CardFriend = (props: propsCardSrc) => {
-  const onClickAddFriendHandler = (id: string) => {
+  const onClickAddFriendHandler = (id: number) => {
     props.addFriend(id)
   }
-  const onClickDelFriendHandler = (id: string) => {
+  const onClickDelFriendHandler = (id: number) => {
     props.delFriend(id)
   }
-  const onClickSendMessageHandler = (id: string) => {
+  const onClickSendMessageHandler = (id: number) => {
     props.openModal(id)
   }
-  console.log(props)
   return (
     <>
       <div className={classes.card}>
         <div className={classes.friends__image}>
           <NavLink to="#">
-            <img src={props.bgSrc} alt="img_bg"/>
+            <img src='https://templates.envytheme.com/zust/default/assets/images/friends/friends-bg-1.jpg'
+                 alt="img_bg"/>
           </NavLink>
           <div className={classes.icon}>
             <NavLink className={classes.link} to="#">
@@ -47,7 +49,8 @@ const CardFriend = (props: propsCardSrc) => {
         <div className={classes.friends__content}>
           <div className={classes.friends__info}>
             <NavLink to="#">
-              <img src={props.avatarSrc} alt="img_card"/>
+              <img src='https://templates.envytheme.com/zust/default/assets/images/friends/friends-1.jpg'
+                   alt="img_card"/>
             </NavLink>
             <div className={classes.text}>
               <h3><NavLink to="#">{props.user_name}</NavLink></h3>
@@ -76,7 +79,7 @@ const CardFriend = (props: propsCardSrc) => {
           </ul>
           <div className={classes.button_group}>
             <div className={classes.add_friend_btn}>
-              {props.friendStatus ? <button onClick={() => {
+              {props.followed ? <button onClick={() => {
                   onClickAddFriendHandler(props.id)
                 }} type="submit">Add Friend</button> :
                 <button onClick={() => {
@@ -92,7 +95,7 @@ const CardFriend = (props: propsCardSrc) => {
           </div>
         </div>
       </div>
-      {props.sendMessageStatus ? <ModalMessage id={props.id} closeModal={props.closeModal}/> : ''}
+      {/*{props.sendMessageStatus ? <ModalMessage id={props.id} closeModal={props.closeModal}/> : ''}*/}
     </>
   )
 }

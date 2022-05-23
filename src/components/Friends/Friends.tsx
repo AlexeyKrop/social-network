@@ -4,12 +4,13 @@ import CardFriend from './CardFriend/CardFriend';
 import {UserStateType} from "../../Redux/friendsPageReducer";
 import axios from "axios";
 
+
 export type cardFriendsPropsType = {
   cardFriends: Array<UserStateType>
-  addFriend: (id: string) => void
-  delFriend: (id: string) => void
-  openModal: (id: string) => void
-  closeModal: (id: string) => void
+  addFriend: (id: number) => void
+  delFriend: (id: number) => void
+  openModal: (id: number) => void
+  closeModal: (id: number) => void
   setUser: (user: Array<UserStateType>) => void
 }
 
@@ -24,15 +25,13 @@ class Friends extends React.Component<cardFriendsPropsType> {
   }
 
   render() {
+    console.log(this.props.cardFriends.map(c => console.log(c)))
     let Cards = this.props.cardFriends.map(item => <CardFriend key={item.id} addFriend={this.props.addFriend}
                                                                delFriend={this.props.delFriend}
                                                                openModal={this.props.openModal}
                                                                closeModal={this.props.closeModal}
-                                                               avatarSrc={item.cardAvatar}
-                                                               sendMessageStatus={item.sendMessageStatus}
-                                                               friendStatus={item.friendStatus}
-                                                               bgSrc={item.cardBg}
-                                                               user_name={item.user_name} id={item.id}/>)
+                                                               user_name={item.name} id={item.id}
+                                                               followed={item.followed}/>)
     return <div className={classes.list}>
       <div className={classes.row}>
         {Cards}

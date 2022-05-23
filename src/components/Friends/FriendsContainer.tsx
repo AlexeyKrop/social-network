@@ -13,10 +13,10 @@ type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
 }
 type mapDispatchToPropsType = {
-  addFriend: (id: string) => void
-  delFriend: (id: string) => void
-  openModal: (id: string) => void
-  closeModal: (id: string) => void
+  addFriend: (id: number) => void
+  delFriend: (id: number) => void
+  openModal: (id: number) => void
+  closeModal: (id: number) => void
   setUser: (user: Array<UserStateType>) => void
 }
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
@@ -26,16 +26,16 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 }
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
   return {
-    addFriend: (id: string) => {
+    addFriend: (id: number) => {
       dispatch(addFriendAC(id))
     },
-    delFriend: (id: string) => {
+    delFriend: (id: number) => {
       dispatch(delFriendAC(id))
     },
-    openModal: (id: string) => {
+    openModal: (id: number) => {
       dispatch(openModalInFriendAC(id))
     },
-    closeModal: (id: string) => {
+    closeModal: (id: number) => {
       dispatch(closeModalInFriendAC(id))
     },
     setUser: (user: Array<UserStateType>) => {
