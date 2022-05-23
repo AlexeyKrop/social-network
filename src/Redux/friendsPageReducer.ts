@@ -134,7 +134,7 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
       }
     }
     case SET_USERS: {
-      return {...state, cardFriends: [...state.cardFriends, ...action.users]}
+      return {...state, cardFriends: [...action.users]}
     }
   }
 

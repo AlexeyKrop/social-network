@@ -25,6 +25,7 @@ const CardFriend = (props: propsCardSrc) => {
   const onClickSendMessageHandler = (id: string) => {
     props.openModal(id)
   }
+  console.log(props)
   return (
     <>
       <div className={classes.card}>
