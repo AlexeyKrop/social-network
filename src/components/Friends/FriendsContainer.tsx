@@ -17,7 +17,7 @@ type mapDispatchToPropsType = {
   delFriend: (id: string) => void
   openModal: (id: string) => void
   closeModal: (id: string) => void
-  setUSer: (user: Array<UserStateType>) => void
+  setUser: (user: Array<UserStateType>) => void
 }
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     closeModal: (id: string) => {
       dispatch(closeModalInFriendAC(id))
     },
-    setUSer: (user: Array<UserStateType>) => {
+    setUser: (user: Array<UserStateType>) => {
       dispatch(setUsersAC(user))
     },
   }

@@ -1,5 +1,3 @@
-import {v1} from "uuid"
-
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const OPEN_MODAL = 'OPEN_MODAL';

@@ -2,7 +2,6 @@ import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
 import {ModalMessage} from "../ModalMessage/ModalMessage";
-import {UserStateType} from "../../../Redux/friendsPageReducer";
 
 type propsCardSrc = {
   avatarSrc: string,
