@@ -3,8 +3,8 @@ export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 export const SET_USERS = 'SET_USERS'
-let initialState: InitialStateInFriendPageType = {
-  cardFriends: [],
+let initialState = {
+  cardFriends: [] as Array<UserStateType>,
 }
 export type UserStateType = {
   id: number
@@ -18,9 +18,10 @@ export type UserStateType = {
   followed: boolean
 
 }
-export type InitialStateInFriendPageType = {
-  cardFriends: Array<UserStateType>
-}
+// export type InitialStateInFriendPageType = {
+//   cardFriends: Array<UserStateType>
+// }
+type InitialStateInFriendPageType = typeof initialState
 type ActionFriendPageReducerType = AddFriendAT | DelFriendAT | OpenModalInFriendAT | CloseModalInFriendAT | SetUsersAT
 type AddFriendAT = {
   type: 'ADD_FRIEND', uId: number
@@ -80,7 +81,6 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
       return {...state, cardFriends: [...action.users]}
     }
   }
-
   return state
 }
 export const addFriendAC = (uId: number): AddFriendAT => {
