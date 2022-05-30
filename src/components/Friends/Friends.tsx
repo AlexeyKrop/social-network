@@ -25,6 +25,7 @@ class Friends extends React.Component<cardFriendsPropsType> {
   // }
 
   componentDidMount() {
+    console.log(this.props)
     axios.get('https://social-network.samuraijs.com/api/1.0/users')
       .then((response) => {
         // обработка успешного запроса
@@ -39,11 +40,22 @@ class Friends extends React.Component<cardFriendsPropsType> {
                                                                closeModal={this.props.closeModal}
                                                                user_name={item.name} id={item.id}
                                                                followed={item.followed}/>)
-    return <div className={classes.list}>
-      <div className={classes.row}>
-        {Cards}
-      </div>
-    </div>
+    return (
+      <>
+        <div className={classes.pagination}>
+          <span className={classes.selectedPage}>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+        </div>
+        <div className={classes.list}>
+          <div className={classes.row}>
+            {Cards}
+          </div>
+        </div>
+      </>
+    )
   }
 
 
