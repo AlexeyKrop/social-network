@@ -33,7 +33,6 @@ class Friends extends React.Component<cardFriendsPropsType> {
   }
 
   render() {
-    console.log(this.props.cardFriends.map(c => console.log(c)))
     let Cards = this.props.cardFriends.map(item => <CardFriend key={item.id} addFriend={this.props.addFriend}
                                                                delFriend={this.props.delFriend}
                                                                openModal={this.props.openModal}
