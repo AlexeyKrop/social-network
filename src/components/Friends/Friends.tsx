@@ -15,8 +15,16 @@ export type cardFriendsPropsType = {
 }
 
 class Friends extends React.Component<cardFriendsPropsType> {
-  constructor(props: cardFriendsPropsType) {
-    super(props);
+  // constructor(props: cardFriendsPropsType) {
+  //   super(props);
+  //   axios.get('https://social-network.samuraijs.com/api/1.0/users')
+  //     .then((response) => {
+  //       // обработка успешного запроса
+  //       this.props.setUser(response.data.items)
+  //     })
+  // }
+
+  componentDidMount() {
     axios.get('https://social-network.samuraijs.com/api/1.0/users')
       .then((response) => {
         // обработка успешного запроса
