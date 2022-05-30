@@ -7,8 +7,8 @@ export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 let initialState = {
   cardFriends: [] as Array<UserStateType>,
   currentPageNumber: 1,
-  pageSize: 9,
-  totalUserCount: 20
+  pageSize: 6,
+  totalUserCount: 30
 }
 export type UserStateType = {
   id: number

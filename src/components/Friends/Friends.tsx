@@ -7,6 +7,9 @@ import axios from "axios";
 
 export type cardFriendsPropsType = {
   cardFriends: Array<UserStateType>
+  pageSize: number
+  currentPageNumber: number
+  totalUserCount: number
   addFriend: (id: number) => void
   delFriend: (id: number) => void
   openModal: (id: number) => void
@@ -25,7 +28,6 @@ class Friends extends React.Component<cardFriendsPropsType> {
   // }
 
   componentDidMount() {
-    console.log(this.props)
     axios.get('https://social-network.samuraijs.com/api/1.0/users')
       .then((response) => {
         // обработка успешного запроса
@@ -34,15 +36,22 @@ class Friends extends React.Component<cardFriendsPropsType> {
   }
 
   render() {
+    let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+    let pages = []
+    for (let i = 1; i < pagesCount; i++) {
+      pages.push(i)
+    }
     let Cards = this.props.cardFriends.map(item => <CardFriend key={item.id} addFriend={this.props.addFriend}
                                                                delFriend={this.props.delFriend}
                                                                openModal={this.props.openModal}
                                                                closeModal={this.props.closeModal}
                                                                user_name={item.name} id={item.id}
                                                                followed={item.followed}/>)
+
     return (
       <>
         <div className={classes.pagination}>
+          {}
           <span className={classes.selectedPage}>1</span>
           <span>2</span>
           <span>3</span>

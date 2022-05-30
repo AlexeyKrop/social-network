@@ -12,6 +12,8 @@ import {Dispatch} from "redux";
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
   currentPageNumber: number
+  pageSize: number
+  totalUserCount: number
 }
 type mapDispatchToPropsType = {
   addFriend: (id: number) => void
@@ -24,7 +26,9 @@ type mapDispatchToPropsType = {
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     cardFriends: state.FriendsPage.cardFriends,
-    currentPageNumber: state.FriendsPage.currentPageNumber
+    pageSize: state.FriendsPage.pageSize,
+    currentPageNumber: state.FriendsPage.currentPageNumber,
+    totalUserCount: state.FriendsPage.totalUserCount
   }
 }
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
