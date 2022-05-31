@@ -15,6 +15,7 @@ export type cardFriendsPropsType = {
   openModal: (id: number) => void
   closeModal: (id: number) => void
   setUser: (user: Array<UserStateType>) => void
+  setCurrentPage: (pageNumber: number) => void
 }
 
 class Friends extends React.Component<cardFriendsPropsType> {
@@ -28,11 +29,15 @@ class Friends extends React.Component<cardFriendsPropsType> {
   // }
 
   componentDidMount() {
-    axios.get('https://social-network.samuraijs.com/api/1.0/users')
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
       .then((response) => {
         // обработка успешного запроса
         this.props.setUser(response.data.items)
       })
+  }
+
+  onChangedPage = (pageNumber: number) => {
+    this.props.setCurrentPage(pageNumber)
   }
 
   render() {
@@ -47,16 +52,14 @@ class Friends extends React.Component<cardFriendsPropsType> {
                                                                closeModal={this.props.closeModal}
                                                                user_name={item.name} id={item.id}
                                                                followed={item.followed}/>)
-
     return (
       <>
         <div className={classes.pagination}>
-          {}
-          <span className={classes.selectedPage}>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
+          {pages.map(p => {
+            return <span
+              className={this.props.currentPageNumber === p ? classes.selectedPage : ''}
+              key={p.toString()}>{p}</span>
+          })}
         </div>
         <div className={classes.list}>
           <div className={classes.row}>
