@@ -3,7 +3,7 @@ import {Friends} from "./Friends";
 import {
   addFriendAC,
   delFriendAC,
-  setCurrentPageNumberAC,
+  setCurrentPageNumberAC, setTogglePreloaderAC,
   setTotalUserCountAC,
   setUsersAC,
   UserStateType
@@ -12,6 +12,7 @@ import {AppStateType} from "../../Redux/redux-store";
 import {Dispatch} from "redux";
 import React from "react";
 import axios from "axios";
+import {Preloader} from "../../common/preloader/Preloader";
 
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
@@ -28,11 +29,13 @@ type mapDispatchToPropsType = {
   setUser: (user: Array<UserStateType>) => void
   setCurrentPage: (currentPageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
+  setTogglePreloader: (preloader: boolean) => void
 }
 type FriendsContainerType = {
   cardFriends: Array<UserStateType>
   currentPageNumber: number
   pageSize: number
+  preloader: boolean
   totalUserCount: number
   addFriend: (id: number) => void
   delFriend: (id: number) => void
@@ -64,20 +67,23 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
   }
 
   render() {
-
+    console.log(this.props)
     return (
-      <Friends
-        cardFriends={this.props.cardFriends}
-        currentPageNumber={this.props.currentPageNumber}
-        pageSize={this.props.pageSize}
-        totalUserCount={this.props.totalUserCount}
-        addFriend={this.props.addFriend}
-        delFriend={this.props.delFriend}
-        setUser={this.props.setUser}
-        setCurrentPage={this.props.setCurrentPage}
-        setTotalUserCount={this.props.setTotalUserCount}
-        onChangedPage={this.onChangedPage}
-      />
+      <>{this.props.preloader ? <Preloader/> : null}
+        <Friends
+          cardFriends={this.props.cardFriends}
+          currentPageNumber={this.props.currentPageNumber}
+          pageSize={this.props.pageSize}
+          totalUserCount={this.props.totalUserCount}
+          addFriend={this.props.addFriend}
+          delFriend={this.props.delFriend}
+          setUser={this.props.setUser}
+          setCurrentPage={this.props.setCurrentPage}
+          setTotalUserCount={this.props.setTotalUserCount}
+          onChangedPage={this.onChangedPage}
+
+        />
+      </>
     )
   }
 }
@@ -122,7 +128,10 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
       dispatch(setTotalUserCountAC(totalUserCount))
     },
 
-
+    setTogglePreloader: (preloader: boolean) => {
+      dispatch((setTogglePreloaderAC(preloader)))
+    }
+    ,
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer);

@@ -17,6 +17,7 @@ export type cardFriendsPropsType = {
   setCurrentPage: (pageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
   onChangedPage: (pageNumber: number) => void
+
 }
 
 export function Friends(props: cardFriendsPropsType) {
