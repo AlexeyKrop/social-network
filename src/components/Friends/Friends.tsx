@@ -38,6 +38,11 @@ class Friends extends React.Component<cardFriendsPropsType> {
 
   onChangedPage = (pageNumber: number) => {
     this.props.setCurrentPage(pageNumber)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+      .then((response) => {
+        // обработка успешного запроса
+        this.props.setUser(response.data.items)
+      })
   }
 
   render() {
@@ -56,9 +61,11 @@ class Friends extends React.Component<cardFriendsPropsType> {
       <>
         <div className={classes.pagination}>
           {pages.map(p => {
-            return <span
-              className={this.props.currentPageNumber === p ? classes.selectedPage : ''}
-              key={p.toString()}>{p}</span>
+            return <span onClick={() => {
+              this.onChangedPage(p)
+            }}
+                         className={this.props.currentPageNumber === p ? classes.selectedPage : ''}
+                         key={p.toString()}>{p}</span>
           })}
         </div>
         <div className={classes.list}>
