@@ -5,12 +5,15 @@ export const CLOSE_MODAL = 'CLOSE_MODAL'
 export const SET_USERS = 'SET_USERS'
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 export const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT'
+export const SET_TOGGLE_PRELOADER = 'SET_TOGGLE_PRELOADER'
+
 let initialState = {
   cardFriends: [] as Array<UserStateType>,
   currentPageNumber: 1,
   pageSize: 21,
   totalUserCount: 30
 }
+
 export type UserStateType = {
   id: number
   name: string
@@ -23,7 +26,6 @@ export type UserStateType = {
   followed: boolean
 
 }
-
 type InitialStateInFriendPageType = typeof initialState
 type ActionFriendPageReducerType =
   AddFriendAT
@@ -32,7 +34,7 @@ type ActionFriendPageReducerType =
   | CloseModalInFriendAT
   | SetUsersAT
   | SetCurrentPageNumberAT
-  | SetTotalUserCountAT
+  | SetTotalUserCountAT | setTogglePreloaderAT
 type AddFriendAT = {
   type: 'ADD_FRIEND', uId: number
 }
@@ -55,6 +57,10 @@ type SetCurrentPageNumberAT = {
 type SetTotalUserCountAT = {
   type: 'SET_TOTAL_USER_COUNT',
   totalUserCount: number
+}
+type setTogglePreloaderAT = {
+  type: 'SET_TOGGLE_PRELOADER'
+  load: boolean
 }
 
 const friendsPageReducer = (state = initialState, action: ActionFriendPageReducerType): InitialStateInFriendPageType => {
@@ -104,28 +110,42 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
 export const addFriendAC = (uId: number): AddFriendAT => {
   return {type: ADD_FRIEND, uId: uId}
 }
+
 export const delFriendAC = (uId: number): DelFriendAT => {
   return {type: DELETE_FRIEND, uId: uId}
 }
+
 export const openModalInFriendAC = (uId: number): OpenModalInFriendAT => {
   return {type: OPEN_MODAL, uId: uId}
 }
+
 export const closeModalInFriendAC = (uId: number): CloseModalInFriendAT => {
   return {type: CLOSE_MODAL, uId: uId}
 }
+
 export const setUsersAC = (users: Array<UserStateType>): SetUsersAT => {
   return {type: SET_USERS, users: users}
 }
+
 export const setCurrentPageNumberAC = (currentPageNumber: number): SetCurrentPageNumberAT => {
   return {
     type: SET_CURRENT_PAGE,
     currentPageNumber: currentPageNumber
   }
 }
+
 export const setTotalUserCountAC = (totalUserCount: number): SetTotalUserCountAT => {
   return {
     type: SET_TOTAL_USER_COUNT,
     totalUserCount: totalUserCount
   }
 }
+
+export const setTogglePreloaderAC = (load: boolean): setTogglePreloaderAT => {
+  return {
+    type: SET_TOGGLE_PRELOADER,
+    load: load
+  }
+}
+
 export default friendsPageReducer
