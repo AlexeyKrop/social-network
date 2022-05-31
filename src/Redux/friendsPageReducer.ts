@@ -8,7 +8,7 @@ export const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT'
 let initialState = {
   cardFriends: [] as Array<UserStateType>,
   currentPageNumber: 1,
-  pageSize: 6,
+  pageSize: 21,
   totalUserCount: 30
 }
 export type UserStateType = {
