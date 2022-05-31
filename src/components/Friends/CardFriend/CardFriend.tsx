@@ -13,8 +13,8 @@ type propsCardSrc = {
   // friendStatus: boolean,
   addFriend: (id: number) => void
   delFriend: (id: number) => void
-  openModal: (id: number) => void
-  closeModal: (id: number) => void
+  // openModal: (id: number) => void
+  // closeModal: (id: number) => void
   id: number,
 }
 const CardFriend = (props: propsCardSrc) => {
@@ -25,7 +25,7 @@ const CardFriend = (props: propsCardSrc) => {
     props.delFriend(id)
   }
   const onClickSendMessageHandler = (id: number) => {
-    props.openModal(id)
+    // props.openModal(id)
   }
   return (
     <>
