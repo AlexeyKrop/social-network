@@ -28,8 +28,21 @@ type mapDispatchToPropsType = {
   setCurrentPage: (currentPageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
 }
+type FriendsContainerType = {
+  cardFriends: Array<UserStateType>
+  currentPageNumber: number
+  pageSize: number
+  totalUserCount: number
+  addFriend: (id: number) => void
+  delFriend: (id: number) => void
+  // openModal: (id: number) => void
+  // closeModal: (id: number) => void
+  setUser: (user: Array<UserStateType>) => void
+  setCurrentPage: (currentPageNumber: number) => void
+  setTotalUserCount: (totalUserCount: number) => void
+}
 
-class FriendsContainer extends React.Component<any> {
+class FriendsContainer extends React.Component<FriendsContainerType> {
   componentDidMount() {
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
       .then((response) => {
