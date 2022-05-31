@@ -90,6 +90,12 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
         currentPageNumber: action.currentPageNumber
       }
     }
+    case "SET_TOTAL_USER_COUNT": {
+      return {
+        ...state,
+        totalUserCount: action.totalUserCount
+      }
+    }
     default:
       return state
   }

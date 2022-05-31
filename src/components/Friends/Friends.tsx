@@ -16,6 +16,7 @@ export type cardFriendsPropsType = {
   closeModal: (id: number) => void
   setUser: (user: Array<UserStateType>) => void
   setCurrentPage: (pageNumber: number) => void
+  setTotalUserCount: (totalUserCount: number) => void
 }
 
 class Friends extends React.Component<cardFriendsPropsType> {
@@ -33,6 +34,7 @@ class Friends extends React.Component<cardFriendsPropsType> {
       .then((response) => {
         // обработка успешного запроса
         this.props.setUser(response.data.items)
+        this.props.setTotalUserCount(response.data.totalCount)
       })
   }
 
