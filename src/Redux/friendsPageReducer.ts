@@ -4,6 +4,7 @@ export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 export const SET_USERS = 'SET_USERS'
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+export const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT'
 let initialState = {
   cardFriends: [] as Array<UserStateType>,
   currentPageNumber: 1,
@@ -31,6 +32,7 @@ type ActionFriendPageReducerType =
   | CloseModalInFriendAT
   | SetUsersAT
   | SetCurrentPageNumberAT
+  | SetTotalUserCountAT
 type AddFriendAT = {
   type: 'ADD_FRIEND', uId: number
 }
@@ -49,6 +51,10 @@ type SetUsersAT = {
 type SetCurrentPageNumberAT = {
   type: 'SET_CURRENT_PAGE',
   currentPageNumber: number
+}
+type SetTotalUserCountAT = {
+  type: 'SET_TOTAL_USER_COUNT',
+  totalUserCount: number
 }
 
 const friendsPageReducer = (state = initialState, action: ActionFriendPageReducerType): InitialStateInFriendPageType => {
@@ -108,6 +114,12 @@ export const setCurrentPageNumberAC = (currentPageNumber: number): SetCurrentPag
   return {
     type: SET_CURRENT_PAGE,
     currentPageNumber: currentPageNumber
+  }
+}
+export const setTotalUserCountAC = (totalUserCount: number): SetTotalUserCountAT => {
+  return {
+    type: SET_TOTAL_USER_COUNT,
+    totalUserCount: totalUserCount
   }
 }
 export default friendsPageReducer
