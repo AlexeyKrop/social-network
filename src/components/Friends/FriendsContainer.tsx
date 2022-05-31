@@ -44,13 +44,16 @@ type FriendsContainerType = {
   setUser: (user: Array<UserStateType>) => void
   setCurrentPage: (currentPageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
+  setTogglePreloader: (preloader: boolean) => void
 }
 
 class FriendsContainer extends React.Component<FriendsContainerType> {
 
   componentDidMount() {
+    this.props.setTogglePreloader(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
       .then((response) => {
+        this.props.setTogglePreloader(false)
         // обработка успешного запроса
         this.props.setUser(response.data.items)
         this.props.setTotalUserCount(response.data.totalCount)
@@ -59,15 +62,16 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
 
   onChangedPage = (pageNumber: number) => {
     this.props.setCurrentPage(pageNumber)
+    this.props.setTogglePreloader(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
       .then((response) => {
         // обработка успешного запроса
+        this.props.setTogglePreloader(false)
         this.props.setUser(response.data.items)
       })
   }
 
   render() {
-    console.log(this.props)
     return (
       <>{this.props.preloader ? <Preloader/> : null}
         <Friends

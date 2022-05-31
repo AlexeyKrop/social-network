@@ -12,7 +12,7 @@ let initialState = {
   currentPageNumber: 1,
   pageSize: 21,
   totalUserCount: 30,
-  preloader: true
+  preloader: false
 }
 
 export type UserStateType = {
