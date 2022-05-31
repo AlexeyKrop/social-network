@@ -4,7 +4,7 @@ import {
   addFriendAC,
   closeModalInFriendAC,
   delFriendAC,
-  openModalInFriendAC, setCurrentPageNumberAC, setUsersAC, UserStateType
+  openModalInFriendAC, setCurrentPageNumberAC, setTotalUserCountAC, setUsersAC, UserStateType
 } from "../../Redux/friendsPageReducer";
 import {AppStateType} from "../../Redux/redux-store";
 import {Dispatch} from "redux";
@@ -22,6 +22,7 @@ type mapDispatchToPropsType = {
   closeModal: (id: number) => void
   setUser: (user: Array<UserStateType>) => void
   setCurrentPage: (currentPageNumber: number) => void
+  setTotalUserCount: (totalUserCount: number) => void
 }
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
@@ -50,7 +51,11 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     },
     setCurrentPage: (currentPageNumber: number) => {
       dispatch(setCurrentPageNumberAC(currentPageNumber))
+    },
+    setTotalUserCount: (totalUserCount: number) => {
+      dispatch(setTotalUserCountAC(totalUserCount))
     }
+
   }
 }
 const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
