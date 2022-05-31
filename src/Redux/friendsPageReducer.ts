@@ -11,7 +11,8 @@ let initialState = {
   cardFriends: [] as Array<UserStateType>,
   currentPageNumber: 1,
   pageSize: 21,
-  totalUserCount: 30
+  totalUserCount: 30,
+  preloader: false
 }
 
 export type UserStateType = {
@@ -60,7 +61,7 @@ type SetTotalUserCountAT = {
 }
 type setTogglePreloaderAT = {
   type: 'SET_TOGGLE_PRELOADER'
-  load: boolean
+  preloader: boolean
 }
 
 const friendsPageReducer = (state = initialState, action: ActionFriendPageReducerType): InitialStateInFriendPageType => {
@@ -141,10 +142,10 @@ export const setTotalUserCountAC = (totalUserCount: number): SetTotalUserCountAT
   }
 }
 
-export const setTogglePreloaderAC = (load: boolean): setTogglePreloaderAT => {
+export const setTogglePreloaderAC = (loader: boolean): setTogglePreloaderAT => {
   return {
     type: SET_TOGGLE_PRELOADER,
-    load: load
+    preloader: loader
   }
 }
 
