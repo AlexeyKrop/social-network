@@ -72,35 +72,48 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
         cardFriends: state.cardFriends.map(s => s.id === action.uId ? {...s, followed: !s.followed} : s)
       }
     }
+
     case DELETE_FRIEND: {
       return {
         ...state,
         cardFriends: state.cardFriends.map(s => s.id === action.uId ? {...s, followed: !s.followed} : s)
       }
     }
+
     case OPEN_MODAL: {
       return {
         ...state
       }
     }
+
     case CLOSE_MODAL: {
       return {
         ...state
       }
     }
+
     case SET_USERS: {
       return {...state, cardFriends: [...action.users]}
     }
-    case "SET_CURRENT_PAGE": {
+
+    case SET_CURRENT_PAGE: {
       return {
         ...state,
         currentPageNumber: action.currentPageNumber
       }
     }
-    case "SET_TOTAL_USER_COUNT": {
+
+    case SET_TOTAL_USER_COUNT: {
       return {
         ...state,
         totalUserCount: action.totalUserCount
+      }
+    }
+
+    case SET_TOGGLE_PRELOADER: {
+      return {
+        ...state,
+        preloader: action.preloader
       }
     }
     default:

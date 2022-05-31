@@ -1,23 +1,24 @@
 import {connect} from "react-redux";
-import {Friends, cardFriendsPropsType} from "./Friends";
+import {Friends} from "./Friends";
 import {
   addFriendAC,
-  closeModalInFriendAC,
   delFriendAC,
-  openModalInFriendAC, setCurrentPageNumberAC, setTotalUserCountAC, setUsersAC, UserStateType
+  setCurrentPageNumberAC,
+  setTotalUserCountAC,
+  setUsersAC,
+  UserStateType
 } from "../../Redux/friendsPageReducer";
 import {AppStateType} from "../../Redux/redux-store";
 import {Dispatch} from "redux";
 import React from "react";
 import axios from "axios";
-import CardFriend from "./CardFriend/CardFriend";
-import classes from "./Friends.module.css";
 
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
   currentPageNumber: number
   pageSize: number
   totalUserCount: number
+  preloader: boolean
 }
 type mapDispatchToPropsType = {
   addFriend: (id: number) => void
@@ -43,6 +44,7 @@ type FriendsContainerType = {
 }
 
 class FriendsContainer extends React.Component<FriendsContainerType> {
+
   componentDidMount() {
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
       .then((response) => {
@@ -85,32 +87,42 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     cardFriends: state.FriendsPage.cardFriends,
     pageSize: state.FriendsPage.pageSize,
     currentPageNumber: state.FriendsPage.currentPageNumber,
-    totalUserCount: state.FriendsPage.totalUserCount
+    totalUserCount: state.FriendsPage.totalUserCount,
+    preloader: state.FriendsPage.preloader,
   }
 }
+
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
   return {
+
     addFriend: (id: number) => {
       dispatch(addFriendAC(id))
     },
+
     delFriend: (id: number) => {
       dispatch(delFriendAC(id))
     },
+
     // openModal: (id: number) => {
     //   dispatch(openModalInFriendAC(id))
     // },
+
     // closeModal: (id: number) => {
     //   dispatch(closeModalInFriendAC(id))
     // },
     setUser: (user: Array<UserStateType>) => {
       dispatch(setUsersAC(user))
     },
+
     setCurrentPage: (currentPageNumber: number) => {
       dispatch(setCurrentPageNumberAC(currentPageNumber))
     },
+
     setTotalUserCount: (totalUserCount: number) => {
       dispatch(setTotalUserCountAC(totalUserCount))
     },
+
+
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer);
