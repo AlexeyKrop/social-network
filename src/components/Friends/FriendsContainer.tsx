@@ -113,13 +113,6 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
       dispatch(delFriendAC(id))
     },
 
-    // openModal: (id: number) => {
-    //   dispatch(openModalInFriendAC(id))
-    // },
-
-    // closeModal: (id: number) => {
-    //   dispatch(closeModalInFriendAC(id))
-    // },
     setUser: (user: Array<UserStateType>) => {
       dispatch(setUsersAC(user))
     },

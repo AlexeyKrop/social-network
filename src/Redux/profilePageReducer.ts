@@ -24,6 +24,7 @@ export type  AddMessageInProfilePage = {
 let initialState = {
   messages: [] as Array<AddMessageInProfilePage>,
   updatePostInProfile: '',
+  profile: null
 }
 type InitialStateInProfilePageType = typeof initialState
 
@@ -50,21 +51,26 @@ export const profilePageReducer = (state = initialState, action: ProfilePageRedu
       };
     }
 
+    case "SET_PROFILE_USER":
+      return {
+        ...state, profile: action.profile
+
+      }
     default:
       return state
   }
 }
 export const addPostActionCreator = (post: string) => ({type: ADD_POST, newEl: post} as const)
-
 export const updatePostInProfileActionCreator = (updateWords: string) => ({
   type: UPDATE_WORDS_IN_POST,
   newWords: updateWords
 } as const)
-export const setProfileUserAC = () => ({type: SET_PROFILE_USER})
+export const setProfileUserAC = (profile: any) => ({type: SET_PROFILE_USER, profile: profile} as const)
 
 type AddPostAT = ReturnType<typeof addPostActionCreator>
 type UpdatePostInProfileAT = ReturnType<typeof updatePostInProfileActionCreator>
+type setProfileUserAT = ReturnType<typeof setProfileUserAC>
 
 
-type ProfilePageReducerAT = AddPostAT | UpdatePostInProfileAT
+type ProfilePageReducerAT = AddPostAT | UpdatePostInProfileAT | setProfileUserAT
 
