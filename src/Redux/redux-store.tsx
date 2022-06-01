@@ -1,10 +1,11 @@
 import {combineReducers, createStore} from "redux";
-import profilePageAddPostReducer from "./profilePageAddPostReducer";
+
 import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
 import friendsPageReducer from "./friendsPageReducer";
+import {profilePageReducer} from "./profilePageReducer";
 
 const rootReducer = combineReducers({
-  ProfilePage: profilePageAddPostReducer,
+  ProfilePage: profilePageReducer,
   MessagePage: addMessagesInMessagePageReducer,
   FriendsPage: friendsPageReducer,
 })

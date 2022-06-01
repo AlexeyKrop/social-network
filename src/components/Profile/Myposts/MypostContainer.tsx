@@ -3,7 +3,7 @@ import {
   AddMessageInProfilePage,
   addPostActionCreator,
   updatePostInProfileActionCreator
-} from '../../../Redux/profilePageAddPostReducer';
+} from '../../../Redux/profilePageReducer';
 import MyPost from "./Mypost";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../Redux/redux-store";

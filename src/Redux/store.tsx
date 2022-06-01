@@ -1,5 +1,5 @@
 import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
-import profilePageAddPostReducer from "./profilePageAddPostReducer";
+import {profilePageReducer} from "./profilePageReducer";
 import {v1} from "uuid/index";
 
 type messageType = {

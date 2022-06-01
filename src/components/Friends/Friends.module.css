@@ -162,7 +162,17 @@
     fill: #ffffff;
 }
 
+.pagination {
+    max-width: 992px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
 .pagination span {
+    width: 24px;
+    height: 24px;
+    background: lightgrey;
     cursor: pointer;
 }
 
