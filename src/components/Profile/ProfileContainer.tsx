@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, withRouter} from 'react-router-dom';
+import {NavLink, RouteComponentProps, withRouter} from 'react-router-dom';
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostContainer from "./Myposts/MypostContainer";
@@ -8,6 +8,40 @@ import {Dispatch} from "redux";
 import {AppStateType} from "../../Redux/redux-store";
 import axios from "axios";
 import {setProfileUserAC} from "../../Redux/profilePageReducer";
+
+type PathParamsType = {
+  userId: string,
+}
+type MapStateToPropsType = {
+  userId?: number
+  lookingForAJob?: boolean
+  lookingForAJobDescription?: string
+  fullName?: string
+  contacts?: {
+    github?: string
+    vk?: string
+    facebook?: string
+    instagram?: string
+    twitter?: string
+    website?: string
+    youtube?: string
+    mainLink?: string
+  }
+  photos?: {
+    small?: string
+    large?: string
+  }
+}
+type initialProfileType = {
+  profile: null
+}
+type MapStateToPropsMainType = MapStateToPropsType | initialProfileType
+
+type MapDispatchToPropsType = {
+  setProfileUser: (profile: MapStateToPropsMainType) => void
+}
+type StatePropsType = MapStateToPropsType & MapDispatchToPropsType
+type PropsType = RouteComponentProps<PathParamsType> & StatePropsType
 
 class ProfileContainer extends React.Component<any, any> {
   componentDidMount() {
@@ -34,7 +68,7 @@ class ProfileContainer extends React.Component<any, any> {
   }
 }
 
-const mapStateToProps = (state: AppStateType) => {
+const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
   return {
     profile: state.ProfilePage.profile,
   }
