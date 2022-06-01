@@ -5,11 +5,9 @@ import DropDownProfile from "../../DropDownProfile/DropDownProfile";
 import {Preloader} from "../../../common/preloader/Preloader";
 
 const ProfileInfo = (props: any) => {
-  console.log(props.profile)
   if (!props.profile) {
     return <Preloader/>
   }
-  console.log(props.profile.photos)
   return (
     <div className={classes.profileInfo}>
       <div className={classes.info__image}>
