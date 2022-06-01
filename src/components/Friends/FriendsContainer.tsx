@@ -24,28 +24,12 @@ type mapStateToPropsType = {
 type mapDispatchToPropsType = {
   addFriend: (id: number) => void
   delFriend: (id: number) => void
-  // openModal: (id: number) => void
-  // closeModal: (id: number) => void
   setUser: (user: Array<UserStateType>) => void
   setCurrentPage: (currentPageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
   setTogglePreloader: (preloader: boolean) => void
 }
-type FriendsContainerType = {
-  cardFriends: Array<UserStateType>
-  currentPageNumber: number
-  pageSize: number
-  preloader: boolean
-  totalUserCount: number
-  addFriend: (id: number) => void
-  delFriend: (id: number) => void
-  // openModal: (id: number) => void
-  // closeModal: (id: number) => void
-  setUser: (user: Array<UserStateType>) => void
-  setCurrentPage: (currentPageNumber: number) => void
-  setTotalUserCount: (totalUserCount: number) => void
-  setTogglePreloader: (preloader: boolean) => void
-}
+type FriendsContainerType = mapStateToPropsType & mapDispatchToPropsType
 
 class FriendsContainer extends React.Component<FriendsContainerType> {
 
