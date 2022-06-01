@@ -1,20 +1,16 @@
 import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
-import {ModalMessage} from "../ModalMessage/ModalMessage";
-import {cardFriendsPropsType} from "../Friends";
 
 type propsCardSrc = {
-  // avatarSrc: string,
-  // bgSrc: string,
   followed: boolean
   user_name: string,
-  // sendMessageStatus: boolean
-  // friendStatus: boolean,
+  user_avatar: {
+    "small": string | undefined,
+    "large": string | undefined
+  }
   addFriend: (id: number) => void
   delFriend: (id: number) => void
-  // openModal: (id: number) => void
-  // closeModal: (id: number) => void
   id: number,
 }
 const CardFriend = (props: propsCardSrc) => {
@@ -49,8 +45,9 @@ const CardFriend = (props: propsCardSrc) => {
         <div className={classes.friends__content}>
           <div className={classes.friends__info}>
             <NavLink to="#">
-              <img src='https://templates.envytheme.com/zust/default/assets/images/friends/friends-1.jpg'
-                   alt="img_card"/>
+              <img
+                src={props.user_avatar.small ? props.user_avatar.small : 'https://templates.envytheme.com/zust/default/assets/images/friends/friends-1.jpg'}
+                alt="img_card"/>
             </NavLink>
             <div className={classes.text}>
               <h3><NavLink to="#">{props.user_name}</NavLink></h3>
