@@ -29,13 +29,17 @@ let initialState = {
 type InitialStateInProfilePageType = typeof initialState
 
 export const profilePageReducer = (state = initialState, action: ProfilePageReducerAT): InitialStateInProfilePageType => {
+  if (state.profile) {
+    console.log(state.profile['photos']['small'])
+  }
+
   switch (action.type) {
     case ADD_POST: {
       const newPost = {
-        user_name: "Julie R. Morley",
+        user_name: state.profile!['fullName'],
         message: action.newEl,
         countLike: 0,
-        src: 'https://templates.envytheme.com/zust/default/assets/images/user/user-16.jpg',
+        src: state.profile!['photos']['small'],
         id: v1(),
       }
       return {
