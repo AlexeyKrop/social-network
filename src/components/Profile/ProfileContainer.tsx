@@ -11,8 +11,11 @@ import {setProfileUserAC} from "../../Redux/profilePageReducer";
 
 class ProfileContainer extends React.Component<any, any> {
   componentDidMount() {
-    console.log(this.props)
-    axios.get('https://social-network.samuraijs.com/api/1.0/profile/2')
+    let userID = this.props.match.params.userId
+    if (!userID) {
+      userID = 2
+    }
+    axios.get('https://social-network.samuraijs.com/api/1.0/profile/' + userID)
       .then(response => {
         this.props.setProfileUser(response.data)
       })

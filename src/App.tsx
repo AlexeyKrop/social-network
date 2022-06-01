@@ -10,6 +10,7 @@ import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile/:userId" render={() => <Profile/>}/>
+              <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
               <Route path="/friends"
                      render={() => <FriendsContainer/>}/>
               <Route path="/dialogs"
