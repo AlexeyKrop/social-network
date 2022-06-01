@@ -21,7 +21,7 @@ function App() {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/profile" render={() => <Profile/>}/>
+              <Route path="/profile/:userId" render={() => <Profile/>}/>
               <Route path="/friends"
                      render={() => <FriendsContainer/>}/>
               <Route path="/dialogs"
