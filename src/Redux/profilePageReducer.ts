@@ -30,7 +30,7 @@ type InitialStateInProfilePageType = typeof initialState
 
 export const profilePageReducer = (state = initialState, action: ProfilePageReducerAT): InitialStateInProfilePageType => {
   if (state.profile) {
-    console.log(state.profile['photos']['small'])
+    // console.log(state.profile['photos']['small'])
   }
 
   switch (action.type) {
