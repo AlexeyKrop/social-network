@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import logo from "../../logo.png";
 import classes from "./Header.module.css";
+
 const Header = () => {
   return (
     <header className={classes.header}>
@@ -11,10 +12,14 @@ const Header = () => {
             <img src={logo} alt="logo" width={50} height={50}/>
           </a>
           <form className={classes.form}>
-            <input type="text" className={classes.input__search} placeholder="Search..." />
+            <input type="text" className={classes.input__search} placeholder="Search..."/>
             <button className={classes.btn} type="submit">
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7c-3.868 0-7 3.132-7 7c0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
-           </button>
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                   preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                      d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7c-3.868 0-7 3.132-7 7c0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/>
+              </svg>
+            </button>
           </form>
           <ul className={classes.list}>
             <li className={classes.item}><NavLink to="/profile" className={classes.link}>
@@ -43,7 +48,8 @@ const Header = () => {
               <sup className={classes.num}>1</sup>
             </NavLink></li>
             <li className={classes.item}><NavLink to="/friends" className={classes.link}>
-              <svg className={classes.icon} height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"
+              <svg className={classes.icon} height="20" viewBox="0 0 24 24" width="20"
+                   xmlns="http://www.w3.org/2000/svg"
                    fill='white'>
                 <path
                   d="m7.5 13a4.5 4.5 0 1 1 4.5-4.5 4.505 4.505 0 0 1 -4.5 4.5zm0-7a2.5 2.5 0 1 0 2.5 2.5 2.5 2.5 0 0 0 -2.5-2.5zm7.5 17v-.5a7.5 7.5 0 0 0 -15 0v.5a1 1 0 0 0 2 0v-.5a5.5 5.5 0 0 1 11 0v.5a1 1 0 0 0 2 0zm9-5a7 7 0 0 0 -11.667-5.217 1 1 0 1 0 1.334 1.49 5 5 0 0 1 8.333 3.727 1 1 0 0 0 2 0zm-6.5-9a4.5 4.5 0 1 1 4.5-4.5 4.505 4.505 0 0 1 -4.5 4.5zm0-7a2.5 2.5 0 1 0 2.5 2.5 2.5 2.5 0 0 0 -2.5-2.5z"/>
