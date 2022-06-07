@@ -1,13 +1,13 @@
 import {combineReducers, createStore} from "redux";
 
-import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
+import dialogsPageReducer from "./dialogsPageReducer";
 import friendsPageReducer from "./friendsPageReducer";
 import {profilePageReducer} from "./profilePageReducer";
-import {authReducer} from "./authorization-reducer";
+import {authReducer} from "./authorizationReducer";
 
 const rootReducer = combineReducers({
   ProfilePage: profilePageReducer,
-  MessagePage: addMessagesInMessagePageReducer,
+  MessagePage: dialogsPageReducer,
   FriendsPage: friendsPageReducer,
   Authorization: authReducer,
 })

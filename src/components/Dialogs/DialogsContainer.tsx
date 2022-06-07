@@ -5,7 +5,7 @@ import {
   MessageDialogsItemType,
   updateWordsInDialogsActionCreator,
   UserDialogsItemType
-} from "../../Redux/addMessagesInMessagePageReducer";
+} from "../../Redux/dialogsPageReducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {Dispatch} from "redux";

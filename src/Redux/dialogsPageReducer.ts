@@ -81,7 +81,7 @@ export let initialState: InitialStateInMessagePageType = {
   ],
   updateWordInMessagePage: '',
 }
-const addMessagesInMessagePageReducer = (state = initialState, action: AddMessageInDialogsAT): InitialStateInMessagePageType => {
+const dialogsPageReducer = (state = initialState, action: AddMessageInDialogsAT): InitialStateInMessagePageType => {
   switch (action.type) {
     case ADD_MESSAGE: {
       const newMessage = {
@@ -114,4 +114,4 @@ export const updateWordsInDialogsActionCreator = (updateWordsInDialogs: string) 
     type: 'UPDATE_WORDS_IN_DIALOGS', newWords: updateWordsInDialogs
   }
 }
-export default addMessagesInMessagePageReducer
+export default dialogsPageReducer

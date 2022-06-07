@@ -1,4 +1,4 @@
-import addMessagesInMessagePageReducer from "./addMessagesInMessagePageReducer";
+import dialogsPageReducer from "./dialogsPageReducer";
 import {profilePageReducer} from "./profilePageReducer";
 import {v1} from "uuid/index";
 
@@ -183,7 +183,7 @@ type dispatchActionType = {
 //   },
 //   dispatch(action: dispatchActionType) {
 //     this._state.ProfilePage = profilePageAddPostReducer(this._state.ProfilePage, action)
-//     this._state.MessagePage = addMessagesInMessagePageReducer(this._state.MessagePage, action)
+//     this._state.MessagePage = dialogsPageReducer(this._state.MessagePage, action)
 //     this._callSubscriber(this._state)
 //   },
 // }

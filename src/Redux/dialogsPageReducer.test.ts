@@ -1,12 +1,12 @@
-import addMessagesInMessagePageReducer, {
+import dialogsPageReducer, {
   ADD_MESSAGE,
   initialState,
   UPDATE_WORDS_IN_DIALOGS
-} from "./addMessagesInMessagePageReducer";
+} from "./dialogsPageReducer";
 
 test('check add new message in dialogs', () => {
 
-  const endState = addMessagesInMessagePageReducer(initialState, {
+  const endState = dialogsPageReducer(initialState, {
     type: ADD_MESSAGE,
     newMes: 'hello',
   })
@@ -18,7 +18,7 @@ test('check update word in dialogs', () => {
   //   type: UPDATE_WORDS_IN_DIALOGS,
   //   newWords: 'h',
   // }
-  const endState = addMessagesInMessagePageReducer(initialState, {
+  const endState = dialogsPageReducer(initialState, {
     type: UPDATE_WORDS_IN_DIALOGS,
     newWords: 'h',
   })

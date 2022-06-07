@@ -2,7 +2,7 @@ import React from "react";
 import {Authorization} from "./Authorization";
 import axios from "axios";
 import {connect} from "react-redux";
-import {setDataAC} from "../../../Redux/authorization-reducer";
+import {setDataAC} from "../../../Redux/authorizationReducer";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../../Redux/redux-store";
 
@@ -16,8 +16,14 @@ class AuthorizationContainer extends React.Component<any, any> {
           let {id, email, login} = response.data.data
           this.props.setUserData(id, email, login)
         }
-
+        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${response.data.data.id}`, {
+          withCredentials: true
+        })
       })
+      .then(response => {
+        console.log(response.data)
+      })
+
   }
 
   render() {
