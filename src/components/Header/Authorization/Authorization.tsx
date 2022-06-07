@@ -2,24 +2,17 @@ import classes from "../Header.module.css";
 import {NavLink} from "react-router-dom";
 import React from "react";
 
-type AuthorizationType = {
-  login: string,
-  isAuth: boolean,
-  setUserData: (userId: number, email: string, login: string) => void
-}
 
-export const Authorization = (props: AuthorizationType) => {
-  console.log(props)
+export const Authorization = (props: any) => {
   return (
     <>
-      {props.isAuth ? <p>Зашел</p> : <p>Вышел</p>}
-      <ul className={classes.list}>
+      {props.isAuth ? <ul className={classes.list}>
         <li className={`${classes.item} ${classes.item_user}`}><a href="/" className={classes.link}><img
           className={classes.image}
           src='https://img4.goodfon.ru/original/1280x720/d/84/chingcho-chang-vostochnaia-gubki.jpg'
           alt="аватар"/>
         </a>
-          <span className={classes.user_name}>Chang</span>
+          <span className={classes.user_name}>{props.login}</span>
         </li>
         <li className={classes.item}><NavLink to="/" className={classes.link}>
           <svg className={classes.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
@@ -32,8 +25,7 @@ export const Authorization = (props: AuthorizationType) => {
           </svg>
         </NavLink>
         </li>
-        <li><NavLink to={'/login'}>Login</NavLink></li>
-      </ul>
+      </ul> : <p>Вышел</p>}
     </>
   )
 }
