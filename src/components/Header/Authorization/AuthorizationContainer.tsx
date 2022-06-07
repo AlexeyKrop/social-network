@@ -4,6 +4,7 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {setDataAC} from "../../../Redux/authorization-reducer";
 import {Dispatch} from "redux";
+import {AppStateType} from "../../../Redux/redux-store";
 
 class AuthorizationContainer extends React.Component<any, any> {
   componentDidMount() {
@@ -11,7 +12,11 @@ class AuthorizationContainer extends React.Component<any, any> {
       withCredentials: true
     })
       .then(response => {
-        console.log(response.data)
+        if (response.data.resultCode === 0) {
+          let {id, email, login} = response.data.data
+          this.props.setUserData(id, email, login)
+        }
+
       })
   }
 
@@ -20,14 +25,13 @@ class AuthorizationContainer extends React.Component<any, any> {
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    state
-  }
-}
+const mapStateToProps = (state: AppStateType) => ({
+  login: state.Authorization.login,
+  isAuth: state.Authorization.isAuth
+})
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setData: (userId: number, email: string, login: string) => {
+    setUserData: (userId: number, email: string, login: string) => {
       dispatch(setDataAC(userId, email, login))
     },
   }

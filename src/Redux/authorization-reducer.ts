@@ -2,6 +2,7 @@ let initialState = {
   id: 0,
   email: 'null',
   login: 'null',
+  isAuth: false
 }
 type InitialStateType = typeof initialState
 
@@ -10,7 +11,8 @@ export const authReducer = (state: InitialStateType = initialState, action: SetD
     case 'SET_USER_DATA':
       return {
         ...state,
-        ...action.data
+        ...action.data,
+        isAuth: true
       }
     default:
       return state
