@@ -3,6 +3,7 @@ import {Authorization} from "./Authorization";
 import axios from "axios";
 import {connect} from "react-redux";
 import {setDataAC} from "../../../Redux/authorization-reducer";
+import {Dispatch} from "redux";
 
 class AuthorizationContainer extends React.Component<any, any> {
   componentDidMount() {
@@ -24,7 +25,7 @@ const mapStateToProps = (state: any) => {
     state
   }
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setData: (userId: number, email: string, login: string) => {
       dispatch(setDataAC(userId, email, login))
