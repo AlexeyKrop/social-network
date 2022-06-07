@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../Redux/redux-store";
 import axios from "axios";
-import {setProfileUserAC} from "../../Redux/profilePageReducer";
+import {InitialStateInProfilePageType, setProfileUserAC} from "../../Redux/profilePageReducer";
 
 type PathParamsType = {
   userId: string,
@@ -75,7 +75,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setProfileUser: (profile: any) => {
+    setProfileUser: (profile: InitialStateInProfilePageType) => {
       dispatch(setProfileUserAC(profile))
     },
   }

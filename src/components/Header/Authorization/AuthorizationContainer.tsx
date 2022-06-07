@@ -2,6 +2,8 @@ import React from "react";
 import {Authorization} from "./Authorization";
 import axios from "axios";
 import {connect} from "react-redux";
+import {setDataAC} from "../../../Redux/authorization-reducer";
+import {setProfileUserAC} from "../../../Redux/profilePageReducer";
 
 class AuthorizationContainer extends React.Component<any, any> {
   componentDidMount() {
@@ -18,4 +20,16 @@ class AuthorizationContainer extends React.Component<any, any> {
   }
 }
 
-export default connect()(AuthorizationContainer)
+const mapStateToProps = (state: any) => {
+  return {
+    state
+  }
+}
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    setData: (setData: any) => {
+      // dispatch(setDataAC(userId, email, login))
+    },
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationContainer)

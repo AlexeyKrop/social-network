@@ -26,12 +26,10 @@ let initialState = {
   updatePostInProfile: '',
   profile: null
 }
-type InitialStateInProfilePageType = typeof initialState
+export type InitialStateInProfilePageType = typeof initialState
 
 export const profilePageReducer = (state = initialState, action: ProfilePageReducerAT): InitialStateInProfilePageType => {
-  if (state.profile) {
-    // console.log(state.profile['photos']['small'])
-  }
+  
 
   switch (action.type) {
     case ADD_POST: {
