@@ -5,3 +5,19 @@ export const getUser = (currentPageNumber: number, pageSize: number) => {
     withCredentials: true
   }).then(response => response.data)
 }
+export const deleteUser = (id: number, apiKey: string) => {
+  return axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
+    withCredentials: true,
+    headers: {
+      'API-KEY': apiKey
+    }
+  }).then(response => response.data)
+}
+export const addUser = (id: number, apiKey: string) => {
+  return axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
+    withCredentials: true,
+    headers: {
+      'API-KEY': apiKey
+    }
+  }).then(response => response.data)
+}

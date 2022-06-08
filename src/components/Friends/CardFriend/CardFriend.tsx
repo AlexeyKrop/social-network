@@ -2,6 +2,7 @@ import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
+import {addUser, deleteUser} from "../../../api/api";
 
 type propsCardSrc = {
   followed: boolean
@@ -78,28 +79,18 @@ const CardFriend = (props: propsCardSrc) => {
           <div className={classes.button_group}>
             <div className={classes.add_friend_btn}>
               {props.followed ? <button onClick={() => {
-                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
-                  withCredentials: true,
-                  headers: {
-                    'API-KEY': 'a3194ef5-a5fe-47c5-b463-8be5589a0929'
-                  }
-                })
-                  .then((response) => {
+                deleteUser(props.id, 'a3194ef5-a5fe-47c5-b463-8be5589a0929')
+                  .then((data) => {
                     // обработка успешного запроса
-                    if (response.data.resultCode === 0) {
+                    if (data.resultCode === 0) {
                       onClickDelFriendHandler(props.id)
                     }
                   })
               }} type="submit">Delete Friend</button> : <button onClick={() => {
-                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {
-                  withCredentials: true,
-                  headers: {
-                    'API-KEY': 'a3194ef5-a5fe-47c5-b463-8be5589a0929'
-                  }
-                })
-                  .then((response) => {
+                addUser(props.id, 'a3194ef5-a5fe-47c5-b463-8be5589a0929')
+                  .then((data) => {
                     // обработка успешного запроса
-                    if (response.data.resultCode === 0) {
+                    if (data.resultCode === 0) {
                       onClickDelFriendHandler(props.id)
                     }
                   })
