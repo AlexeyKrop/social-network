@@ -3,7 +3,8 @@ import {Friends} from "./Friends";
 import {
   addFriendAC,
   delFriendAC,
-  setCurrentPageNumberAC, setTogglePreloaderAC,
+  setCurrentPageNumberAC,
+  setTogglePreloaderAC,
   setTotalUserCountAC,
   setUsersAC,
   UserStateType
@@ -11,8 +12,8 @@ import {
 import {AppStateType} from "../../Redux/redux-store";
 import {Dispatch} from "redux";
 import React from "react";
-import axios from "axios";
 import {Preloader} from "../../common/preloader/Preloader";
+import {getUser} from "../../api/api";
 
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
@@ -35,9 +36,10 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
 
   componentDidMount() {
     this.props.setTogglePreloader(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`, {
-      withCredentials: true
-    })
+    // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`, {
+    //   withCredentials: true
+    // })
+    getUser(this.props.currentPageNumber, this.props.pageSize)
       .then((response) => {
         this.props.setTogglePreloader(false)
         // обработка успешного запроса
@@ -49,12 +51,14 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
   onChangedPage = (pageNumber: number) => {
     this.props.setCurrentPage(pageNumber)
     this.props.setTogglePreloader(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+    // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+    getUser(pageNumber, this.props.pageSize)
       .then((response) => {
         // обработка успешного запроса
         this.props.setTogglePreloader(false)
         this.props.setUser(response.data.items)
       })
+
   }
 
   render() {
