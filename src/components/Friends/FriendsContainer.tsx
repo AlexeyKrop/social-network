@@ -35,7 +35,9 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
 
   componentDidMount() {
     this.props.setTogglePreloader(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`, {
+      withCredentials: true
+    })
       .then((response) => {
         this.props.setTogglePreloader(false)
         // обработка успешного запроса
