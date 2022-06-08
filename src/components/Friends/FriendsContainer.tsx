@@ -37,11 +37,11 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
   componentDidMount() {
     this.props.setTogglePreloader(true)
     getUser(this.props.currentPageNumber, this.props.pageSize)
-      .then((response) => {
+      .then((data) => {
         this.props.setTogglePreloader(false)
         // обработка успешного запроса
-        this.props.setUser(response.data.items)
-        this.props.setTotalUserCount(response.data.totalCount)
+        this.props.setUser(data.items)
+        this.props.setTotalUserCount(data.totalCount)
       })
   }
 
@@ -49,10 +49,10 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
     this.props.setCurrentPage(pageNumber)
     this.props.setTogglePreloader(true)
     getUser(pageNumber, this.props.pageSize)
-      .then((response) => {
+      .then((data) => {
         // обработка успешного запроса
         this.props.setTogglePreloader(false)
-        this.props.setUser(response.data.items)
+        this.props.setUser(data.items)
       })
 
   }
