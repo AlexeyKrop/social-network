@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 type propsCardSrc = {
   followed: boolean
@@ -77,9 +78,31 @@ const CardFriend = (props: propsCardSrc) => {
           <div className={classes.button_group}>
             <div className={classes.add_friend_btn}>
               {props.followed ? <button onClick={() => {
-                onClickDelFriendHandler(props.id)
+                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
+                  withCredentials: true,
+                  headers: {
+                    'API-KEY': 'a3194ef5-a5fe-47c5-b463-8be5589a0929'
+                  }
+                })
+                  .then((response) => {
+                    // обработка успешного запроса
+                    if (response.data.resultCode === 0) {
+                      onClickDelFriendHandler(props.id)
+                    }
+                  })
               }} type="submit">Delete Friend</button> : <button onClick={() => {
-                onClickAddFriendHandler(props.id)
+                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {
+                  withCredentials: true,
+                  headers: {
+                    'API-KEY': 'a3194ef5-a5fe-47c5-b463-8be5589a0929'
+                  }
+                })
+                  .then((response) => {
+                    // обработка успешного запроса
+                    if (response.data.resultCode === 0) {
+                      onClickDelFriendHandler(props.id)
+                    }
+                  })
               }} type="submit">Add Friend</button>}
             </div>
             <div className={classes.send_message_btn}>
