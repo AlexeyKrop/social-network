@@ -13,7 +13,7 @@ import {AppStateType} from "../../Redux/redux-store";
 import {Dispatch} from "redux";
 import React from "react";
 import {Preloader} from "../../common/preloader/Preloader";
-import {getUser} from "../../api/api";
+import {userAPI} from "../../api/api";
 
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
@@ -36,7 +36,7 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
 
   componentDidMount() {
     this.props.setTogglePreloader(true)
-    getUser(this.props.currentPageNumber, this.props.pageSize)
+    userAPI.getUser(this.props.currentPageNumber, this.props.pageSize)
       .then((data) => {
         this.props.setTogglePreloader(false)
         // обработка успешного запроса
@@ -48,7 +48,7 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
   onChangedPage = (pageNumber: number) => {
     this.props.setCurrentPage(pageNumber)
     this.props.setTogglePreloader(true)
-    getUser(pageNumber, this.props.pageSize)
+    userAPI.getUser(pageNumber, this.props.pageSize)
       .then((data) => {
         // обработка успешного запроса
         this.props.setTogglePreloader(false)

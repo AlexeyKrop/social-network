@@ -1,8 +1,7 @@
 import React from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
-import {addUser, deleteUser} from "../../../api/api";
+import {userAPI} from "../../../api/api";
 
 type propsCardSrc = {
   followed: boolean
@@ -79,7 +78,7 @@ const CardFriend = (props: propsCardSrc) => {
           <div className={classes.button_group}>
             <div className={classes.add_friend_btn}>
               {props.followed ? <button onClick={() => {
-                deleteUser(props.id)
+                userAPI.deleteUser(props.id)
                   .then((data) => {
                     // обработка успешного запроса
                     if (data.resultCode === 0) {
@@ -87,11 +86,11 @@ const CardFriend = (props: propsCardSrc) => {
                     }
                   })
               }} type="submit">Delete Friend</button> : <button onClick={() => {
-                addUser(props.id)
+                userAPI.addUser(props.id)
                   .then((data) => {
                     // обработка успешного запроса
                     if (data.resultCode === 0) {
-                      onClickDelFriendHandler(props.id)
+                      onClickAddFriendHandler(props.id)
                     }
                   })
               }} type="submit">Add Friend</button>}
