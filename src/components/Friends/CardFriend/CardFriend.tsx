@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
 import {userAPI} from "../../../api/api";
@@ -14,11 +14,23 @@ type propsCardSrc = {
   delFriend: (id: number) => void
   id: number,
 }
+const DELAY = 500;
+type SetTimeoutType = ReturnType<typeof setTimeout>
 const CardFriend = (props: propsCardSrc) => {
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  useEffect(() => {
+    let timeoutId: SetTimeoutType = setTimeout((): void => {
+      setIsDisabled(false);
+    }, DELAY);
+
+    return () => clearTimeout(timeoutId);
+  }, [isDisabled]);
   const onClickAddFriendHandler = (id: number) => {
+    setIsDisabled(true)
     props.addFriend(id)
   }
   const onClickDelFriendHandler = (id: number) => {
+    setIsDisabled(true)
     props.delFriend(id)
   }
   const onClickSendMessageHandler = (id: number) => {
@@ -77,7 +89,7 @@ const CardFriend = (props: propsCardSrc) => {
           </ul>
           <div className={classes.button_group}>
             <div className={classes.add_friend_btn}>
-              {props.followed ? <button onClick={() => {
+              {props.followed ? <button disabled={isDisabled} onClick={() => {
                 userAPI.deleteUser(props.id)
                   .then((data) => {
                     // обработка успешного запроса
@@ -85,7 +97,7 @@ const CardFriend = (props: propsCardSrc) => {
                       onClickDelFriendHandler(props.id)
                     }
                   })
-              }} type="submit">Delete Friend</button> : <button onClick={() => {
+              }} type="submit">Delete Friend</button> : <button disabled={isDisabled} onClick={() => {
                 userAPI.addUser(props.id)
                   .then((data) => {
                     // обработка успешного запроса
