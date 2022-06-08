@@ -77,11 +77,10 @@ const CardFriend = (props: propsCardSrc) => {
           <div className={classes.button_group}>
             <div className={classes.add_friend_btn}>
               {props.followed ? <button onClick={() => {
-                  onClickAddFriendHandler(props.id)
-                }} type="submit">Add Friend</button> :
-                <button onClick={() => {
-                  onClickDelFriendHandler(props.id)
-                }} type="submit">Delete Friend</button>}
+                onClickDelFriendHandler(props.id)
+              }} type="submit">Delete Friend</button> : <button onClick={() => {
+                onClickAddFriendHandler(props.id)
+              }} type="submit">Add Friend</button>}
             </div>
             <div className={classes.send_message_btn}>
               <button onClick={() => {
