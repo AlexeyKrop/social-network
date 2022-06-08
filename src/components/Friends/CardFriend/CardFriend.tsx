@@ -87,7 +87,7 @@ const CardFriend = (props: propsCardSrc) => {
                     }
                   })
               }} type="submit">Delete Friend</button> : <button onClick={() => {
-                addUser(props.id, 'a3194ef5-a5fe-47c5-b463-8be5589a0929')
+                addUser(props.id)
                   .then((data) => {
                     // обработка успешного запроса
                     if (data.resultCode === 0) {

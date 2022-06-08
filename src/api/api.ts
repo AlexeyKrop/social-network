@@ -14,11 +14,6 @@ export const getUser = (currentPageNumber: number, pageSize: number) => {
 export const deleteUser = (id: number) => {
   return instance.delete(baseURL + `follow/${id}`).then(response => response.data)
 }
-export const addUser = (id: number, apiKey: string) => {
-  return axios.post(baseURL + `follow/${id}`, {}, {
-    withCredentials: true,
-    headers: {
-      'API-KEY': apiKey
-    }
-  }).then(response => response.data)
+export const addUser = (id: number) => {
+  return instance.post(baseURL + `follow/${id}`, {}).then(response => response.data)
 }
