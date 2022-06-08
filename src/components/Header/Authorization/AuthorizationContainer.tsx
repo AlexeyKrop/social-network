@@ -21,7 +21,7 @@ class AuthorizationContainer extends React.Component<any, any> {
         })
       })
       .then(response => {
-        console.log(response.data)
+        // console.log(response.data)
       })
 
   }

@@ -69,7 +69,6 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
           setCurrentPage={this.props.setCurrentPage}
           setTotalUserCount={this.props.setTotalUserCount}
           onChangedPage={this.onChangedPage}
-
         />
       </>
     )
