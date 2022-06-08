@@ -36,9 +36,6 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
 
   componentDidMount() {
     this.props.setTogglePreloader(true)
-    // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`, {
-    //   withCredentials: true
-    // })
     getUser(this.props.currentPageNumber, this.props.pageSize)
       .then((response) => {
         this.props.setTogglePreloader(false)
@@ -51,7 +48,6 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
   onChangedPage = (pageNumber: number) => {
     this.props.setCurrentPage(pageNumber)
     this.props.setTogglePreloader(true)
-    // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
     getUser(pageNumber, this.props.pageSize)
       .then((response) => {
         // обработка успешного запроса
