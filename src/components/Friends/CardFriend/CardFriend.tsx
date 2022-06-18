@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
-import {userAPI} from "../../../api/api";
+
 
 type propsCardSrc = {
   followed: boolean
@@ -25,13 +25,13 @@ const CardFriend = (props: propsCardSrc) => {
 
     return () => clearTimeout(timeoutId);
   }, [isDisabled]);
-  const onClickAddFriendHandler = (id: number) => {
+  const onClickAddFriendHandler = () => {
     setIsDisabled(true)
-    props.addFriend(id)
+    props.addFriend(props.id)
   }
-  const onClickDelFriendHandler = (id: number) => {
+  const onClickDelFriendHandler = () => {
     setIsDisabled(true)
-    props.delFriend(id)
+    props.delFriend(props.id)
   }
   const onClickSendMessageHandler = (id: number) => {
     // props.openModal(id)
@@ -89,23 +89,9 @@ const CardFriend = (props: propsCardSrc) => {
           </ul>
           <div className={classes.button_group}>
             <div className={classes.add_friend_btn}>
-              {props.followed ? <button disabled={isDisabled} onClick={() => {
-                userAPI.deleteUser(props.id)
-                  .then((data) => {
-                    // обработка успешного запроса
-                    if (data.resultCode === 0) {
-                      onClickDelFriendHandler(props.id)
-                    }
-                  })
-              }} type="submit">Delete Friend</button> : <button disabled={isDisabled} onClick={() => {
-                userAPI.addUser(props.id)
-                  .then((data) => {
-                    // обработка успешного запроса
-                    if (data.resultCode === 0) {
-                      onClickAddFriendHandler(props.id)
-                    }
-                  })
-              }} type="submit">Add Friend</button>}
+              {props.followed ?
+                <button disabled={isDisabled} onClick={onClickDelFriendHandler} type="submit">Delete Friend</button> :
+                <button disabled={isDisabled} onClick={onClickAddFriendHandler} type="submit">Add Friend</button>}
             </div>
             <div className={classes.send_message_btn}>
               <button onClick={() => {

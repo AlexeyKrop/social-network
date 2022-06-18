@@ -132,14 +132,6 @@ export const delFriendAC = (uId: number): DelFriendAT => {
   return {type: DELETE_FRIEND, uId: uId}
 }
 
-// export const openModalInFriendAC = (uId: number): OpenModalInFriendAT => {
-//   return {type: OPEN_MODAL, uId: uId}
-// }
-//
-// export const closeModalInFriendAC = (uId: number): CloseModalInFriendAT => {
-//   return {type: CLOSE_MODAL, uId: uId}
-// }
-
 export const setUsersAC = (users: Array<UserStateType>): SetUsersAT => {
   return {type: SET_USERS, users: users}
 }
@@ -174,6 +166,28 @@ export const getUsersTC = (currentPageNumber: number, pageSize: number): any => 
         // обработка успешного запроса
         dispatch(setUsersAC(data.items))
         dispatch(setTotalUserCountAC(data.totalCount))
+      })
+  }
+}
+export const delUserTC = (id: number): any => {
+  return (dispatch: any) => {
+    userAPI.deleteUser(id)
+      .then((data) => {
+        // обработка успешного запроса
+        if (data.resultCode === 0) {
+          dispatch(addFriendAC(id))
+        }
+      })
+  }
+}
+export const addUserTC = (id: number): any => {
+  return (dispatch: any) => {
+    userAPI.addUser(id)
+      .then((data) => {
+        // обработка успешного запроса
+        if (data.resultCode === 0) {
+          dispatch(delFriendAC(id))
+        }
       })
   }
 }

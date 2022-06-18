@@ -1,19 +1,17 @@
 import {connect} from "react-redux";
 import {Friends} from "./Friends";
-import {
-  addFriendAC,
-  delFriendAC, getUsersTC,
-  setCurrentPageNumberAC,
-  setTogglePreloaderAC,
-  setTotalUserCountAC,
-  setUsersAC,
-  UserStateType
-} from "../../Redux/friendsPageReducer";
 import {AppStateType} from "../../Redux/redux-store";
 import {Dispatch} from "redux";
 import React from "react";
 import {Preloader} from "../../common/preloader/Preloader";
-import {userAPI} from "../../api/api";
+import {
+  addUserTC,
+  delUserTC,
+  getUsersTC,
+  setCurrentPageNumberAC,
+  setTotalUserCountAC,
+  UserStateType
+} from "../../Redux/friendsPageReducer";
 
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
@@ -25,10 +23,8 @@ type mapStateToPropsType = {
 type mapDispatchToPropsType = {
   addFriend: (id: number) => void
   delFriend: (id: number) => void
-  setUser: (user: Array<UserStateType>) => void
   setCurrentPage: (currentPageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
-  setTogglePreloader: (preloader: boolean) => void
   getUsers: (currentPageNumber: number, pageSize: number) => void
 }
 type FriendsContainerType = mapStateToPropsType & mapDispatchToPropsType
@@ -54,7 +50,6 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
           totalUserCount={this.props.totalUserCount}
           addFriend={this.props.addFriend}
           delFriend={this.props.delFriend}
-          setUser={this.props.setUser}
           setCurrentPage={this.props.setCurrentPage}
           setTotalUserCount={this.props.setTotalUserCount}
           onChangedPage={this.onChangedPage}
@@ -78,15 +73,11 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
   return {
 
     addFriend: (id: number) => {
-      dispatch(addFriendAC(id))
+      dispatch(addUserTC(id))
     },
 
     delFriend: (id: number) => {
-      dispatch(delFriendAC(id))
-    },
-
-    setUser: (user: Array<UserStateType>) => {
-      dispatch(setUsersAC(user))
+      dispatch(delUserTC(id))
     },
 
     setCurrentPage: (currentPageNumber: number) => {
@@ -95,10 +86,6 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
 
     setTotalUserCount: (totalUserCount: number) => {
       dispatch(setTotalUserCountAC(totalUserCount))
-    },
-
-    setTogglePreloader: (preloader: boolean) => {
-      dispatch((setTogglePreloaderAC(preloader)))
     },
 
     getUsers: (currentPageNumber: number, pageSize: number) => {

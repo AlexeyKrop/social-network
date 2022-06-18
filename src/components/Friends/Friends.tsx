@@ -1,8 +1,7 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import classes from './Friends.module.css'
 import CardFriend from './CardFriend/CardFriend';
 import {UserStateType} from "../../Redux/friendsPageReducer";
-import axios from "axios";
 
 
 export type cardFriendsPropsType = {
@@ -14,7 +13,6 @@ export type cardFriendsPropsType = {
   delFriend: (id: number) => void
   // openModal: (id: number) => void
   // closeModal: (id: number) => void
-  setUser: (user: Array<UserStateType>) => void
   setCurrentPage: (pageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
   onChangedPage: (pageNumber: number) => void
