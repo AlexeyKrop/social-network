@@ -1,3 +1,5 @@
+import {userAPI} from "../api/api";
+
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const OPEN_MODAL = 'OPEN_MODAL';
@@ -121,6 +123,7 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
   }
 
 }
+
 export const addFriendAC = (uId: number): AddFriendAT => {
   return {type: ADD_FRIEND, uId: uId}
 }
@@ -129,13 +132,13 @@ export const delFriendAC = (uId: number): DelFriendAT => {
   return {type: DELETE_FRIEND, uId: uId}
 }
 
-export const openModalInFriendAC = (uId: number): OpenModalInFriendAT => {
-  return {type: OPEN_MODAL, uId: uId}
-}
-
-export const closeModalInFriendAC = (uId: number): CloseModalInFriendAT => {
-  return {type: CLOSE_MODAL, uId: uId}
-}
+// export const openModalInFriendAC = (uId: number): OpenModalInFriendAT => {
+//   return {type: OPEN_MODAL, uId: uId}
+// }
+//
+// export const closeModalInFriendAC = (uId: number): CloseModalInFriendAT => {
+//   return {type: CLOSE_MODAL, uId: uId}
+// }
 
 export const setUsersAC = (users: Array<UserStateType>): SetUsersAT => {
   return {type: SET_USERS, users: users}
@@ -159,6 +162,19 @@ export const setTogglePreloaderAC = (loader: boolean): setTogglePreloaderAT => {
   return {
     type: SET_TOGGLE_PRELOADER,
     preloader: loader
+  }
+}
+
+export const getUsersTC = (currentPageNumber: number, pageSize: number): any => {
+  return (dispatch: any) => {
+    dispatch(setTogglePreloaderAC(true))
+    userAPI.getUser(currentPageNumber, pageSize)
+      .then((data) => {
+        dispatch(setTogglePreloaderAC(false))
+        // обработка успешного запроса
+        dispatch(setUsersAC(data.items))
+        dispatch(setTotalUserCountAC(data.totalCount))
+      })
   }
 }
 

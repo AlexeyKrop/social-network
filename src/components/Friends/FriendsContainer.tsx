@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {Friends} from "./Friends";
 import {
   addFriendAC,
-  delFriendAC,
+  delFriendAC, getUsersTC,
   setCurrentPageNumberAC,
   setTogglePreloaderAC,
   setTotalUserCountAC,
@@ -29,20 +29,22 @@ type mapDispatchToPropsType = {
   setCurrentPage: (currentPageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
   setTogglePreloader: (preloader: boolean) => void
+  getUsers: (currentPageNumber: number, pageSize: number) => void
 }
 type FriendsContainerType = mapStateToPropsType & mapDispatchToPropsType
 
 class FriendsContainer extends React.Component<FriendsContainerType> {
 
   componentDidMount() {
-    this.props.setTogglePreloader(true)
-    userAPI.getUser(this.props.currentPageNumber, this.props.pageSize)
-      .then((data) => {
-        this.props.setTogglePreloader(false)
-        // обработка успешного запроса
-        this.props.setUser(data.items)
-        this.props.setTotalUserCount(data.totalCount)
-      })
+    this.props.getUsers(this.props.currentPageNumber, this.props.pageSize)
+    // this.props.setTogglePreloader(true)
+    // userAPI.getUser(this.props.currentPageNumber, this.props.pageSize)
+    //   .then((data) => {
+    //     this.props.setTogglePreloader(false)
+    //     // обработка успешного запроса
+    //     this.props.setUser(data.items)
+    //     this.props.setTotalUserCount(data.totalCount)
+    //   })
   }
 
   onChangedPage = (pageNumber: number) => {
@@ -112,8 +114,11 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
 
     setTogglePreloader: (preloader: boolean) => {
       dispatch((setTogglePreloaderAC(preloader)))
-    }
-    ,
+    },
+
+    getUsers: (currentPageNumber: number, pageSize: number) => {
+      dispatch((getUsersTC(currentPageNumber, pageSize)))
+    },
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer);
