@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk'
 import dialogsPageReducer from "./dialogsPageReducer";
-import friendsPageReducer from "./friendsPageReducer";
+import friendsPageReducer, {ActionFriendPageReducerType} from "./friendsPageReducer";
 import {profilePageReducer} from "./profilePageReducer";
 import {authReducer} from "./authorizationReducer";
 
@@ -11,6 +11,12 @@ const rootReducer = combineReducers({
   FriendsPage: friendsPageReducer,
   Authorization: authReducer,
 })
-export type AppStateType = ReturnType<typeof rootReducer>
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+
+
+type AppActionsType = ActionFriendPageReducerType
+export type AppStateType = ReturnType<typeof rootReducer>
+export type AppDispatch = ThunkDispatch<AppStateType, unknown, AppActionsType>
+export type StoreType = typeof store
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, AppActionsType>
 export default store

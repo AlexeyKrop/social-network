@@ -1,4 +1,5 @@
 import {userAPI} from "../api/api";
+import {AppThunk} from "./redux-store";
 
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
@@ -17,6 +18,7 @@ let initialState = {
   preloader: false
 }
 
+//////TYPE///////////////////////////////////////
 export type UserStateType = {
   id: number
   name: string
@@ -30,7 +32,7 @@ export type UserStateType = {
 
 }
 type InitialStateInFriendPageType = typeof initialState
-type ActionFriendPageReducerType =
+export type ActionFriendPageReducerType =
   AddFriendAT
   | DelFriendAT
   | OpenModalInFriendAT
@@ -66,6 +68,8 @@ type setTogglePreloaderAT = {
   preloader: boolean
 }
 
+
+////Reducer///////////////////////////////
 const friendsPageReducer = (state = initialState, action: ActionFriendPageReducerType): InitialStateInFriendPageType => {
   switch (action.type) {
     case ADD_FRIEND: {
@@ -124,6 +128,7 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
 
 }
 
+// ActionCreator ///////////////////////
 export const addFriendAC = (uId: number): AddFriendAT => {
   return {type: ADD_FRIEND, uId: uId}
 }
@@ -157,8 +162,10 @@ export const setTogglePreloaderAC = (loader: boolean): setTogglePreloaderAT => {
   }
 }
 
-export const getUsersTC = (currentPageNumber: number, pageSize: number): any => {
-  return (dispatch: any) => {
+
+/// Thunk /////////////////////////////////////////
+export const getUsersTC = (currentPageNumber: number, pageSize: number): AppThunk => {
+  return (dispatch) => {
     dispatch(setTogglePreloaderAC(true))
     userAPI.getUser(currentPageNumber, pageSize)
       .then((data) => {
@@ -169,8 +176,9 @@ export const getUsersTC = (currentPageNumber: number, pageSize: number): any => 
       })
   }
 }
-export const delUserTC = (id: number): any => {
-  return (dispatch: any) => {
+
+export const delUserTC = (id: number): AppThunk => {
+  return (dispatch) => {
     userAPI.deleteUser(id)
       .then((data) => {
         // обработка успешного запроса
@@ -180,8 +188,9 @@ export const delUserTC = (id: number): any => {
       })
   }
 }
-export const addUserTC = (id: number): any => {
-  return (dispatch: any) => {
+
+export const addUserTC = (id: number): AppThunk => {
+  return (dispatch) => {
     userAPI.addUser(id)
       .then((data) => {
         // обработка успешного запроса
@@ -191,5 +200,6 @@ export const addUserTC = (id: number): any => {
       })
   }
 }
+
 
 export default friendsPageReducer
