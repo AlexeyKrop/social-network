@@ -37,25 +37,10 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
 
   componentDidMount() {
     this.props.getUsers(this.props.currentPageNumber, this.props.pageSize)
-    // this.props.setTogglePreloader(true)
-    // userAPI.getUser(this.props.currentPageNumber, this.props.pageSize)
-    //   .then((data) => {
-    //     this.props.setTogglePreloader(false)
-    //     // обработка успешного запроса
-    //     this.props.setUser(data.items)
-    //     this.props.setTotalUserCount(data.totalCount)
-    //   })
   }
 
   onChangedPage = (pageNumber: number) => {
-    this.props.setCurrentPage(pageNumber)
-    this.props.setTogglePreloader(true)
-    userAPI.getUser(pageNumber, this.props.pageSize)
-      .then((data) => {
-        // обработка успешного запроса
-        this.props.setTogglePreloader(false)
-        this.props.setUser(data.items)
-      })
+    this.props.getUsers(pageNumber, this.props.pageSize)
 
   }
 
