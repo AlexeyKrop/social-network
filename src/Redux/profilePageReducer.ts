@@ -4,15 +4,6 @@ export const ADD_POST = 'ADD_POST';
 export const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
 export const SET_PROFILE_USER = 'SET_PROFILE_USER';
 
-// type AddPostInProfilePageAT = AddPostAT | UpdateWordsInPostAT
-// export type AddPostAT = {
-//   type: 'ADD_POST',
-//   newEl: string
-// }
-// export type UpdateWordsInPostAT = {
-//   type: 'UPDATE_WORDS_IN_POST',
-//   updateWords: string
-// }
 export type  AddMessageInProfilePage = {
   user_name: string
   message: string
@@ -29,7 +20,7 @@ let initialState = {
 export type InitialStateInProfilePageType = typeof initialState
 
 export const profilePageReducer = (state = initialState, action: ProfilePageReducerAT): InitialStateInProfilePageType => {
-  
+
 
   switch (action.type) {
     case ADD_POST: {
