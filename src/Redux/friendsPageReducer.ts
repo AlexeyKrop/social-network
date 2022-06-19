@@ -170,7 +170,6 @@ export const getUsersTC = (currentPageNumber: number, pageSize: number): AppThun
     userAPI.getUser(currentPageNumber, pageSize)
       .then((data) => {
         dispatch(setTogglePreloaderAC(false))
-        // обработка успешного запроса
         dispatch(setUsersAC(data.items))
         dispatch(setTotalUserCountAC(data.totalCount))
       })

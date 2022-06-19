@@ -6,8 +6,7 @@ import MyPostContainer from "./Myposts/MypostContainer";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {InitialStateInProfilePageType, setProfileUserAC} from "../../Redux/profilePageReducer";
-import {userAPI} from "../../api/api";
+import {getProfileUserTC} from "../../Redux/profilePageReducer";
 
 type PathParamsType = {
   userId: string,
@@ -48,7 +47,8 @@ class ProfileContainer extends React.Component<any, any> {
     if (!userID) {
       userID = 2
     }
-    userAPI.setProfileUser(userID).then(data => this.props.setProfileUser(data))
+    this.props.getProfileUser(userID)
+
   }
 
   render() {
@@ -71,9 +71,9 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setProfileUser: (profile: InitialStateInProfilePageType) => {
-      dispatch(setProfileUserAC(profile))
-    },
+    getProfileUser: (id: number) => {
+      dispatch(getProfileUserTC(id))
+    }
   }
 }
 const ProfileContainerWithRouter = withRouter(ProfileContainer);

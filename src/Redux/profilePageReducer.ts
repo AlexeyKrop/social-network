@@ -1,4 +1,5 @@
 import {v1} from "uuid";
+import {userAPI} from "../api/api";
 
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
@@ -63,7 +64,13 @@ export const setProfileUserAC = (profile: any) => ({type: SET_PROFILE_USER, prof
 type AddPostAT = ReturnType<typeof addPostActionCreator>
 type UpdatePostInProfileAT = ReturnType<typeof updatePostInProfileActionCreator>
 type setProfileUserAT = ReturnType<typeof setProfileUserAC>
-
-
 type ProfilePageReducerAT = AddPostAT | UpdatePostInProfileAT | setProfileUserAT
+
+//Thunk
+export const getProfileUserTC = (userID: number): any => {
+  return (dispatch: any) => {
+    userAPI.setProfileUser(userID)
+      .then(data => dispatch(setProfileUserAC(data)))
+  }
+}
 

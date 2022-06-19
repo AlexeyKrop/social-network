@@ -1,3 +1,5 @@
+import {authMe} from "../api/api";
+
 let initialState = {
   id: 0,
   email: 'null',
@@ -25,3 +27,15 @@ export const setDataAC = (userId: number, email: string, login: string) => ({
   data: {id: userId, email: email, login: login,}
 } as const)
 type SetUserDataAT = ReturnType<typeof setDataAC>
+
+export const authUserTC = (): any => {
+  return (dispatch: any) => {
+    authMe.me()
+      .then(response => {
+        if (response.data.resultCode === 0) {
+          let {id, email, login} = response.data.data
+          dispatch(setDataAC(id, email, login))
+        }
+      })
+  }
+}
