@@ -6,10 +6,8 @@ import MyPostContainer from "./Myposts/MypostContainer";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../Redux/redux-store";
-import axios from "axios";
 import {InitialStateInProfilePageType, setProfileUserAC} from "../../Redux/profilePageReducer";
 import {userAPI} from "../../api/api";
-import {log} from "util";
 
 type PathParamsType = {
   userId: string,
@@ -50,7 +48,7 @@ class ProfileContainer extends React.Component<any, any> {
     if (!userID) {
       userID = 2
     }
-    userAPI.setProfileUser(userID).then(response => this.props.setProfileUser(response))
+    userAPI.setProfileUser(userID).then(data => this.props.setProfileUser(data))
   }
 
   render() {
