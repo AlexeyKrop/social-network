@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, RouteComponentProps, withRouter} from 'react-router-dom';
+import {NavLink, Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostContainer from "./Myposts/MypostContainer";
@@ -30,18 +30,20 @@ type MapStateToPropsType = {
     small?: string
     large?: string
   }
+  auth: boolean
+  match: any
 }
 type initialProfileType = {
   profile: null
 }
 type MapStateToPropsMainType = MapStateToPropsType | initialProfileType
 type MapDispatchToPropsType = {
-  setProfileUser: (profile: MapStateToPropsMainType) => void
+  getProfileUser: (profile: MapStateToPropsMainType) => void
 }
 type StatePropsType = MapStateToPropsType & MapDispatchToPropsType
 type PropsType = RouteComponentProps<PathParamsType> & StatePropsType
 
-class ProfileContainer extends React.Component<any, any> {
+class ProfileContainer extends React.Component<any, PropsType> {
   componentDidMount() {
     let userID = this.props.match.params.userId
     if (!userID) {
@@ -52,6 +54,7 @@ class ProfileContainer extends React.Component<any, any> {
   }
 
   render() {
+    if (!this.props.auth) return <Redirect to={'/login'}/>
     return (
       <>
         <div className={classes.image}>
@@ -67,6 +70,7 @@ class ProfileContainer extends React.Component<any, any> {
 const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
   return {
     profile: state.ProfilePage.profile,
+    auth: state.Authorization.isAuth
   }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
