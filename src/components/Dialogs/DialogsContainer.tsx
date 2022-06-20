@@ -1,4 +1,5 @@
 import Dialogs from "./Dialogs";
+import React from "react";
 import {
   addMessageActionCreator,
   MessageDialogsItemType,
@@ -7,13 +8,13 @@ import {
 } from "../../Redux/dialogsPageReducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type mapStateToPropsType = {
   UserDialogsItems: Array<UserDialogsItemType>
   MessageDialogsItems: Array<MessageDialogsItemType>
   updateWordInMessagePage: string
-  auth: boolean
 }
 type mapDispatchToPropsType = {
   addMessage: (message: string) => void
@@ -24,7 +25,6 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     UserDialogsItems: state.MessagePage.UserDialogsItems,
     MessageDialogsItems: state.MessagePage.MessageDialogsItems,
     updateWordInMessagePage: state.MessagePage.updateWordInMessagePage,
-    auth: state.Authorization.isAuth
   }
 }
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
@@ -38,5 +38,9 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
 
   }
 }
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
-export default DialogsContainer;
+// const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+// export default DialogsContainer;
+export default compose<React.ComponentType>(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect
+)(Dialogs)

@@ -2,14 +2,13 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import {MessageDialogsItem, MessagePropsType} from './MessageDialogsItem/MessageDialogsItem';
 import {UserDialogsItem, UserItemPropsType} from './UserDialogsItem/UserDialogsItem';
-import {Redirect} from "react-router-dom";
 
 type DialogsPropsType = {
   UserDialogsItems: Array<UserItemPropsType>
   MessageDialogsItems: Array<MessagePropsType>
   addMessage: (message: string) => void
   updateWordsInDialogs: (updateWordsInDialogs: string) => void
-  auth: boolean
+
 }
 
 const Dialogs = (props: DialogsPropsType) => {
@@ -33,7 +32,7 @@ const Dialogs = (props: DialogsPropsType) => {
   let MessageDialogsItemsData = props.MessageDialogsItems.map((m) => <MessageDialogsItem
     src={m.src} message={m.message} message_time={m.message_time}
     id={m.id} key={m.id}/>)
-  if (!props.auth) return <Redirect to={'/login'}/>
+  // if (!props.auth) return <Redirect to={'/login'}/>
   return (
     <>
       <ul className={classes.user}>
