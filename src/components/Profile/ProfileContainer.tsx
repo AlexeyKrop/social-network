@@ -1,12 +1,13 @@
 import React from 'react';
-import {NavLink, Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
+import {NavLink, RouteComponentProps, withRouter} from 'react-router-dom';
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostContainer from "./Myposts/MypostContainer";
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {getProfileUserTC} from "../../Redux/profilePageReducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type PathParamsType = {
   userId: string,
@@ -54,7 +55,7 @@ class ProfileContainer extends React.Component<any, PropsType> {
   }
 
   render() {
-    if (!this.props.auth) return <Redirect to={'/login'}/>
+    // if (!this.props.auth) return <Redirect to={'/login'}/>
     return (
       <>
         <div className={classes.image}>
@@ -70,7 +71,6 @@ class ProfileContainer extends React.Component<any, PropsType> {
 const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
   return {
     profile: state.ProfilePage.profile,
-    auth: state.Authorization.isAuth
   }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -80,5 +80,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
   }
 }
+compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect,
+  withRouter,
+)(ProfileContainer)
 const ProfileContainerWithRouter = withRouter(ProfileContainer);
+
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainerWithRouter);
