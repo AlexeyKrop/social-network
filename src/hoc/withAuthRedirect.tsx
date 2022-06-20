@@ -3,13 +3,16 @@ import {Redirect} from "react-router-dom";
 import {AppStateType} from "../Redux/redux-store";
 import {connect} from "react-redux";
 
-const mapStateToProps = (state: AppStateType) => {
+type MapStateToPropsType = {
+  auth: boolean
+}
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
   return {
     auth: state.Authorization.isAuth
   }
 }
 export const withAuthRedirect = (Component: any) => {
-  const RedirectComponent = (props: any) => {
+  const RedirectComponent = (props: MapStateToPropsType) => {
     if (!props.auth) return <Redirect to={'/login'}/>
     return <Component {...props}/>
   }

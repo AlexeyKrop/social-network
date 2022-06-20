@@ -55,7 +55,6 @@ class ProfileContainer extends React.Component<any, PropsType> {
   }
 
   render() {
-    // if (!this.props.auth) return <Redirect to={'/login'}/>
     return (
       <>
         <div className={classes.image}>
@@ -80,7 +79,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
   }
 }
-export default compose<any, any, any, any>(
+export default compose<React.ComponentType>(
   connect(mapStateToProps, mapDispatchToProps),
   withAuthRedirect,
   withRouter,
