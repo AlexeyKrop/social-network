@@ -11,7 +11,8 @@ import {
   setTotalUserCountAC,
   UserStateType
 } from "../../Redux/friendsPageReducer";
-import {Redirect} from "react-router-dom";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
@@ -19,7 +20,6 @@ type mapStateToPropsType = {
   pageSize: number
   totalUserCount: number
   preloader: boolean
-  auth: boolean
 }
 type mapDispatchToPropsType = {
   addFriend: (id: number) => void
@@ -41,7 +41,6 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
   }
 
   render() {
-    if (!this.props.auth) return <Redirect to={'/login'}/>
     return (
       <>{this.props.preloader ? <Preloader/> : null}
         <Friends
@@ -67,7 +66,6 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     currentPageNumber: state.FriendsPage.currentPageNumber,
     totalUserCount: state.FriendsPage.totalUserCount,
     preloader: state.FriendsPage.preloader,
-    auth: state.Authorization.isAuth
   }
 }
 
@@ -95,4 +93,7 @@ const mapDispatchToProps = (dispatch: AppDispatch): mapDispatchToPropsType => {
     },
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer);
+export default compose<React.ComponentType>(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect
+)(FriendsContainer)
