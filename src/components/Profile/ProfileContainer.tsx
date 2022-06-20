@@ -80,11 +80,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
   }
 }
-compose(
+export default compose<any, any, any, any>(
   connect(mapStateToProps, mapDispatchToProps),
   withAuthRedirect,
   withRouter,
 )(ProfileContainer)
-const ProfileContainerWithRouter = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainerWithRouter);
