@@ -3,13 +3,16 @@ import classes from "../ProfileInfo/ProfileInfo.module.css";
 import {NavLink} from "react-router-dom";
 import DropDownProfile from "../../DropDownProfile/DropDownProfile";
 import {Preloader} from "../../../common/preloader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props: any) => {
   if (!props.profile) {
     return <Preloader/>
   }
   return (
+
     <div className={classes.profileInfo}>
+      <ProfileStatus/>
       <div className={classes.info__image}>
         <NavLink to="#">
           <img
