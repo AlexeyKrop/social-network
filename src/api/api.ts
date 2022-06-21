@@ -29,7 +29,7 @@ export const authMe = {
 }
 
 export const profileAPI = {
-  getStatus(userID: number) {
+  getProfileStatus(userID: number) {
     return instance.get(`profile/${userID}`).then(response => response.data)
   }
 }

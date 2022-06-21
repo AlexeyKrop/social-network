@@ -1,9 +1,10 @@
 import {v1} from "uuid";
-import {userAPI} from "../api/api";
+import {profileAPI, userAPI} from "../api/api";
 
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
 export const SET_PROFILE_USER = 'SET_PROFILE_USER';
+export const SET_PROFILE_STATUS = 'SET_PROFILE_STATUS';
 
 export type  AddMessageInProfilePage = {
   user_name: string
@@ -16,7 +17,8 @@ export type  AddMessageInProfilePage = {
 let initialState = {
   messages: [] as Array<AddMessageInProfilePage>,
   updatePostInProfile: '',
-  profile: null
+  profile: null,
+  status: ''
 }
 export type InitialStateInProfilePageType = typeof initialState
 
@@ -50,6 +52,10 @@ export const profilePageReducer = (state = initialState, action: ProfilePageRedu
         ...state, profile: action.profile
 
       }
+    case "SET_PROFILE_STATUS":
+      return {
+        ...state, status: action.status
+      }
     default:
       return state
   }
@@ -61,16 +67,25 @@ export const updatePostInProfileActionCreator = (updateWords: string) => ({
 } as const)
 export const setProfileUserAC = (profile: any) => ({type: SET_PROFILE_USER, profile: profile} as const)
 
+export const getProfileStatusAC = (status: string) => ({type: SET_PROFILE_STATUS, status: status} as const)
+
 type AddPostAT = ReturnType<typeof addPostActionCreator>
 type UpdatePostInProfileAT = ReturnType<typeof updatePostInProfileActionCreator>
-type setProfileUserAT = ReturnType<typeof setProfileUserAC>
-type ProfilePageReducerAT = AddPostAT | UpdatePostInProfileAT | setProfileUserAT
+type SetProfileUserAT = ReturnType<typeof setProfileUserAC>
+type GetProfileStatusAT = ReturnType<typeof getProfileStatusAC>
+type ProfilePageReducerAT = AddPostAT | UpdatePostInProfileAT | SetProfileUserAT | GetProfileStatusAT
 
 //Thunk
 export const getProfileUserTC = (userID: number): any => {
   return (dispatch: any) => {
     userAPI.setProfileUser(userID)
       .then(data => dispatch(setProfileUserAC(data)))
+  }
+}
+export const getProfileStatusTC = (userID: number): any => {
+  return (dispatch: any) => {
+    profileAPI.getProfileStatus(userID)
+      .then(data => dispatch(getProfileStatusAC(data)))
   }
 }
 
