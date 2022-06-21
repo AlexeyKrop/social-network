@@ -16,6 +16,7 @@ type ProfileInfoPropsType = {
     userId: number,
   },
   status: string
+  updateProfileStatus: (status: string) => void
 }
 
 const ProfileInfo = (props: ProfileInfoPropsType) => {
@@ -40,7 +41,7 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
           </NavLink>
         </div>
         <div className={classes.info__text}>
-          <ProfileStatus status={props.status}/>
+          <ProfileStatus status={props.status} updateProfileStatus={props.updateProfileStatus}/>
           <h3><NavLink to="#">{props.profile.fullName}</NavLink></h3>
           <span><a
             href={props.profile.contacts.mainLink}>{props.profile.contacts.mainLink ? props.profile.contacts.mainLink : props.profile.contacts.github}</a></span>

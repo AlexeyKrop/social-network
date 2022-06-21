@@ -1,4 +1,5 @@
 import axios from "axios";
+import {stat} from "fs";
 
 const instance = axios.create({
   withCredentials: true,
@@ -32,7 +33,7 @@ export const profileAPI = {
   getProfileStatus(userID: number) {
     return instance.get(`profile/status/${userID}`).then(response => response.data)
   },
-  updateProfileStatus() {
-    return instance.put(`/profile/status`).then(response => response.data)
+  updateProfileStatus(status: string) {
+    return instance.put(`/profile/status`, {status: status})
   }
 }
