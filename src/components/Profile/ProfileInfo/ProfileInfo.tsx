@@ -5,8 +5,20 @@ import DropDownProfile from "../../DropDownProfile/DropDownProfile";
 import {Preloader} from "../../../common/preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
-const ProfileInfo = (props: any) => {
-  console.log(props)
+type ProfileInfoPropsType = {
+  profile: {
+    aboutMe: string
+    contacts: { facebook: string, website: null, vk: string, twitter: string, instagram: string, mainLink: string, github: string }
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    photos: { small: string, large: string }
+    userId: number,
+  },
+  status: string
+}
+
+const ProfileInfo = (props: ProfileInfoPropsType) => {
   if (!props.profile) {
     return <Preloader/>
   }
@@ -28,7 +40,7 @@ const ProfileInfo = (props: any) => {
           </NavLink>
         </div>
         <div className={classes.info__text}>
-          <ProfileStatus status={'Hello'}/>
+          <ProfileStatus status={props.status}/>
           <h3><NavLink to="#">{props.profile.fullName}</NavLink></h3>
           <span><a
             href={props.profile.contacts.mainLink}>{props.profile.contacts.mainLink ? props.profile.contacts.mainLink : props.profile.contacts.github}</a></span>

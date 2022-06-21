@@ -36,11 +36,12 @@ type MapStateToPropsType = {
   status: string
 }
 type initialProfileType = {
-  profile: null
+  profile: MapStateToPropsType | null
 }
 type MapStateToPropsMainType = MapStateToPropsType | initialProfileType
 type MapDispatchToPropsType = {
-  getProfileUser: (profile: MapStateToPropsMainType) => void
+  getProfileUser: (id: number) => void
+  getProfileStatus: (id: number) => void
 }
 type StatePropsType = MapStateToPropsType & MapDispatchToPropsType
 type PropsType = RouteComponentProps<PathParamsType> & StatePropsType
@@ -62,7 +63,7 @@ class ProfileContainer extends React.Component<any, PropsType> {
         <div className={classes.image}>
           <NavLink to="/" className={classes.edit_cover_btn}>Edit Cover</NavLink>
         </div>
-        <ProfileInfo {...this.props}/>
+        <ProfileInfo profile={this.props.profile} status={this.props.status}/>
         <MyPostContainer/>
       </>
     )
