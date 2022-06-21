@@ -6,11 +6,11 @@ import {Preloader} from "../../../common/preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props: any) => {
+  console.log(props)
   if (!props.profile) {
     return <Preloader/>
   }
   return (
-
     <div className={classes.profileInfo}>
       <div className={classes.info__image}>
         <NavLink to="#">

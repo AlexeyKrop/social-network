@@ -6,7 +6,7 @@ import MyPostContainer from "./Myposts/MypostContainer";
 import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {getProfileUserTC} from "../../Redux/profilePageReducer";
+import {getProfileStatusTC, getProfileUserTC} from "../../Redux/profilePageReducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type PathParamsType = {
@@ -32,7 +32,8 @@ type MapStateToPropsType = {
     large?: string
   }
   auth: boolean
-  match: any
+  match: any,
+  status: string
 }
 type initialProfileType = {
   profile: null
@@ -51,6 +52,7 @@ class ProfileContainer extends React.Component<any, PropsType> {
       userID = 2
     }
     this.props.getProfileUser(userID)
+    this.props.getProfileStatus(userID)
 
   }
 
@@ -70,13 +72,18 @@ class ProfileContainer extends React.Component<any, PropsType> {
 const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
   return {
     profile: state.ProfilePage.profile,
+    status: state.ProfilePage.status,
   }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     getProfileUser: (id: number) => {
       dispatch(getProfileUserTC(id))
+    },
+    getProfileStatus: (id: number) => {
+      dispatch(getProfileStatusTC(id))
     }
+
   }
 }
 export default compose<React.ComponentType>(
