@@ -12,7 +12,6 @@ const ProfileInfo = (props: any) => {
   return (
 
     <div className={classes.profileInfo}>
-      <ProfileStatus/>
       <div className={classes.info__image}>
         <NavLink to="#">
           <img
@@ -29,6 +28,7 @@ const ProfileInfo = (props: any) => {
           </NavLink>
         </div>
         <div className={classes.info__text}>
+          <ProfileStatus status={'Hello'}/>
           <h3><NavLink to="#">{props.profile.fullName}</NavLink></h3>
           <span><a
             href={props.profile.contacts.mainLink}>{props.profile.contacts.mainLink ? props.profile.contacts.mainLink : props.profile.contacts.github}</a></span>
