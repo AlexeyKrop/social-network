@@ -58,6 +58,7 @@ class ProfileContainer extends React.Component<any, PropsType> {
   }
 
   render() {
+    console.log(this.props)
     return (
       <>
         <div className={classes.image}>
