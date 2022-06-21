@@ -1,5 +1,6 @@
 import {v1} from "uuid";
 import {profileAPI, userAPI} from "../api/api";
+import {Dispatch} from "redux";
 
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
@@ -67,13 +68,20 @@ export const updatePostInProfileActionCreator = (updateWords: string) => ({
 } as const)
 export const setProfileUserAC = (profile: any) => ({type: SET_PROFILE_USER, profile: profile} as const)
 
-export const getProfileStatusAC = (status: string) => ({type: SET_PROFILE_STATUS, status: status} as const)
+export const setProfileStatusAC = (status: string) => ({type: SET_PROFILE_STATUS, status: status} as const)
+
 
 type AddPostAT = ReturnType<typeof addPostActionCreator>
 type UpdatePostInProfileAT = ReturnType<typeof updatePostInProfileActionCreator>
 type SetProfileUserAT = ReturnType<typeof setProfileUserAC>
-type GetProfileStatusAT = ReturnType<typeof getProfileStatusAC>
-type ProfilePageReducerAT = AddPostAT | UpdatePostInProfileAT | SetProfileUserAT | GetProfileStatusAT
+type GetProfileStatusAT = ReturnType<typeof setProfileStatusAC>
+
+type ProfilePageReducerAT =
+  AddPostAT
+  | UpdatePostInProfileAT
+  | SetProfileUserAT
+  | GetProfileStatusAT
+
 
 //Thunk
 export const getProfileUserTC = (userID: number): any => {
@@ -85,7 +93,17 @@ export const getProfileUserTC = (userID: number): any => {
 export const getProfileStatusTC = (userID: number): any => {
   return (dispatch: any) => {
     profileAPI.getProfileStatus(userID)
-      .then(data => dispatch(getProfileStatusAC(data)))
+      .then(status => dispatch(setProfileStatusAC(status)))
+  }
+}
+export const updateProfileStatusTC = (status: string): any => {
+  return (dispatch: Dispatch) => {
+    profileAPI.updateProfileStatus(status)
+      .then(response => {
+        if (response.data.resultCode === 0) {
+          dispatch(setProfileStatusAC(status))
+        }
+      })
   }
 }
 

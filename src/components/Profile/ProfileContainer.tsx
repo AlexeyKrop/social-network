@@ -6,7 +6,7 @@ import MyPostContainer from "./Myposts/MypostContainer";
 import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {getProfileStatusTC, getProfileUserTC} from "../../Redux/profilePageReducer";
+import {getProfileStatusTC, getProfileUserTC, updateProfileStatusTC} from "../../Redux/profilePageReducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type PathParamsType = {
@@ -42,6 +42,7 @@ type MapStateToPropsMainType = MapStateToPropsType | initialProfileType
 type MapDispatchToPropsType = {
   getProfileUser: (id: number) => void
   getProfileStatus: (id: number) => void
+  updateProfileStatus: (status: string) => void
 }
 type StatePropsType = MapStateToPropsType & MapDispatchToPropsType
 type PropsType = RouteComponentProps<PathParamsType> & StatePropsType
@@ -58,13 +59,13 @@ class ProfileContainer extends React.Component<any, PropsType> {
   }
 
   render() {
-    console.log(this.props)
     return (
       <>
         <div className={classes.image}>
           <NavLink to="/" className={classes.edit_cover_btn}>Edit Cover</NavLink>
         </div>
-        <ProfileInfo profile={this.props.profile} status={this.props.status}/>
+        <ProfileInfo profile={this.props.profile} status={this.props.status}
+                     updateProfileStatus={this.props.updateProfileStatus}/>
         <MyPostContainer/>
       </>
     )
@@ -84,6 +85,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     },
     getProfileStatus: (id: number) => {
       dispatch(getProfileStatusTC(id))
+    },
+    updateProfileStatus: (status: string) => {
+      dispatch(updateProfileStatusTC(status))
     }
 
   }
