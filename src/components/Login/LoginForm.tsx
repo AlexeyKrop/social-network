@@ -1,11 +1,13 @@
 import React from 'react';
 
-const LoginForm = () => {
+export const LoginForm = () => {
   return (
-    <div>
-
-    </div>
+    <form action="#">
+      <input type="text" placeholder={'login'}/>
+      <input type="text" placeholder={'password'}/>
+      <input type="checkbox"/>remember me
+      <button>Enter</button>
+    </form>
   );
 };
 
-export default LoginForm;
