@@ -1,5 +1,5 @@
 import React from 'react';
-import {LoginForm} from "./LoginForm";
+import {LoginReduxForm} from "./LoginForm";
 
 const Login = () => {
   const onSubmit = (FormData: any) => {
@@ -8,7 +8,7 @@ const Login = () => {
   return (
     <div>
       <h1>LOGIN</h1>
-      <LoginForm onSubmit={onSubmit}/>
+      <LoginReduxForm onSubmit={onSubmit}/>
     </div>
   );
 };

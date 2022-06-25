@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {reduxForm, InjectedFormProps, Field} from 'redux-form';
-import {compose} from 'redux';
 
 
-const Login = (props: InjectedFormProps) => {
+const LoginForm = (props: InjectedFormProps) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <Field name="login" placeholder={'login'} component="input" type="text"/>
@@ -14,6 +13,6 @@ const Login = (props: InjectedFormProps) => {
 
 };
 
-export const LoginForm = compose(
-  reduxForm({form: 'login'}),
-)(Login);
+export const LoginReduxForm =
+  reduxForm({form: 'login'})
+  (LoginForm);
