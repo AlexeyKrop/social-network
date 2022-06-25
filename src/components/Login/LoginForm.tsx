@@ -1,13 +1,19 @@
-import React from 'react';
+import * as React from 'react';
+import {reduxForm, InjectedFormProps, Field} from 'redux-form';
+import {compose} from 'redux';
 
-export const LoginForm = () => {
+
+const Login = (props: InjectedFormProps) => {
   return (
-    <form action="#">
-      <input type="text" placeholder={'login'}/>
-      <input type="text" placeholder={'password'}/>
-      <input type="checkbox"/>remember me
-      <button>Enter</button>
-    </form>
-  );
+    <form onSubmit={props.handleSubmit}>
+      <Field name="login" placeholder={'login'} component="input" type="text"/>
+      <Field name="password" placeholder={'password'} component="input" type="text"/>
+      <Field name="checkbox" component="input" type="checkbox"/> remember me
+      <button>Enter</button></form>
+  )
+
 };
 
+export const LoginForm = compose(
+  reduxForm({form: 'login'}),
+)(Login);

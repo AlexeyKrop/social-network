@@ -4,12 +4,14 @@ import dialogsPageReducer from "./dialogsPageReducer";
 import friendsPageReducer, {ActionFriendPageReducerType} from "./friendsPageReducer";
 import {profilePageReducer} from "./profilePageReducer";
 import {authReducer} from "./authorizationReducer";
+import {reducer as formReducer} from 'redux-form'
 
 const rootReducer = combineReducers({
   ProfilePage: profilePageReducer,
   MessagePage: dialogsPageReducer,
   FriendsPage: friendsPageReducer,
   Authorization: authReducer,
+  form: formReducer
 })
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
