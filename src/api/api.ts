@@ -28,13 +28,8 @@ export const authMe = {
     return instance.get('auth/me')
   },
 
-  login(email: string, password: string) {
-    const payload = {
-      email: email,
-      password: password
-
-    }
-    return instance.post(`/auth/login`, payload)
+  login(loginData: any) {
+    return instance.post(`/auth/login`, {payload: loginData})
   }
 }
 

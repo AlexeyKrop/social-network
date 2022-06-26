@@ -1,9 +1,10 @@
 import React from 'react';
 import {LoginReduxForm} from "./LoginForm";
+import {authMe} from "../../api/api";
 
 const Login = () => {
   const onSubmit = (FormData: any) => {
-    console.log(FormData)
+    authMe.login({...FormData}).then(authMe.me).then(res => console.log(res))
   }
   return (
     <div>

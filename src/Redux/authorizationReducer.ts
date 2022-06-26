@@ -31,6 +31,9 @@ export const setDataAC = (userId: number, email: string, login: string) => ({
 } as const)
 type SetUserDataAT = ReturnType<typeof setDataAC>
 
+export const setUserAC = () => {
+}
+
 export const authUserTC = (): AppThunk => {
   return (dispatch: Dispatch) => {
     authMe.me()
