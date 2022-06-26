@@ -22,9 +22,19 @@ export const userAPI = {
     return instance.get(`profile/${userID}`).then(response => response.data)
   },
 }
+
 export const authMe = {
   me() {
     return instance.get('auth/me')
+  },
+
+  login(email: string, password: string) {
+    const payload = {
+      email: email,
+      password: password
+
+    }
+    return instance.post(`/auth/login`, payload)
   }
 }
 
@@ -36,3 +46,5 @@ export const profileAPI = {
     return instance.put(`/profile/status`, {status})
   }
 }
+
+
