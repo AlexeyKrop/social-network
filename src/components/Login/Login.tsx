@@ -4,7 +4,7 @@ import {authMe} from "../../api/api";
 
 const Login = () => {
   const onSubmit = (FormData: any) => {
-    authMe.login({...FormData}).then(authMe.me).then(res => console.log(res))
+    authMe.login({...FormData}).then(res => console.log(res))
   }
   return (
     <div>
