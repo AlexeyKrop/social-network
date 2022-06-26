@@ -1,4 +1,6 @@
 import {authMe} from "../api/api";
+import {AppThunk} from "./redux-store";
+import {Dispatch} from "redux";
 
 let initialState = {
   id: 0,
@@ -22,14 +24,15 @@ export const authReducer = (state: InitialStateType = initialState, action: SetD
 }
 
 type SetDataAT = SetUserDataAT
+
 export const setDataAC = (userId: number, email: string, login: string) => ({
   type: 'SET_USER_DATA',
   data: {id: userId, email: email, login: login,}
 } as const)
 type SetUserDataAT = ReturnType<typeof setDataAC>
 
-export const authUserTC = (): any => {
-  return (dispatch: any) => {
+export const authUserTC = (): AppThunk => {
+  return (dispatch: Dispatch) => {
     authMe.me()
       .then(response => {
         if (response.data.resultCode === 0) {

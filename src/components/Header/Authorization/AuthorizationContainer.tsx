@@ -2,8 +2,7 @@ import React from "react";
 import {Authorization} from "./Authorization";
 import {connect} from "react-redux";
 import {authUserTC} from "../../../Redux/authorizationReducer";
-import {Dispatch} from "redux";
-import {AppStateType} from "../../../Redux/redux-store";
+import {AppDispatch, AppStateType} from "../../../Redux/redux-store";
 
 
 class AuthorizationContainer extends React.Component<any, any> {
@@ -20,7 +19,7 @@ const mapStateToProps = (state: AppStateType) => ({
   login: state.Authorization.login,
   isAuth: state.Authorization.isAuth
 })
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
     authUser: () => {
       dispatch(authUserTC())

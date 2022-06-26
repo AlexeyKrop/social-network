@@ -1,6 +1,7 @@
 import {v1} from "uuid";
 import {profileAPI, userAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {AppThunk} from "./redux-store";
 
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
@@ -84,19 +85,19 @@ type ProfilePageReducerAT =
 
 
 //Thunk
-export const getProfileUserTC = (userID: number): any => {
-  return (dispatch: any) => {
+export const getProfileUserTC = (userID: number): AppThunk => {
+  return (dispatch: Dispatch) => {
     userAPI.setProfileUser(userID)
       .then(data => dispatch(setProfileUserAC(data)))
   }
 }
-export const getProfileStatusTC = (userID: number): any => {
-  return (dispatch: any) => {
+export const getProfileStatusTC = (userID: number): AppThunk => {
+  return (dispatch: Dispatch) => {
     profileAPI.getProfileStatus(userID)
       .then(status => dispatch(setProfileStatusAC(status)))
   }
 }
-export const updateProfileStatusTC = (status: string): any => {
+export const updateProfileStatusTC = (status: string): AppThunk => {
   return (dispatch: Dispatch) => {
     profileAPI.updateProfileStatus(status)
       .then(response => {
