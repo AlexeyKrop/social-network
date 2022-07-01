@@ -42,13 +42,6 @@ export const profilePageReducer = (state = initialState, action: ProfilePageRedu
       };
     }
 
-    case UPDATE_WORDS_IN_POST: {
-      return {
-        ...state,
-        updatePostInProfile: action.newWords
-      };
-    }
-
     case "SET_PROFILE_USER":
       return {
         ...state, profile: action.profile
@@ -63,23 +56,19 @@ export const profilePageReducer = (state = initialState, action: ProfilePageRedu
   }
 }
 export const addPostActionCreator = (post: string) => ({type: ADD_POST, newEl: post} as const)
-export const updatePostInProfileActionCreator = (updateWords: string) => ({
-  type: UPDATE_WORDS_IN_POST,
-  newWords: updateWords
-} as const)
+
 export const setProfileUserAC = (profile: any) => ({type: SET_PROFILE_USER, profile: profile} as const)
 
 export const setProfileStatusAC = (status: string) => ({type: SET_PROFILE_STATUS, status: status} as const)
 
 
 type AddPostAT = ReturnType<typeof addPostActionCreator>
-type UpdatePostInProfileAT = ReturnType<typeof updatePostInProfileActionCreator>
+
 type SetProfileUserAT = ReturnType<typeof setProfileUserAC>
 type GetProfileStatusAT = ReturnType<typeof setProfileStatusAC>
 
 type ProfilePageReducerAT =
-  AddPostAT
-  | UpdatePostInProfileAT
+  | AddPostAT
   | SetProfileUserAT
   | GetProfileStatusAT
 

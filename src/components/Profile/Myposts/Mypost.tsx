@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React from 'react';
 import classes from "./MyPost.module.css";
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
@@ -13,7 +13,6 @@ type messageType = {
 type PostPropsType = {
   messageData: Array<messageType>
   addPost: (post: string) => void
-  updatePostInProfilePage: (updateWords: string) => void
 }
 const MyPost = (props: PostPropsType) => {
   let NewMessagesData = props.messageData.map((item, index) => <Post src={item.src} message={item.message}
