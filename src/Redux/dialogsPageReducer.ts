@@ -95,23 +95,11 @@ const dialogsPageReducer = (state = initialState, action: AddMessageInDialogsAT)
         MessageDialogsItems: [...state.MessageDialogsItems, newMessage]
       }
     }
-    case UPDATE_WORDS_IN_DIALOGS: {
-      return {
-        ...state,
-        updateWordInMessagePage: action.newWords
-      }
-
-    }
     default:
       return state
   }
 }
 export const addMessageActionCreator = (message: string) => {
   return {type: 'ADD_MESSAGE', newMes: message}
-}
-export const updateWordsInDialogsActionCreator = (updateWordsInDialogs: string) => {
-  return {
-    type: 'UPDATE_WORDS_IN_DIALOGS', newWords: updateWordsInDialogs
-  }
 }
 export default dialogsPageReducer
