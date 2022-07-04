@@ -15,7 +15,7 @@ export const authReducer = (state: InitialStateType = initialState, action: SetD
       return {
         ...state,
         ...action.data,
-        isAuth: true
+        isAuth: action.data.isAuth
       }
     default:
       return state
@@ -24,9 +24,9 @@ export const authReducer = (state: InitialStateType = initialState, action: SetD
 
 type SetDataAT = SetUserDataAT
 
-export const setDataAC = (userId: number, email: string, login: string) => ({
+export const setDataAC = (userId: number, email: string, login: string, isAuth: boolean) => ({
   type: 'SET_USER_DATA',
-  data: {id: userId, email: email, login: login,}
+  data: {id: userId, email: email, login: login, isAuth}
 } as const)
 type SetUserDataAT = ReturnType<typeof setDataAC>
 
@@ -36,7 +36,7 @@ export const authUserTC = (): any => {
       .then(response => {
         if (response.data.resultCode === 0) {
           let {id, email, login} = response.data.data
-          dispatch(setDataAC(id, email, login))
+          dispatch(setDataAC(id, email, login, true))
         }
       })
   }
