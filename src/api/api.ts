@@ -27,9 +27,11 @@ export const authMe = {
   me() {
     return instance.get('auth/me')
   },
-
-  login(loginData: any) {
-    return instance.post(`/auth/login`, {payload: loginData})
+  login(email: string, password: string, rememberMe: boolean) {
+    return instance.post(`/auth/login`, {email, password, rememberMe})
+  },
+  logout() {
+    return instance.delete(`/auth/login`)
   }
 }
 
