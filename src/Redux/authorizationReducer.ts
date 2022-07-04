@@ -48,3 +48,9 @@ export const loginTC = (email: string, password: string, rememberMe: boolean): a
       .then(res => dispatch(authUserTC()))
   }
 }
+export const logoutTC = (): any => {
+  return (dispatch: Dispatch) => {
+    authMe.logout()
+      .then(res => dispatch(setDataAC(0, '', '', false)))
+  }
+}

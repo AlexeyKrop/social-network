@@ -1,7 +1,7 @@
 import React from "react";
 import {Authorization} from "./Authorization";
 import {connect} from "react-redux";
-import {authUserTC} from "../../../Redux/authorizationReducer";
+import {authUserTC, logoutTC} from "../../../Redux/authorizationReducer";
 import {AppDispatch, AppStateType} from "../../../Redux/redux-store";
 
 
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
     authUser: () => {
       dispatch(authUserTC())
     },
+    logout: () => {
+      dispatch(logoutTC())
+    }
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationContainer)

@@ -4,6 +4,9 @@ import React from "react";
 
 
 export const Authorization = (props: any) => {
+  const onClickHandler = () => {
+    props.logout()
+  }
   return (
     <>
       {props.isAuth ? <ul className={classes.list}>
@@ -24,6 +27,9 @@ export const Authorization = (props: any) => {
             </g>
           </svg>
         </NavLink>
+        </li>
+        <li>
+          <button onClick={onClickHandler}>Выйти</button>
         </li>
       </ul> : <p>Вышел</p>}
     </>
