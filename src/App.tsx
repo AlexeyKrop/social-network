@@ -11,6 +11,7 @@ import Dropdown from "./components/Dropdown/Dropdown";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import Login from "./components/Login/Login";
+import {LoginFormik} from "./components/Login/LoginFormik";
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
               <Route path="/news" render={() => <News/>}/>
               <Route path="/music" render={() => <Music/>}/>
               <Route path="/settings" render={() => <Settings/>}/>
-              <Route path="/login" render={() => <Login/>}/>
+              <Route path="/login" render={() => <LoginFormik/>}/>
             </main>
           </div>
         </div>
