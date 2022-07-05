@@ -15,10 +15,11 @@ const rootReducer = combineReducers({
 })
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-
 type AppActionsType = ActionFriendPageReducerType
 export type AppStateType = ReturnType<typeof rootReducer>
 export type AppDispatch = ThunkDispatch<AppStateType, unknown, AppActionsType>
 export type StoreType = typeof store
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, AppActionsType>
 export default store
+// @ts-ignore
+window.store = store

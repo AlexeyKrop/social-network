@@ -34,7 +34,9 @@ export const authUserTC = (): any => {
   return (dispatch: Dispatch) => {
     authMe.me()
       .then(response => {
+        console.log('response: ', response)
         if (response.data.resultCode === 0) {
+          console.log('data: ', response.data.data)
           let {id, email, login} = response.data.data
           dispatch(setDataAC(id, email, login, true))
         }

@@ -9,6 +9,7 @@ import {Redirect} from "react-router-dom";
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     login: (email: string, password: string, rememberMe: boolean) => {
+      console.log(rememberMe)
       dispatch(loginTC(email, password, rememberMe))
     },
   }
@@ -23,6 +24,7 @@ const Login = (props: any) => {
     return <Redirect to={`/profile`}/>
   }
   const onSubmit = (FormData: any) => {
+    console.log(FormData.rememberMe)
     props.login(FormData.email, FormData.password, FormData.rememberMe)
   }
   return (
