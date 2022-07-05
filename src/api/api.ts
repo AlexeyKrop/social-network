@@ -1,4 +1,5 @@
 import axios from "axios";
+import {UserStateType} from "../Redux/friendsPageReducer";
 
 const instance = axios.create({
   withCredentials: true,
@@ -8,9 +9,14 @@ const instance = axios.create({
   }
 })
 
+type ResponseType = {
+  items: Array<UserStateType>
+  totalCount: number
+  error: null
+}
 export const userAPI = {
   getUser(currentPageNumber: number, pageSize: number) {
-    return instance.get(`users?page=${currentPageNumber}&count=${pageSize}`).then(response => response.data)
+    return instance.get<ResponseType>(`users?page=${currentPageNumber}&count=${pageSize}`).then(response => response.data)
   },
   deleteUser(id: number) {
     return instance.delete(`follow/${id}`).then(response => response.data)
@@ -44,4 +50,9 @@ export const profileAPI = {
   }
 }
 
-
+// export type ResponseType<D = {}> = {
+//   resultCode: number
+//   messages: Array<string>
+//   fieldsErrors: Array<string>
+//   data: D
+// }
