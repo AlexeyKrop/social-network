@@ -1,49 +1,56 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
-import {Formik, Field, Form, FormikHelpers} from 'formik';
+import {Field, Form, Formik, FormikHelpers} from 'formik';
+import {useDispatch, useSelector} from "react-redux";
+import {loginTC} from "../../Redux/authorizationReducer";
+import {Redirect} from "react-router-dom";
 
 type Values = {
-  firstName: string;
-  lastName: string;
   email: string;
+  password: string;
+  checkbox: boolean;
 }
 
 export const LoginFormik = () => {
+  const isAuth = useSelector<any, any>(state => state.Authorization.isAuth)
+  const dispatch = useDispatch()
+  if (isAuth) {
+    return <Redirect to={`/profile`}/>
+  }
   return (
     <div>
+
       <h1>Signup</h1>
       <Formik
         initialValues={{
-          firstName: '',
-          lastName: '',
           email: '',
+          password: '',
+          checkbox: false,
         }}
         onSubmit={(
           values: Values,
           {setSubmitting}: FormikHelpers<Values>
         ) => {
+          let {email, password, checkbox} = values
+          console.log({...values})
+          dispatch(loginTC(email, password, checkbox))
+          setSubmitting(false);
         }}
       >
         <Form>
-          <label htmlFor="firstName">First Name</label>
-          <Field id="firstName" name="login" placeholder="John"/>
-
-          <label htmlFor="lastName">Last Name</label>
-          <Field id="lastName" name="lastName" placeholder="Doe"/>
-
-          <label htmlFor="email">Email</label>
+          <Field id="email" name="email" placeholder="login"/>
+          <Field id="password" name="password" placeholder="password" type='password'/>
           <Field
-            id="email"
-            name="email"
-            placeholder="john@acme.com"
-            type="email"
+            id="checkbox"
+            name="checkbox"
+            type="checkbox"
           />
-
           <button type="submit">Submit</button>
         </Form>
       </Formik>
     </div>
   );
 };
+
 
 

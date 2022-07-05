@@ -10,7 +10,6 @@ import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
-import Login from "./components/Login/Login";
 import {LoginFormik} from "./components/Login/LoginFormik";
 
 
