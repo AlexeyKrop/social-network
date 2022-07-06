@@ -119,6 +119,12 @@
     transition: .4s;
 }
 
+.list_logout {
+    max-width: 120px;
+    display: flex;
+    align-items: center;
+}
+
 @keyframes ripple {
     from {
         width: 0;
