@@ -5,8 +5,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {loginTC} from "../../Redux/authorizationReducer";
 import {Redirect} from "react-router-dom";
 import {AppStateType} from "../../Redux/redux-store";
+import {validateEmail} from "../../common/validate/validate";
 
-type Values = {
+type ValuesType = {
   email: string;
   password: string;
   checkbox: boolean;
@@ -15,30 +16,30 @@ type Values = {
 export const Login = () => {
   const isAuth = useSelector<AppStateType, boolean>(state => state.Authorization.isAuth)
   const dispatch = useDispatch()
+  type initialValuesType = {
+    email: string
+    password: string
+    checkbox: boolean,
+  }
+  const initialValues: initialValuesType = {
+    email: '', password: '', checkbox: false,
+  }
+  const onSubmitHandler = (values: ValuesType, {setSubmitting}: FormikHelpers<ValuesType>) => {
+    let {email, password, checkbox} = values
+    validateEmail(email)
+    dispatch(loginTC(email, password, checkbox))
+    setSubmitting(false);
+  }
   if (isAuth) {
     return <Redirect to={`/profile`}/>
   }
   return (
     <div>
-
       <h1>Signup</h1>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-          checkbox: false,
-        }}
-        onSubmit={(
-          values: Values,
-          {setSubmitting}: FormikHelpers<Values>
-        ) => {
-          let {email, password, checkbox} = values
-          dispatch(loginTC(email, password, checkbox))
-          setSubmitting(false);
-        }}
+      <Formik initialValues={initialValues} onSubmit={onSubmitHandler}
       >
         <Form>
-          <Field id="email" name="email" placeholder="login"/>
+          <Field id="email" name="email" placeholder="email"/>
           <Field id="password" name="password" placeholder="password" type='password'/>
           <Field
             id="checkbox"
