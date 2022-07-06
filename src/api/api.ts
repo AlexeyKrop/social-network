@@ -1,5 +1,6 @@
 import axios from "axios";
-import {UserStateType} from "../Redux/friendsPageReducer";
+import {ActionFriendPageReducerType, UserStateType} from "../Redux/friendsPageReducer";
+import {addPostActionCreator} from "../Redux/profilePageReducer";
 
 const instance = axios.create({
   withCredentials: true,
@@ -42,10 +43,10 @@ export const authMe = {
     return instance.get<ResponseType<{ id: number, email: string, login: string }>>('auth/me')
   },
   login(email: string, password: string, rememberMe: boolean) {
-    return instance.post(`/auth/login`, {email, password, rememberMe})
+    return instance.post<ResponseType<{ userId: string }>>(`/auth/login`, {email, password, rememberMe})
   },
   logout() {
-    return instance.delete(`/auth/login`)
+    return instance.delete<ResponseType>(`/auth/login`)
   }
 }
 
