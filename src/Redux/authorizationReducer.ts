@@ -1,5 +1,4 @@
 import {authMe} from "../api/api";
-import {Dispatch} from "redux";
 import {AppDispatch, AppThunk, TypedDispatch} from "./redux-store";
 
 let initialState = {
@@ -42,15 +41,14 @@ export const authUserTC = (): AppThunk => {
       })
   }
 }
-
-export const loginTC = (email: string, password: string, rememberMe: boolean): any => {
+export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => {
   return (dispatch: TypedDispatch) => {
     authMe.login(email, password, rememberMe)
       .then(res => dispatch(authUserTC()))
   }
 }
-export const logoutTC = (): any => {
-  return (dispatch: Dispatch) => {
+export const logoutTC = (): AppThunk => {
+  return (dispatch: TypedDispatch) => {
     authMe.logout()
       .then(res => dispatch(setDataAC(0, '', '', false)))
   }

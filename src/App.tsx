@@ -10,7 +10,7 @@ import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
-import {LoginFormik} from "./components/Login/LoginFormik";
+import {Login} from "./components/Login/Login";
 
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
               <Route path="/news" render={() => <News/>}/>
               <Route path="/music" render={() => <Music/>}/>
               <Route path="/settings" render={() => <Settings/>}/>
-              <Route path="/login" render={() => <LoginFormik/>}/>
+              <Route path="/login" render={() => <Login/>}/>
             </main>
           </div>
         </div>
