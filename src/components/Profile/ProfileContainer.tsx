@@ -5,7 +5,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostContainer from "./Myposts/MypostContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {AppDispatch, AppStateType, TypedDispatch} from "../../Redux/redux-store";
+import {AppStateType, TypedDispatch} from "../../Redux/redux-store";
 import {getProfileStatusTC, getProfileUserTC, updateProfileStatusTC} from "../../Redux/profilePageReducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 

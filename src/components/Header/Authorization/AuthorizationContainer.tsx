@@ -2,11 +2,20 @@ import React from "react";
 import {Authorization} from "./Authorization";
 import {connect} from "react-redux";
 import {authUserTC, logoutTC} from "../../../Redux/authorizationReducer";
-import {AppDispatch, AppStateType, TypedDispatch} from "../../../Redux/redux-store";
+import {AppDispatch, AppStateType, StoreType, TypedDispatch} from "../../../Redux/redux-store";
 
+type mapStateToPropsType = {
+  login: string
+  isAuth: boolean
+}
+type mapDispatchToPropsType = {
+  authUser: () => void
+  logout: () => void
+}
 
-class AuthorizationContainer extends React.Component<any, any> {
+class AuthorizationContainer extends React.Component<mapDispatchToPropsType, mapStateToPropsType> {
   componentDidMount() {
+    console.log(this.props)
     this.props.authUser()
   }
 
