@@ -1,6 +1,5 @@
 import axios from "axios";
-import {ActionFriendPageReducerType, UserStateType} from "../Redux/friendsPageReducer";
-import {addPostActionCreator} from "../Redux/profilePageReducer";
+import {UserStateType} from "../Redux/friendsPageReducer";
 
 const instance = axios.create({
   withCredentials: true,

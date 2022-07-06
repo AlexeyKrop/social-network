@@ -5,7 +5,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostContainer from "./Myposts/MypostContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {AppDispatch, AppStateType} from "../../Redux/redux-store";
+import {AppDispatch, AppStateType, TypedDispatch} from "../../Redux/redux-store";
 import {getProfileStatusTC, getProfileUserTC, updateProfileStatusTC} from "../../Redux/profilePageReducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
@@ -79,7 +79,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
     userId: state.Authorization.id
   }
 }
-const mapDispatchToProps = (dispatch: AppDispatch) => {
+const mapDispatchToProps = (dispatch: TypedDispatch) => {
   return {
     getProfileUser: (id: number) => {
       dispatch(getProfileUserTC(id))

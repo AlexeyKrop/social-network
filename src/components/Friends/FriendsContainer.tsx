@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {Friends} from "./Friends";
-import {AppDispatch, AppStateType} from "../../Redux/redux-store";
+import {AppDispatch, AppStateType, TypedDispatch} from "../../Redux/redux-store";
 import React from "react";
 import {Preloader} from "../../common/preloader/Preloader";
 import {
@@ -69,7 +69,7 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   }
 }
 
-const mapDispatchToProps = (dispatch: AppDispatch): mapDispatchToPropsType => {
+const mapDispatchToProps = (dispatch: TypedDispatch): mapDispatchToPropsType => {
   return {
 
     addFriend: (id: number) => {

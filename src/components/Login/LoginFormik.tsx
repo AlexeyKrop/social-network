@@ -32,7 +32,6 @@ export const LoginFormik = () => {
           {setSubmitting}: FormikHelpers<Values>
         ) => {
           let {email, password, checkbox} = values
-          console.log({...values})
           dispatch(loginTC(email, password, checkbox))
           setSubmitting(false);
         }}
