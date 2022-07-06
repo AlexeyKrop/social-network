@@ -31,7 +31,7 @@ export const Authorization = (props: any) => {
         <li>
           <button onClick={onClickHandler}>Выйти</button>
         </li>
-      </ul> : <p>Вышел</p>}
+      </ul> : <p/>}
     </>
   )
 }
