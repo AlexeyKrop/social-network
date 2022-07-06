@@ -44,12 +44,12 @@ export const authUserTC = (): AppThunk => {
 export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => {
   return (dispatch: TypedDispatch) => {
     authMe.login(email, password, rememberMe)
-      .then(res => dispatch(authUserTC()))
+      .then(() => dispatch(authUserTC()))
   }
 }
 export const logoutTC = (): AppThunk => {
   return (dispatch: TypedDispatch) => {
     authMe.logout()
-      .then(res => dispatch(setDataAC(0, '', '', false)))
+      .then(() => dispatch(setDataAC(0, '', '', false)))
   }
 }
