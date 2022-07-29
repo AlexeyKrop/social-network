@@ -19,6 +19,7 @@ const Dialogs = (props: DialogsPropsType) => {
     dispatch(setMessageTC(props.id))
   }, [dispatch, props])
   const onSubmit = (values: any) => {
+    console.log(values)
     props.addMessage(values.message)
   }
   let MessageDialogsItemsData = props.MessageDialogsItems.map((m) => <MessageDialogsItem

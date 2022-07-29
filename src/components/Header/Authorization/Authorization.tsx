@@ -4,7 +4,6 @@ import s from './Authorization.module.css'
 
 
 export const Authorization = (props: any) => {
-  console.log(props.error)
   const onClickHandler = () => {
     props.logout()
   }
