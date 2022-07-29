@@ -1,30 +1,11 @@
 import {v1} from "uuid";
 import {Dispatch} from "redux";
 import {dialogsAPI} from "../api/api";
+import {log} from "util";
 
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
-type AddMessageAT = {
-  type: 'ADD_MESSAGE'
-  newMes: string
-}
-type UpdateWordsInDialogsAT = {
-  type: 'UPDATE_WORDS_IN_DIALOGS'
-  newWords: string
-}
-type AddMessageInDialogsAT = AddMessageAT | UpdateWordsInDialogsAT | FetchMeesagesAT
-export type UserDialogsItemType = {
-  src: string
-  name: string
-  id: string
-}
-export type MessageDialogsItemType = {
-  src: string
-  message: string
-  message_time: string
-  id: string
-}
-export type FetchMeesagesAT = ReturnType<typeof setMessageAC>
+
 export type InitialStateInMessagePageType = {
   UserDialogsItems: Array<UserDialogsItemType>
   MessageDialogsItems: Array<MessageDialogsItemType>
@@ -86,6 +67,7 @@ export let initialState: InitialStateInMessagePageType = {
   updateWordInMessagePage: '',
   messages: []
 }
+
 const dialogsPageReducer = (state = initialState, action: AddMessageInDialogsAT): InitialStateInMessagePageType => {
   switch (action.type) {
     case "SET-MESSAGES":
@@ -110,14 +92,42 @@ const dialogsPageReducer = (state = initialState, action: AddMessageInDialogsAT)
       return state
   }
 }
+
+//ACTIONS
 export const addMessageActionCreator = (message: string) => {
   return {type: 'ADD_MESSAGE', newMes: message}
 }
 export const setMessageAC = (messages: any) => ({type: 'SET-MESSAGES', messages} as const)
+export const addMessageAC = () => ({type: 'ADD-MESSAGE'})
+//THUNKS
 export const setMessageTC = () => (dispatch: Dispatch) => {
   dialogsAPI.getDialogs()
     .then(res => dispatch(setMessageAC(res.data.items)))
 }
-
-
+export const addMessageTC = (id: number, message: any) => (dispatch: Dispatch) => {
+  dialogsAPI.adMessage(id, message)
+    .then(res => console.log(res.data))
+}
+//TYPE
+type AddMessageAT = {
+  type: 'ADD_MESSAGE'
+  newMes: string
+}
+type UpdateWordsInDialogsAT = {
+  type: 'UPDATE_WORDS_IN_DIALOGS'
+  newWords: string
+}
+type AddMessageInDialogsAT = AddMessageAT | UpdateWordsInDialogsAT | FetchMessagesAT
+export type UserDialogsItemType = {
+  src: string
+  name: string
+  id: string
+}
+export type MessageDialogsItemType = {
+  src: string
+  message: string
+  message_time: string
+  id: string
+}
+export type FetchMessagesAT = ReturnType<typeof setMessageAC>
 export default dialogsPageReducer

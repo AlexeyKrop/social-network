@@ -79,7 +79,6 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
     profile: state.ProfilePage.profile,
     status: state.ProfilePage.status,
     userId: state.Authorization.id,
-
   }
 }
 const mapDispatchToProps = (dispatch: TypedDispatch) => {

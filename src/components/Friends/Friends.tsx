@@ -20,23 +20,6 @@ export type cardFriendsPropsType = {
 }
 
 export function Friends(props: cardFriendsPropsType) {
-  // let lastElem = useRef<any>();
-  // let observer = useRef<any>()
-  // useEffect(() => {
-  //   let callback = function (entries: any, observer: any) {
-  //     if (entries[0].isIntersecting) {
-  //       axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPageNumber}&count=${props.pageSize}`)
-  //         .then((response) => {
-  //           // обработка успешного запроса
-  //           props.setUser(response.data.items)
-  //         })
-  //       console.log('div')
-  //     }
-  //   };
-  //   observer.current = new IntersectionObserver(callback);
-  //   observer.current.observe(lastElem.current)
-  // }, [])
-
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize)
   let pages = []
   for (let i = 1; i < pagesCount; i++) {
@@ -62,7 +45,6 @@ export function Friends(props: cardFriendsPropsType) {
         <div className={classes.row}>
           {Cards}
         </div>
-        {/*<div ref={lastElem}>lastElem</div>*/}
       </div>
     </>
   )

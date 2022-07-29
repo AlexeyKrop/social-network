@@ -1,15 +1,26 @@
-import React from "react";
+import React, {ChangeEvent, useState} from "react";
 import classes from './ModalMessage.module.css';
 import {NavLink} from "react-router-dom";
+import {addMessageTC} from "../../../Redux/dialogsPageReducer";
+import {useDispatch} from "react-redux";
 
 type ModalMessagePropsType = {
-  closeModal: (id: string) => void
-  id: string
+  closeModal: () => void
+  id: number
 }
 
 export const ModalMessage = (props: ModalMessagePropsType) => {
-  const onClickCloseMenuHandler = (id: string) => {
-    props.closeModal(id)
+  const [value, setValue] = useState<string>('')
+  const dispatch = useDispatch()
+  const onClickCloseMenuHandler = () => {
+    props.closeModal()
+  }
+  const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(e.currentTarget.value)
+  }
+  const onClickHandler = (id: number) => {
+    dispatch(addMessageTC(id, value))
+    console.log(id, value)
   }
   return (
     <div className={classes.container}>
@@ -18,13 +29,12 @@ export const ModalMessage = (props: ModalMessagePropsType) => {
           <div className={classes.modal__content}>
             <div className={classes.modal__header}>
               <h3 className={classes.modal__title}>Enter Your Message</h3>
-              <NavLink onClick={() => {
-                onClickCloseMenuHandler(props.id)
-              }} to="/friends" title="Close"
+              <NavLink onClick={onClickCloseMenuHandler} to="/friends" title="Close"
                        className={classes.close}>×</NavLink>
             </div>
             <form className={classes.form}>
-              <textarea className={classes.form__control} placeholder="Type your message..."/>
+              <textarea onChange={onChangeHandler} value={value} className={classes.form__control}
+                        placeholder="Type your message..."/>
               <div className={classes.btn__box}>
                 <button className={classes.file_attachment_btn} type="button">
                   <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20"
@@ -41,7 +51,7 @@ export const ModalMessage = (props: ModalMessagePropsType) => {
                       d="M12,24A12,12,0,1,1,24,12,12.013,12.013,0,0,1,12,24ZM12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm5.666,13.746a1,1,0,0,0-1.33-1.494A7.508,7.508,0,0,1,12,16a7.509,7.509,0,0,1-4.334-1.746,1,1,0,0,0-1.332,1.492A9.454,9.454,0,0,0,12,18,9.454,9.454,0,0,0,17.666,15.746ZM6,10c0,1,.895,1,2,1s2,0,2-1a2,2,0,0,0-4,0Zm8,0c0,1,.895,1,2,1s2,0,2-1a2,2,0,0,0-4,0Z"/>
                   </svg>
                 </button>
-                <button type="submit" className={classes.send__btn}>Send</button>
+                <button className={classes.send__btn} onClick={() => onClickHandler(props.id)}>Send</button>
               </div>
             </form>
           </div>

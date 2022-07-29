@@ -62,7 +62,7 @@ export const dialogsAPI = {
   getDialogs() {
     return instance.get(`dialogs/`)
   },
-  adMessage(userId: number) {
-    return instance.post(`dialogs/${userId}/messages`)
+  adMessage(userId: number, message: any) {
+    return instance.post(`dialogs/${userId}/messages`, message)
   }
 }

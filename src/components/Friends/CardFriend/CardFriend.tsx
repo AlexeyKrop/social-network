@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./CardFriend.module.css";
 import {NavLink} from "react-router-dom";
+import {ModalMessage} from "../ModalMessage/ModalMessage";
 
 
 type propsCardSrc = {
@@ -18,6 +19,7 @@ const DELAY = 500;
 type SetTimeoutType = ReturnType<typeof setTimeout>
 const CardFriend = (props: propsCardSrc) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false)
   useEffect(() => {
     let timeoutId: SetTimeoutType = setTimeout((): void => {
       setIsDisabled(false);
@@ -33,11 +35,15 @@ const CardFriend = (props: propsCardSrc) => {
     setIsDisabled(true)
     props.delFriend(props.id)
   }
-  const onClickSendMessageHandler = (id: number) => {
-    // props.openModal(id)
+  const closeModal = () => {
+    setOpenModal(!openModal)
+  }
+  const openModalHandler = () => {
+    setOpenModal(!openModal)
   }
   return (
     <>
+      {openModal && <ModalMessage closeModal={closeModal} id={props.id}/>}
       <div className={classes.card}>
         <div className={classes.friends__image}>
           <NavLink to="#">
@@ -94,15 +100,11 @@ const CardFriend = (props: propsCardSrc) => {
                 <button disabled={isDisabled} onClick={onClickAddFriendHandler} type="submit">Add Friend</button>}
             </div>
             <div className={classes.send_message_btn}>
-              <button onClick={() => {
-                onClickSendMessageHandler(props.id)
-              }} type="submit">Send Message
-              </button>
+              <button onClick={openModalHandler} type="submit">Send Message</button>
             </div>
           </div>
         </div>
       </div>
-      {/*{props.sendMessageStatus ? <ModalMessage id={props.id} closeModal={props.closeModal}/> : ''}*/}
     </>
   )
 }

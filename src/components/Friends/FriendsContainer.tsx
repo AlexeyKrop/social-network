@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {Friends} from "./Friends";
-import {AppDispatch, AppStateType, TypedDispatch} from "../../Redux/redux-store";
+import {AppStateType, TypedDispatch} from "../../Redux/redux-store";
 import React from "react";
 import {Preloader} from "../../common/preloader/Preloader";
 import {

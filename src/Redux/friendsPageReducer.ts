@@ -15,7 +15,7 @@ let initialState = {
   currentPageNumber: 1,
   pageSize: 21,
   totalUserCount: 30,
-  preloader: false
+  preloader: false,
 }
 
 //////TYPE///////////////////////////////////////
@@ -29,7 +29,6 @@ export type UserStateType = {
     large: string
   }
   followed: boolean
-
 }
 type InitialStateInFriendPageType = typeof initialState
 export type ActionFriendPageReducerType =
@@ -83,18 +82,6 @@ const friendsPageReducer = (state = initialState, action: ActionFriendPageReduce
       return {
         ...state,
         cardFriends: state.cardFriends.map(s => s.id === action.uId ? {...s, followed: !s.followed} : s)
-      }
-    }
-
-    case OPEN_MODAL: {
-      return {
-        ...state
-      }
-    }
-
-    case CLOSE_MODAL: {
-      return {
-        ...state
       }
     }
 
