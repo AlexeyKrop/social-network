@@ -1,18 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './Dialogs.module.css';
 import {MessageDialogsItem, MessagePropsType} from './MessageDialogsItem/MessageDialogsItem';
 import {UserDialogsItem, UserItemPropsType} from './UserDialogsItem/UserDialogsItem';
 import {Field, reduxForm} from "redux-form";
+import {useDispatch} from "react-redux";
+import {setMessageTC} from "../../Redux/dialogsPageReducer";
 
 type DialogsPropsType = {
   UserDialogsItems: Array<UserItemPropsType>
   MessageDialogsItems: Array<MessagePropsType>
   addMessage: (message: string) => void
-
-
+  id: number
 }
 
 const Dialogs = (props: DialogsPropsType) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setMessageTC(props.id))
+  }, [dispatch, props])
   const onSubmit = (values: any) => {
     props.addMessage(values.message)
   }

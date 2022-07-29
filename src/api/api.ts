@@ -57,3 +57,9 @@ export const profileAPI = {
     return instance.put(`/profile/status`, {status})
   }
 }
+
+export const dialogsAPI = {
+  getDialogs(id: number) {
+    return instance.get(`dialogs/${id}/messages`)
+  }
+}

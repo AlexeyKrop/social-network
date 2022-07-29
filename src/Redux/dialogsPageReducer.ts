@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import {Dispatch} from "redux";
+import {dialogsAPI} from "../api/api";
 
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const UPDATE_WORDS_IN_DIALOGS = 'UPDATE_WORDS_IN_DIALOGS'
@@ -10,7 +12,7 @@ type UpdateWordsInDialogsAT = {
   type: 'UPDATE_WORDS_IN_DIALOGS'
   newWords: string
 }
-type AddMessageInDialogsAT = AddMessageAT | UpdateWordsInDialogsAT
+type AddMessageInDialogsAT = AddMessageAT | UpdateWordsInDialogsAT | FetchMeesagesAT
 export type UserDialogsItemType = {
   src: string
   name: string
@@ -22,10 +24,12 @@ export type MessageDialogsItemType = {
   message_time: string
   id: string
 }
+export type FetchMeesagesAT = ReturnType<typeof setMessageAC>
 export type InitialStateInMessagePageType = {
   UserDialogsItems: Array<UserDialogsItemType>
   MessageDialogsItems: Array<MessageDialogsItemType>
-  updateWordInMessagePage: string
+  updateWordInMessagePage: string,
+  messages: Array<string>
 }
 export let initialState: InitialStateInMessagePageType = {
   UserDialogsItems: [
@@ -80,9 +84,16 @@ export let initialState: InitialStateInMessagePageType = {
     }
   ],
   updateWordInMessagePage: '',
+  messages: []
 }
 const dialogsPageReducer = (state = initialState, action: AddMessageInDialogsAT): InitialStateInMessagePageType => {
   switch (action.type) {
+    case "SET-MESSAGES":
+      return {
+        ...state,
+        messages: [...state.messages, action.messages]
+      }
+
     case ADD_MESSAGE: {
       const newMessage = {
         src: "https://templates.envytheme.com/zust/default/assets/images/user/user-29.jpg",
@@ -102,4 +113,11 @@ const dialogsPageReducer = (state = initialState, action: AddMessageInDialogsAT)
 export const addMessageActionCreator = (message: string) => {
   return {type: 'ADD_MESSAGE', newMes: message}
 }
+export const setMessageAC = (messages: any) => ({type: 'SET-MESSAGES', messages} as const)
+export const setMessageTC = (id: number) => (dispatch: Dispatch) => {
+  dialogsAPI.getDialogs(id)
+    .then(res => dispatch(setMessageAC(res.data.items)))
+}
+
+
 export default dialogsPageReducer

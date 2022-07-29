@@ -13,6 +13,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 type mapStateToPropsType = {
   UserDialogsItems: Array<UserDialogsItemType>
   MessageDialogsItems: Array<MessageDialogsItemType>
+  id: number
 }
 type mapDispatchToPropsType = {
   addMessage: (message: string) => void
@@ -21,6 +22,7 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     UserDialogsItems: state.MessagePage.UserDialogsItems,
     MessageDialogsItems: state.MessagePage.MessageDialogsItems,
+    id: state.Authorization.id
   }
 }
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
