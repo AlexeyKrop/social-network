@@ -7,6 +7,8 @@ import {Redirect} from "react-router-dom";
 import {AppStateType} from "../../Redux/redux-store";
 import {validateEmail} from "../../common/validate/validate";
 import s from './Login.module.css'
+import {Alert} from "antd";
+import {setAppErrorAC} from "../../Redux/appReducer";
 
 type ValuesType = {
   email: string;
@@ -16,6 +18,7 @@ type ValuesType = {
 
 export const Login = () => {
   const isAuth = useSelector<AppStateType, boolean>(state => state.Authorization.isAuth)
+  const error = useSelector<AppStateType, null | string>(state => state.appReducer.error)
   const dispatch = useDispatch()
   type initialValuesType = {
     email: string
@@ -33,7 +36,11 @@ export const Login = () => {
   if (isAuth) {
     return <Redirect to={`/profile`}/>
   }
+  const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    dispatch(setAppErrorAC(''))
+  };
   return (
+
     <div className={s.wrapper}>
       <p className={s.title}>Signup</p>
       <Formik initialValues={initialValues} onSubmit={onSubmitHandler}
@@ -54,8 +61,13 @@ export const Login = () => {
             <button className={s.btn} disabled={!!errors.email} type="submit">Submit</button>
           </Form>
         )}
-
-      </Formik>
+      </Formik> {error ? <Alert
+      message="Error"
+      description='login or password are incorrect'
+      type="error"
+      closable
+      onClose={onClose}
+    /> : ''}
     </div>
   );
 };

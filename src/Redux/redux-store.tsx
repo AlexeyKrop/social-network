@@ -5,7 +5,7 @@ import friendsPageReducer, {ActionFriendPageReducerType} from "./friendsPageRedu
 import {profilePageReducer} from "./profilePageReducer";
 import {ActionAuthorizationReducerType, authReducer} from "./authorizationReducer";
 import {reducer as formReducer} from 'redux-form'
-import {appReducer} from "./appReducer";
+import {ActionsAppType, appReducer} from "./appReducer";
 
 const rootReducer = combineReducers({
   ProfilePage: profilePageReducer,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
 })
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-type AppActionsType = ActionFriendPageReducerType | ActionAuthorizationReducerType
+type AppActionsType = ActionFriendPageReducerType | ActionAuthorizationReducerType | ActionsAppType
 export type AppDispatch = typeof store.dispatch;
 export type AppStateType = ReturnType<typeof rootReducer>
 export type TypedDispatch = ThunkDispatch<AppStateType, any, AppActionsType>;

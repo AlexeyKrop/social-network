@@ -25,7 +25,8 @@ class AuthorizationContainer extends React.Component<mapDispatchToPropsType, map
 
 const mapStateToProps = (state: AppStateType) => ({
   login: state.Authorization.login,
-  isAuth: state.Authorization.isAuth
+  isAuth: state.Authorization.isAuth,
+  error: state.appReducer.error
 })
 const mapDispatchToProps = (dispatch: TypedDispatch) => {
   return {

@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
+import {NavLink, RouteComponentProps, withRouter} from 'react-router-dom';
 import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostContainer from "./Myposts/MypostContainer";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import { AppStateType, TypedDispatch } from "../../Redux/redux-store";
-import { getProfileStatusTC, getProfileUserTC, updateProfileStatusTC } from "../../Redux/profilePageReducer";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import {AppStateType, TypedDispatch} from "../../Redux/redux-store";
+import {getProfileStatusTC, getProfileUserTC, updateProfileStatusTC} from "../../Redux/profilePageReducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type PathParamsType = {
   userId: string,
@@ -67,8 +67,8 @@ class ProfileContainer extends React.Component<any, PropsType> {
           <NavLink to="/" className={classes.edit_cover_btn}>Edit Cover</NavLink>
         </div>
         <ProfileInfo profile={this.props.profile} status={this.props.status}
-          updateProfileStatus={this.props.updateProfileStatus} />
-        <MyPostContainer />
+                     updateProfileStatus={this.props.updateProfileStatus}/>
+        <MyPostContainer/>
       </>
     )
   }
@@ -78,7 +78,8 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
   return {
     profile: state.ProfilePage.profile,
     status: state.ProfilePage.status,
-    userId: state.Authorization.id
+    userId: state.Authorization.id,
+
   }
 }
 const mapDispatchToProps = (dispatch: TypedDispatch) => {
