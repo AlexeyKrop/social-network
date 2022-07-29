@@ -11,6 +11,7 @@ import Dropdown from "./components/Dropdown/Dropdown";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import {Login} from "./components/Login/Login";
+import 'antd/dist/antd.css'
 
 
 function App() {
