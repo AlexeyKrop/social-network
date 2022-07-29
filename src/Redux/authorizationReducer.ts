@@ -1,5 +1,6 @@
 import {authMe} from "../api/api";
 import {AppDispatch, AppThunk, TypedDispatch} from "./redux-store";
+import {validateEmail} from "../common/validate/validate";
 
 let initialState = {
   id: 0,
@@ -44,7 +45,14 @@ export const authUserTC = (): AppThunk => {
 export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => {
   return (dispatch: TypedDispatch) => {
     authMe.login(email, password, rememberMe)
-      .then(() => dispatch(authUserTC()))
+      .then((res) => {
+        if (res.data.resultCode === 0) {
+          dispatch(authUserTC())
+        } else {
+          console.log('password incorect')
+        }
+
+      })
   }
 }
 export const logoutTC = (): AppThunk => {

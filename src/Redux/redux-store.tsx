@@ -5,13 +5,15 @@ import friendsPageReducer, {ActionFriendPageReducerType} from "./friendsPageRedu
 import {profilePageReducer} from "./profilePageReducer";
 import {ActionAuthorizationReducerType, authReducer} from "./authorizationReducer";
 import {reducer as formReducer} from 'redux-form'
+import {appReducer} from "./appReducer";
 
 const rootReducer = combineReducers({
   ProfilePage: profilePageReducer,
   MessagePage: dialogsPageReducer,
   FriendsPage: friendsPageReducer,
   Authorization: authReducer,
-  form: formReducer
+  form: formReducer,
+  appReducer: appReducer
 })
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
