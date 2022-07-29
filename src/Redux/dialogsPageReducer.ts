@@ -114,8 +114,8 @@ export const addMessageActionCreator = (message: string) => {
   return {type: 'ADD_MESSAGE', newMes: message}
 }
 export const setMessageAC = (messages: any) => ({type: 'SET-MESSAGES', messages} as const)
-export const setMessageTC = (id: number) => (dispatch: Dispatch) => {
-  dialogsAPI.getDialogs(id)
+export const setMessageTC = () => (dispatch: Dispatch) => {
+  dialogsAPI.getDialogs()
     .then(res => dispatch(setMessageAC(res.data.items)))
 }
 

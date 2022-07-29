@@ -16,7 +16,7 @@ type DialogsPropsType = {
 const Dialogs = (props: DialogsPropsType) => {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(setMessageTC(props.id))
+    dispatch(setMessageTC())
   }, [dispatch, props])
   const onSubmit = (values: any) => {
     console.log(values)

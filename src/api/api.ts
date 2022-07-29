@@ -59,7 +59,10 @@ export const profileAPI = {
 }
 
 export const dialogsAPI = {
-  getDialogs(id: number) {
-    return instance.get(`dialogs/${id}/messages`)
+  getDialogs() {
+    return instance.get(`dialogs/`)
+  },
+  adMessage(userId: number) {
+    return instance.post(`dialogs/${userId}/messages`)
   }
 }
