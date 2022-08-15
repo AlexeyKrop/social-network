@@ -13,14 +13,14 @@ export const Authorization = (props: any) => {
       {props.isAuth ? <ul className={`${classes.list} ${classes.list_logout}`}>
         <li className={`${classes.item} ${classes.item_user}`}><a href="/" className={classes.link}><img
           className={classes.image}
-          src='https://img4.goodfon.ru/original/1280x720/d/84/chingcho-chang-vostochnaia-gubki.jpg'
-          alt="аватар"/>
+          src='https://cdn-icons-png.flaticon.com/512/147/147142.png'
+          alt="аватар" />
         </a>
         </li>
         <li>
           <button className={s.btn} onClick={onClickHandler}>Logout</button>
         </li>
-      </ul> : <p/>}
+      </ul> : <p />}
     </>
   )
 }
