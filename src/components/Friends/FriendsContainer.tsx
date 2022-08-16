@@ -13,7 +13,13 @@ import {
 } from "../../Redux/friendsPageReducer";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {getCardFriends} from "../../Redux/friends-selectors";
+import {
+  getCardFriends,
+  getCurrentPageNumber,
+  getPageSize,
+  getPreloader,
+  getTotalUserCount
+} from "../../Redux/friends-selectors";
 
 type mapStateToPropsType = {
   cardFriends: Array<UserStateType>
@@ -63,10 +69,10 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
   return {
     cardFriends: getCardFriends(state),
-    pageSize: state.FriendsPage.pageSize,
-    currentPageNumber: state.FriendsPage.currentPageNumber,
-    totalUserCount: state.FriendsPage.totalUserCount,
-    preloader: state.FriendsPage.preloader,
+    pageSize: getPageSize(state),
+    currentPageNumber: getCurrentPageNumber(state),
+    totalUserCount: getTotalUserCount(state),
+    preloader: getPreloader(state),
   }
 }
 
