@@ -158,7 +158,9 @@ export const getUsersTC = (currentPageNumber: number, pageSize: number): AppThun
       .then((data) => {
         dispatch(setTogglePreloaderAC(false))
         dispatch(setUsersAC(data.items))
+        dispatch(setCurrentPageNumberAC(currentPageNumber))
         dispatch(setTotalUserCountAC(data.totalCount))
+
       })
   }
 }
