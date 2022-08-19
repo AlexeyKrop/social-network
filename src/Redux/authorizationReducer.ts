@@ -12,7 +12,7 @@ type InitialStateType = typeof initialState
 
 export const authReducer = (state: InitialStateType = initialState, action: ActionAuthorizationReducerType): InitialStateType => {
   switch (action.type) {
-    case 'SET_USER_DATA':
+    case 'auth/SET_USER_DATA':
       return {
         ...state,
         ...action.data,
@@ -26,7 +26,7 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
 export type ActionAuthorizationReducerType = SetUserDataAT
 
 export const setDataAC = (userId: number, email: string, login: string, isAuth: boolean) => ({
-  type: 'SET_USER_DATA',
+  type: 'auth/SET_USER_DATA',
   data: {id: userId, email: email, login: login, isAuth}
 } as const)
 type SetUserDataAT = ReturnType<typeof setDataAC>
