@@ -3,10 +3,10 @@ import {profileAPI, userAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {AppThunk} from "./redux-store";
 
-export const ADD_POST = 'ADD_POST';
-export const UPDATE_WORDS_IN_POST = 'UPDATE_WORDS_IN_POST';
-export const SET_PROFILE_USER = 'SET_PROFILE_USER';
-export const SET_PROFILE_STATUS = 'SET_PROFILE_STATUS';
+export const ADD_POST = 'profile/ADD_POST';
+export const UPDATE_WORDS_IN_POST = 'profile/UPDATE_WORDS_IN_POST';
+export const SET_PROFILE_USER = 'profile/SET_PROFILE_USER';
+export const SET_PROFILE_STATUS = 'profile/SET_PROFILE_STATUS';
 
 export type  AddMessageInProfilePage = {
   user_name: string
@@ -42,12 +42,12 @@ export const profilePageReducer = (state = initialState, action: ProfilePageRedu
       };
     }
 
-    case "SET_PROFILE_USER":
+    case "profile/SET_PROFILE_USER":
       return {
         ...state, profile: action.profile
 
       }
-    case "SET_PROFILE_STATUS":
+    case "profile/SET_PROFILE_STATUS":
       return {
         ...state, status: action.status
       }
