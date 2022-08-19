@@ -17,6 +17,11 @@ export const appReducer = (state: InitialStateType = initialState, action: AppRe
         ...state,
         error: action.error
       }
+    case "APP/SET-INITIALIZED":
+      return {
+        ...state,
+        initialized: action.initialized
+      }
     default:
       return state
   }
@@ -31,4 +36,4 @@ export type ActionsAppType = SetAppStatusAT | SetAppErrorAT | AppReducerType
 type SetAppStatusAT = ReturnType<typeof setAppStatusAC>
 type SetAppErrorAT = ReturnType<typeof setAppErrorAC>
 type SetAppInitializedAT = ReturnType<typeof setAppInitializedAC>
-type AppReducerType = SetAppStatusAT | SetAppErrorAT
+type AppReducerType = SetAppStatusAT | SetAppErrorAT | SetAppInitializedAT
