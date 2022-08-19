@@ -1,14 +1,14 @@
 import {userAPI} from "../api/api";
 import {AppThunk} from "./redux-store";
 
-export const ADD_FRIEND = 'ADD_FRIEND';
-export const DELETE_FRIEND = 'DELETE_FRIEND';
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const CLOSE_MODAL = 'CLOSE_MODAL'
-export const SET_USERS = 'SET_USERS'
-export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-export const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT'
-export const SET_TOGGLE_PRELOADER = 'SET_TOGGLE_PRELOADER'
+export const ADD_FRIEND = 'friends/ADD_FRIEND';
+export const DELETE_FRIEND = 'friends/DELETE_FRIEND';
+export const OPEN_MODAL = 'friends/OPEN_MODAL';
+export const CLOSE_MODAL = 'friends/CLOSE_MODAL'
+export const SET_USERS = 'friends/SET_USERS'
+export const SET_CURRENT_PAGE = 'friends/SET_CURRENT_PAGE'
+export const SET_TOTAL_USER_COUNT = 'friends/SET_TOTAL_USER_COUNT'
+export const SET_TOGGLE_PRELOADER = 'friends/SET_TOGGLE_PRELOADER'
 
 let initialState = {
   cardFriends: [] as Array<UserStateType>,
@@ -40,30 +40,30 @@ export type ActionFriendPageReducerType =
   | SetCurrentPageNumberAT
   | SetTotalUserCountAT | setTogglePreloaderAT
 type AddFriendAT = {
-  type: 'ADD_FRIEND', uId: number
+  type: 'friends/ADD_FRIEND', uId: number
 }
 type DelFriendAT = {
-  type: 'DELETE_FRIEND', uId: number
+  type: 'friends/DELETE_FRIEND', uId: number
 }
 type OpenModalInFriendAT = {
-  type: 'OPEN_MODAL', uId: number
+  type: 'friends/OPEN_MODAL', uId: number
 }
 type CloseModalInFriendAT = {
-  type: 'CLOSE_MODAL', uId: number
+  type: 'friends/CLOSE_MODAL', uId: number
 }
 type SetUsersAT = {
-  type: 'SET_USERS', users: Array<UserStateType>
+  type: 'friends/SET_USERS', users: Array<UserStateType>
 }
 type SetCurrentPageNumberAT = {
-  type: 'SET_CURRENT_PAGE',
+  type: 'friends/SET_CURRENT_PAGE',
   currentPageNumber: number
 }
 type SetTotalUserCountAT = {
-  type: 'SET_TOTAL_USER_COUNT',
+  type: 'friends/SET_TOTAL_USER_COUNT',
   totalUserCount: number
 }
 type setTogglePreloaderAT = {
-  type: 'SET_TOGGLE_PRELOADER'
+  type: 'friends/SET_TOGGLE_PRELOADER'
   preloader: boolean
 }
 
