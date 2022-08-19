@@ -1,4 +1,4 @@
-import {connect} from "react-redux";
+import {connect, useSelector} from "react-redux";
 import {Friends} from "./Friends";
 import {AppStateType, TypedDispatch} from "../../Redux/redux-store";
 import React from "react";
@@ -48,6 +48,7 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
   }
 
   render() {
+    
     return (
       <>{this.props.preloader ? <Preloader/> : null}
         <Friends
