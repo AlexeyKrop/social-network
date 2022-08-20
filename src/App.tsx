@@ -15,16 +15,19 @@ import 'antd/dist/antd.css'
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {AppStateType, TypedDispatch} from "./Redux/redux-store";
-import {authUserTC} from "./Redux/authorizationReducer";
+import {initializedTC} from "./Redux/appReducer";
+import {Preloader} from "./common/preloader/Preloader";
 
 
 class App extends React.Component<any, AppStateType> {
   componentDidMount() {
-    console.log(this)
-    this.props.authUser()
+    this.props.initialized()
   }
 
   render() {
+    if (!this.props.isInitialized) {
+      return <Preloader/>
+    }
     return (
       <div className="App">
         <div className="container">
@@ -51,11 +54,13 @@ class App extends React.Component<any, AppStateType> {
   }
 }
 
-const mapStateToProps = (state: AppStateType) => ({})
+const mapStateToProps = (state: AppStateType) => ({
+  isInitialized: state.appReducer.initialized
+})
 const mapDispatchToProps = (dispatch: TypedDispatch) => {
   return {
-    authUser: () => {
-      dispatch(authUserTC())
+    initialized: () => {
+      dispatch(initializedTC())
     },
   }
 }

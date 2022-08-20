@@ -33,13 +33,12 @@ type SetUserDataAT = ReturnType<typeof setDataAC>
 
 export const authUserTC = (): AppThunk => {
   return (dispatch: AppDispatch) => {
-    authMe.me()
+    return authMe.me()
       .then(response => {
         if (response.data.resultCode === 0) {
           let {id, email, login} = response.data.data
           dispatch(setDataAC(id, email, login, true))
         }
-        dispatch(setAppInitializedAC(true))
       })
   }
 }

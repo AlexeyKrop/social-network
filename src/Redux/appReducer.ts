@@ -1,3 +1,9 @@
+import {Dispatch} from "redux";
+import {authUserTC} from "./authorizationReducer";
+import {AppDispatch, AppThunk} from "./redux-store";
+import {btoa} from "buffer";
+import {log} from "util";
+
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
 const initialState = {
@@ -31,6 +37,15 @@ export const appReducer = (state: InitialStateType = initialState, action: AppRe
 export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)
 export const setAppErrorAC = (error: string | null) => ({type: 'APP/SET-ERROR', error} as const)
 export const setAppInitializedAC = (initialized: boolean) => ({type: 'APP/SET-INITIALIZED', initialized} as const)
+
+
+//THUNK
+
+export const initializedTC = () => (dispatch: any) => {
+  let promise = dispatch(authUserTC())
+  Promise.all([promise])
+    .then(() => dispatch(setAppInitializedAC(true)))
+}
 //TYPES
 export type ActionsAppType = SetAppStatusAT | SetAppErrorAT | AppReducerType
 type SetAppStatusAT = ReturnType<typeof setAppStatusAC>
