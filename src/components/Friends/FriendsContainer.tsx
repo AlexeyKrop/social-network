@@ -48,7 +48,7 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
   }
 
   render() {
-    
+
     return (
       <>{this.props.preloader ? <Preloader/> : null}
         <Friends
@@ -103,5 +103,4 @@ const mapDispatchToProps = (dispatch: TypedDispatch): mapDispatchToPropsType => 
 }
 export default compose<React.ComponentType>(
   connect(mapStateToProps, mapDispatchToProps),
-  withAuthRedirect
 )(FriendsContainer)
