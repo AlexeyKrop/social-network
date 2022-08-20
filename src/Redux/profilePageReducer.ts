@@ -2,6 +2,7 @@ import {v1} from "uuid";
 import {profileAPI, userAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {AppThunk} from "./redux-store";
+import {setAppInitializedAC} from "./appReducer";
 
 export const ADD_POST = 'profile/ADD_POST';
 export const UPDATE_WORDS_IN_POST = 'profile/UPDATE_WORDS_IN_POST';
@@ -45,7 +46,6 @@ export const profilePageReducer = (state = initialState, action: ProfilePageRedu
     case "profile/SET_PROFILE_USER":
       return {
         ...state, profile: action.profile
-
       }
     case "profile/SET_PROFILE_STATUS":
       return {
@@ -77,7 +77,9 @@ type ProfilePageReducerAT =
 export const getProfileUserTC = (userID: number): AppThunk => {
   return (dispatch: Dispatch) => {
     userAPI.setProfileUser(userID)
-      .then(data => dispatch(setProfileUserAC(data)))
+      .then(data => {
+        dispatch(setProfileUserAC(data))
+      })
   }
 }
 export const getProfileStatusTC = (userID: number): AppThunk => {

@@ -41,7 +41,6 @@ export const authUserTC = (): AppThunk => {
         }
         dispatch(setAppInitializedAC(true))
       })
-      .finally(() => dispatch(setAppInitializedAC(true)))
   }
 }
 export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => {

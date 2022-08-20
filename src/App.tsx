@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -13,13 +13,17 @@ import FriendsContainer from "./components/Friends/FriendsContainer";
 import {Login} from "./components/Login/Login";
 import 'antd/dist/antd.css'
 import {Preloader} from "./common/preloader/Preloader";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "./Redux/redux-store";
+import {authUserTC} from "./Redux/authorizationReducer";
 
 
 function App() {
   const initialized = useSelector<AppStateType, boolean>(state => state.appReducer.initialized)
-  console.log(initialized)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(authUserTC())
+  }, [dispatch])
   if (!initialized) {
     return <Preloader/>
   }

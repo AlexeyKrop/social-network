@@ -8,6 +8,8 @@ import {compose} from "redux";
 import {AppStateType, TypedDispatch} from "../../Redux/redux-store";
 import {getProfileStatusTC, getProfileUserTC, updateProfileStatusTC} from "../../Redux/profilePageReducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {setAppInitializedAC} from "../../Redux/appReducer";
+import {Preloader} from "../../common/preloader/Preloader";
 
 type PathParamsType = {
   userId: string,
@@ -33,7 +35,8 @@ type MapStateToPropsType = {
   }
   auth: boolean
   match: any,
-  status: string
+  status: string,
+  initialized: boolean
 }
 type initialProfileType = {
   profile: MapStateToPropsType | null
@@ -43,6 +46,7 @@ type MapDispatchToPropsType = {
   getProfileUser: (id: number) => void
   getProfileStatus: (id: number) => void
   updateProfileStatus: (status: string) => void
+  initializedStatus: (initialized: boolean) => void
 }
 type StatePropsType = MapStateToPropsType & MapDispatchToPropsType
 type PropsType = RouteComponentProps<PathParamsType> & StatePropsType
@@ -51,13 +55,11 @@ class ProfileContainer extends React.Component<any, PropsType> {
 
   componentDidMount() {
     let userID = this.props.match.params.userId
-
     if (!userID) {
       userID = this.props.userId
     }
     this.props.getProfileUser(userID)
     this.props.getProfileStatus(userID)
-
   }
 
   render() {
@@ -79,6 +81,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsMainType => {
     profile: state.ProfilePage.profile,
     status: state.ProfilePage.status,
     userId: state.Authorization.id,
+    initialized: state.appReducer.initialized
   }
 }
 const mapDispatchToProps = (dispatch: TypedDispatch) => {
@@ -91,8 +94,10 @@ const mapDispatchToProps = (dispatch: TypedDispatch) => {
     },
     updateProfileStatus: (status: string) => {
       dispatch(updateProfileStatusTC(status))
+    },
+    initializedStatus: (initialized: boolean) => {
+      dispatch(setAppInitializedAC(initialized))
     }
-
   }
 }
 export default compose<React.ComponentType>(
