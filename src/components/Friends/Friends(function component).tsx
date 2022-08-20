@@ -1,7 +1,7 @@
 import classes from './Friends.module.css'
 import CardFriend from './CardFriend/CardFriend';
 import {UserStateType} from "../../Redux/friendsPageReducer";
-import axios from "axios";
+
 //
 // export type cardFriendsPropsType = {
 //   cardFriends: Array<UserStateType>
