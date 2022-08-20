@@ -14,9 +14,7 @@ type mapDispatchToPropsType = {
 }
 
 class AuthorizationContainer extends React.Component<mapDispatchToPropsType, mapStateToPropsType> {
-  componentDidMount() {
-    this.props.authUser()
-  }
+
 
   render() {
     return <Authorization {...this.props}/>

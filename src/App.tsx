@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import {BrowserRouter, Redirect, Route} from "react-router-dom";
+import {Redirect, Route, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -12,23 +12,20 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import {Login} from "./components/Login/Login";
 import 'antd/dist/antd.css'
-import {Preloader} from "./common/preloader/Preloader";
-import {useDispatch, useSelector} from "react-redux";
-import {AppStateType} from "./Redux/redux-store";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import {AppStateType, TypedDispatch} from "./Redux/redux-store";
 import {authUserTC} from "./Redux/authorizationReducer";
 
 
-function App() {
-  const initialized = useSelector<AppStateType, boolean>(state => state.appReducer.initialized)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(authUserTC())
-  }, [dispatch])
-  if (!initialized) {
-    return <Preloader/>
+class App extends React.Component<any, AppStateType> {
+  componentDidMount() {
+    console.log(this)
+    this.props.authUser()
   }
-  return (
-    <BrowserRouter>
+
+  render() {
+    return (
       <div className="App">
         <div className="container">
           <Header/>
@@ -50,8 +47,20 @@ function App() {
         </div>
         <Dropdown/>
       </div>
-    </BrowserRouter>
-  );
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state: AppStateType) => ({})
+const mapDispatchToProps = (dispatch: TypedDispatch) => {
+  return {
+    authUser: () => {
+      dispatch(authUserTC())
+    },
+  }
+}
+
+export default compose<React.ComponentType>(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter,
+)(App)
