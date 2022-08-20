@@ -28,9 +28,6 @@ const mapStateToProps = (state: AppStateType) => ({
 })
 const mapDispatchToProps = (dispatch: TypedDispatch) => {
   return {
-    authUser: () => {
-      dispatch(authUserTC())
-    },
     logout: () => {
       dispatch(logoutTC())
     }
