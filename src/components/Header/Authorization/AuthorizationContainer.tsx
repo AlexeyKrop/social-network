@@ -1,7 +1,7 @@
 import React from "react";
 import {Authorization} from "./Authorization";
 import {connect} from "react-redux";
-import {authUserTC, logoutTC} from "../../../Redux/authorizationReducer";
+import {logoutTC} from "../../../Redux/authorizationReducer";
 import {AppStateType, TypedDispatch} from "../../../Redux/redux-store";
 
 type mapStateToPropsType = {
