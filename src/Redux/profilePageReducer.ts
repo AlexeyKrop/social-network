@@ -2,7 +2,6 @@ import {v1} from "uuid";
 import {profileAPI, userAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {AppThunk} from "./redux-store";
-import {setAppInitializedAC} from "./appReducer";
 
 export const ADD_POST = 'profile/ADD_POST';
 export const UPDATE_WORDS_IN_POST = 'profile/UPDATE_WORDS_IN_POST';
