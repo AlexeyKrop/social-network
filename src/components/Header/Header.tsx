@@ -45,8 +45,8 @@ const Header = () => {
             </button>
           </form>
           <ul className={classes.list}>
-            {headerIcons.map((i) => {
-              return <li className={classes.item}><NavLink to={i.link} className={classes.link}>
+            {headerIcons.map((i, index) => {
+              return <li key={index} className={classes.item}><NavLink to={i.link} className={classes.link}>
                 <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20"
                      fill="White">
                   <path
