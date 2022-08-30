@@ -21,7 +21,7 @@ type AppActionsType = ActionFriendPageReducerType | ActionAuthorizationReducerTy
 export type AppDispatch = typeof store.dispatch;
 export type AppStateType = ReturnType<typeof rootReducer>
 export type TypedDispatch = ThunkDispatch<AppStateType, any, AppActionsType>;
-export type StoreType = typeof store
+// export type StoreType = typeof store
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, AppActionsType>
 export default store
 // @ts-ignore
