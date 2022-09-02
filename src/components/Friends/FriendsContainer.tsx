@@ -1,4 +1,4 @@
-import {connect, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import {Friends} from "./Friends";
 import {AppStateType, TypedDispatch} from "../../Redux/redux-store";
 import React from "react";
@@ -12,7 +12,6 @@ import {
   UserStateType
 } from "../../Redux/friendsPageReducer";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {
   getCardFriends,
   getCurrentPageNumber,
