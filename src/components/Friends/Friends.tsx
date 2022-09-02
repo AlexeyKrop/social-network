@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Friends.module.css'
 import CardFriend from './CardFriend/CardFriend';
 import {UserStateType} from "../../Redux/friendsPageReducer";
-import {Pagination} from "./Pagination/Pagination";
+import {PaginationItems} from "./Pagination/Pagination";
 
 
 export type cardFriendsPropsType = {
@@ -17,7 +17,6 @@ export type cardFriendsPropsType = {
   setCurrentPage: (pageNumber: number) => void
   setTotalUserCount: (totalUserCount: number) => void
   onChangedPage: (pageNumber: number) => void
-
 }
 
 export function Friends(props: cardFriendsPropsType) {
@@ -28,8 +27,9 @@ export function Friends(props: cardFriendsPropsType) {
                                                         followed={item.followed}/>)
   return (
     <>
-      <Pagination totalUserCount={props.totalUserCount} pageSize={props.pageSize} onChangedPage={props.onChangedPage}
-                  currentPageNumber={props.currentPageNumber}/>
+      <PaginationItems totalUserCount={props.totalUserCount} pageSize={props.pageSize}
+                       onChangedPage={props.onChangedPage}
+                       currentPageNumber={props.currentPageNumber}/>
       <div className={classes.list}>
         <div className={classes.row}>
           {Cards}
