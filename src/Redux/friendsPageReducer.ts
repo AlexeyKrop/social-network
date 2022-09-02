@@ -13,7 +13,7 @@ export const SET_TOGGLE_PRELOADER = 'friends/SET_TOGGLE_PRELOADER'
 let initialState = {
   cardFriends: [] as Array<UserStateType>,
   currentPageNumber: 1,
-  pageSize: 21,
+  pageSize: 12,
   totalUserCount: 30,
   preloader: false,
 }

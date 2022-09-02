@@ -43,8 +43,8 @@ class FriendsContainer extends React.Component<FriendsContainerType> {
     this.props.getUsers(this.props.currentPageNumber, this.props.pageSize)
   }
 
-  onChangedPage = (pageNumber: number) => {
-    this.props.getUsers(pageNumber, this.props.pageSize)
+  onChangedPage = (pageNumber: number, pageSize = 12) => {
+    this.props.getUsers(pageNumber, pageSize)
   }
 
   render() {

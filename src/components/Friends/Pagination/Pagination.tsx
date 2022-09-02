@@ -4,7 +4,7 @@ import {Pagination} from 'antd';
 type PaginationPropsType = {
   totalUserCount: number
   pageSize: number
-  onChangedPage: (pageNumber: number) => void
+  onChangedPage: (pageNumber: number, pageSize: number) => void
   currentPageNumber: number
 }
 export const PaginationItems = (props: PaginationPropsType) => {
@@ -15,10 +15,12 @@ export const PaginationItems = (props: PaginationPropsType) => {
   // }
 
   const onChangePageNumber = (page: number, pageSize: number) => {
-    props.onChangedPage(page)
+    props.onChangedPage(page, pageSize)
   }
   return (
-    <Pagination onChange={(page, pageSize) => onChangePageNumber(page, pageSize)} defaultCurrent={1}
+    <Pagination defaultPageSize={12} pageSizeOptions={[12, 24, 48, 96]}
+                onChange={(page, pageSize) => onChangePageNumber(page, pageSize)}
+                defaultCurrent={1}
                 total={pagesCount} onShowSizeChange={(current, size) => onChangePageNumber(current, size)}/>
     // <div className={classes.pagination}>
     //   {pages.map(p => {
