@@ -7,7 +7,6 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {Login} from "./components/Login/Login";
 import 'antd/dist/antd.css'
 import {connect} from "react-redux";
@@ -18,6 +17,7 @@ import {Preloader} from "./common/preloader/Preloader";
 
 const FriendsContainer = React.lazy(() => import('./components/Friends/FriendsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
 class App extends React.Component<any, AppStateType> {
   componentDidMount() {
@@ -43,7 +43,7 @@ class App extends React.Component<any, AppStateType> {
                        () => <Suspense fallback={<Preloader/>}><FriendsContainer/> </Suspense>
                      }/>
               <Route path="/dialogs"
-                     render={() => <DialogsContainer/>}/>
+                     render={() => <Suspense fallback={<Preloader/>}> <DialogsContainer/> </Suspense>}/>
               <Route path="/news" render={() => <News/>}/>
               <Route path="/music" render={() => <Music/>}/>
               <Route path="/settings" render={() => <Settings/>}/>
