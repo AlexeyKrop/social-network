@@ -35,7 +35,8 @@ class App extends React.Component<any, AppStateType> {
           <div className="wrapper">
             <Sidebar/>
             <main className="content">
-              <Route path="/" render={() => <Redirect to="/profile"/>}/>
+              <Route path="/" render={() =>
+                <Suspense fallback={<Preloader/>}><Redirect to="/profile"/> </Suspense>}/>
               <Route path="/profile/:userId?" render={
                 () => <Suspense fallback={<Preloader/>}><ProfileContainer/> </Suspense>}/>
               <Route path="/friends"
