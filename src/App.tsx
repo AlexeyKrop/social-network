@@ -1,15 +1,13 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import {Redirect, Route, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dropdown from "./components/Dropdown/Dropdown";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import FriendsContainer from "./components/Friends/FriendsContainer";
 import {Login} from "./components/Login/Login";
 import 'antd/dist/antd.css'
 import {connect} from "react-redux";
@@ -18,6 +16,8 @@ import {AppStateType, TypedDispatch} from "./Redux/redux-store";
 import {initializedTC} from "./Redux/appReducer";
 import {Preloader} from "./common/preloader/Preloader";
 
+const FriendsContainer = React.lazy(() => import('./components/Friends/FriendsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 class App extends React.Component<any, AppStateType> {
   componentDidMount() {
@@ -36,9 +36,12 @@ class App extends React.Component<any, AppStateType> {
             <Sidebar/>
             <main className="content">
               <Route path="/" render={() => <Redirect to="/profile"/>}/>
-              <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+              <Route path="/profile/:userId?" render={
+                () => <Suspense fallback={<Preloader/>}><ProfileContainer/> </Suspense>}/>
               <Route path="/friends"
-                     render={() => <FriendsContainer/>}/>
+                     render={
+                       () => <Suspense fallback={<Preloader/>}><FriendsContainer/> </Suspense>
+                     }/>
               <Route path="/dialogs"
                      render={() => <DialogsContainer/>}/>
               <Route path="/news" render={() => <News/>}/>
