@@ -31,9 +31,9 @@ const Header = () => {
     <header className={classes.header}>
       <div className={classes.wrapper}>
         <nav className={classes.nav}>
-          <a href="/" className={classes.link}>
-            <img src={logo} alt="logo" width={50} height={50}/>
-          </a>
+          {/*<a href="/" className={classes.link}>*/}
+          <img src={logo} alt="logo" width={50} height={50}/>
+          {/*</a>*/}
           <form className={classes.form}>
             <input type="text" className={classes.input__search} placeholder="Search..."/>
             <button className={classes.btn} type="submit">
